@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TruckPilot — WhatsApp compliance co-pilot for European carriers. Digitize CMR forms, track ADR certificates, and stay ahead of EU 2026 regulations.">
+  <title>TruckPilot — Fleet Compliance on WhatsApp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .wa-glow { box-shadow: 0 0 40px rgba(37, 211, 102, 0.18); }
+    .feature-card { transition: transform 0.2s ease, border-color 0.2s ease; }
+    .feature-card:hover { transform: translateY(-3px); border-color: rgba(37, 211, 102, 0.3); }
+    .chat-bubble-left { border-radius: 0 18px 18px 18px; }
+    .chat-bubble-right { border-radius: 18px 0 18px 18px; }
+    input:focus, select:focus { box-shadow: 0 0 0 2px rgba(37,211,102,0.2); }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased">
+
+  <!-- Cookie Banner (GDPR) -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900 border-t border-gray-800 p-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <p class="text-sm text-gray-400">
+        We use cookies to improve your experience. Data processed in Google Cloud
+        <span class="text-white font-medium">europe-west4</span> (GDPR compliant).
+      </p>
+      <button
+        onclick="document.getElementById('cookie-banner').remove()"
+        class="shrink-0 bg-green-500 hover:bg-green-400 text-black text-sm font-semibold px-4 py-2 rounded-lg transition">
+        Accept &amp; Continue
+      </button>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="#25D366">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="text-lg font-bold tracking-tight">TruckPilot</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+        <a href="#compliance" class="hover:text-white transition">Compliance</a>
+        <a href="#how-it-works" class="hover:text-white transition">How it works</a>
+        <a href="#features" class="hover:text-white transition">Features</a>
+      </div>
+      <a href="#demo" class="bg-green-500 hover:bg-green-400 text-black font-semibold text-sm px-4 py-2 rounded-lg transition wa-glow">
+        Get a Demo
+      </a>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="pt-32 pb-20 px-4 sm:px-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-green-950/20 via-transparent to-transparent pointer-events-none"></div>
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto relative">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 bg-green-950/60 border border-green-800/50 text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+            <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+            2026 EU Compliance Ready
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
+            Your fleet's<br>
+            <span class="gradient-text">compliance co-pilot,</span><br>
+            on WhatsApp
+          </h1>
+          <p class="text-lg text-gray-400 leading-relaxed mb-8">
+            Digitize CMR forms, monitor ADR certificates, and automate DVIR inspections —
+            directly on the app your drivers already use. No new software. No training sessions.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <a href="#demo"
+              class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-6 py-3.5 rounded-xl transition text-base wa-glow">
+              Request a Demo
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a href="#how-it-works"
+              class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3.5 rounded-xl transition text-base">
+              See how it works
+            </a>
+          </div>
+          <div class="flex flex-wrap gap-6 text-sm text-gray-500">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              No app to install
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              GDPR compliant
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              Live in days
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              EN · NL · IT · DE · PT
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: WhatsApp Chat Mock -->
+        <div class="lg:flex justify-center hidden">
+          <div class="bg-gray-900 rounded-3xl p-4 w-80 border border-gray-800 wa-glow">
+            <div class="flex items-center gap-3 pb-3 border-b border-gray-800 mb-4">
+              <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-black font-bold text-sm shrink-0">TP</div>
+              <div>
+                <p class="text-sm font-semibold">TruckPilot</p>
+                <p class="text-xs text-green-400 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span> online
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-end">
+                <div class="bg-green-700 text-white px-3 py-2 chat-bubble-right max-w-[75%]">
+                  📸 [CMR photo attached]
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-gray-800 text-gray-100 px-3 py-2.5 chat-bubble-left max-w-[90%] leading-relaxed">
+                  ✅ <strong>CMR extracted in 18s</strong><br><br>
+                  📦 <span class="text-gray-400">Goods:</span> Electronic parts<br>
+                  ⚖️ <span class="text-gray-400">Weight:</span> 4,200 kg<br>
+                  🚛 <span class="text-gray-400">From:</span> Amsterdam, NL<br>
+                  📍 <span class="text-gray-400">To:</span> Milan, IT<br>
+                  ⚠️ <span class="text-gray-400">ADR:</span> Class 9<br><br>
+                  Type <strong>OK</strong> to confirm &amp; save
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <div class="bg-green-700 text-white px-3 py-2 chat-bubble-right">OK</div>
+              </div>
+              <div class="flex justify-start">
+                <div class="bg-gray-800 text-gray-100 px-3 py-2.5 chat-bubble-left max-w-[90%] leading-relaxed">
+                  ✅ Saved. Audit trail created.<br>
+                  <span class="text-yellow-400">⚠️ ADR cert expires in <strong>47 days</strong></span><br>
+                  <span class="text-gray-500">Reminder set for D-30.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS BAR ─── -->
+  <section class="border-y border-gray-800 bg-gray-900/40 py-10 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div>
+        <p class="text-3xl font-extrabold gradient-text">&lt;30s</p>
+        <p class="text-sm text-gray-500 mt-1">Photo to confirmation (P95)</p>
+      </div>
+      <div>
+        <p class="text-3xl font-extrabold gradient-text">&lt;$0.01</p>
+        <p class="text-sm text-gray-500 mt-1">Cost per CMR processed</p>
+      </div>
+      <div>
+        <p class="text-3xl font-extrabold gradient-text">99.5%</p>
+        <p class="text-sm text-gray-500 mt-1">Platform availability SLA</p>
+      </div>
+      <div>
+        <p class="text-3xl font-extrabold gradient-text">40+</p>
+        <p class="text-sm text-gray-500 mt-1">EU eco-zones covered</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── REGULATORY WAVE ─── -->
+  <section id="compliance" class="py-20 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">The 2026 Regulatory Wave</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Four mandates. Zero margin for error.</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          European carriers face simultaneous compliance deadlines in 2026.
+          Miss one and your vehicles get detained, fines pile up, and routes close.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+
+        <div class="bg-gray-900 border border-red-900/50 rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-red-950 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center flex-wrap gap-2 mb-2">
+                <h3 class="font-bold text-base">ADR Certificate Renewal</h3>
+                <span class="text-xs bg-red-950 text-red-400 px-2 py-0.5 rounded-full font-medium">June 2026</span>
+              </div>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                Hazardous goods drivers must hold a valid ADR certificate.
+                Expired cert = vehicle detained at border inspection. No grace period in NL, DE, IT, BE.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-900 border border-orange-900/50 rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-orange-950 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center flex-wrap gap-2 mb-2">
+                <h3 class="font-bold text-base">ICS2 Border Declaration</h3>
+                <span class="text-xs bg-orange-950 text-orange-400 px-2 py-0.5 rounded-full font-medium">Live Now · NL / DE / CZ</span>
+              </div>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                Pre-arrival customs filing required before entering the EU.
+                Violations carry a <span class="text-white font-semibold">€5,000 fine per shipment</span>.
+                Already active in the Netherlands, Germany, and Czech Republic.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-900 border border-yellow-900/50 rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-yellow-950 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center flex-wrap gap-2 mb-2">
+                <h3 class="font-bold text-base">Smart Tachograph G2V2</h3>
+                <span class="text-xs bg-yellow-950 text-yellow-400 px-2 py-0.5 rounded-full font-medium">July 1, 2026</span>
+              </div>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                Second-generation smart tachographs become mandatory for vans and light commercial vehicles.
+                Working time data must be digitally logged and accessible to inspectors.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-900 border border-blue-900/50 rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-blue-950 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center flex-wrap gap-2 mb-2">
+                <h3 class="font-bold text-base">eCMR Digital Standard</h3>
+                <span class="text-xs bg-blue-950 text-blue-400 px-2 py-0.5 rounded-full font-medium">2027 Mandate</span>
+              </div>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                Paper CMR is becoming obsolete. EU eCMR regulation requires digital consignment notes
+                with verifiable audit trails. Start building your digital archive now — before the deadline.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section id="how-it-works" class="py-20 px-4 sm:px-6 bg-gray-900/30">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Zero Learning Curve</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Three steps. That's it.</h2>
+        <p class="text-gray-400 max-w-xl mx-auto leading-relaxed">
+          No training sessions. No new logins.
+          Your drivers use the same WhatsApp they already have on their phone.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5">
+            <span class="text-2xl font-extrabold text-green-400">1</span>
+          </div>
+          <h3 class="text-lg font-bold mb-3">Driver photographs the document</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Driver sends a photo of the CMR, ADR certificate, or vehicle inspection report via WhatsApp —
+            from the cab, a warehouse, or a border crossing.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5">
+            <span class="text-2xl font-extrabold text-green-400">2</span>
+          </div>
+          <h3 class="text-lg font-bold mb-3">AI extracts all fields in under 30 seconds</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Gemini AI reads 45 CMR fields, validates all mandatory boxes, detects ADR hazard classes,
+            and replies in the driver's language — EN, NL, IT, DE, or PT.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5">
+            <span class="text-2xl font-extrabold text-green-400">3</span>
+          </div>
+          <h3 class="text-lg font-bold mb-3">Compliance logged, audit trail created</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Every document is stored, every certificate expiry tracked, every delivery confirmed.
+            Your compliance dashboard stays current — without manual data entry.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ─── -->
+  <section id="features" class="py-20 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Full Compliance Suite</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Everything your fleet needs</h2>
+        <p class="text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Five integrated modules covering every compliance touchpoint —
+          from border paperwork to daily vehicle inspections.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- CMR -->
+        <div class="feature-card bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2">CMR Digital Scan</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            One photo → 45 fields extracted in under 30 seconds. All 24 UNECE boxes captured,
+            sender/consignee/carrier validated, ADR goods automatically flagged.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">45 fields</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">5 languages</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">ADR detection</span>
+          </div>
+        </div>
+
+        <!-- ADR -->
+        <div class="feature-card bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2">ADR Certificate Alerts</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            Escalating WhatsApp reminders before certificate expiry: D-60 preventive,
+            D-30 plan renewal, D-7 urgent, D-1 critical. Fleet managers notified automatically.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">Escalating alerts</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">Manager CC</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">STOP opt-out</span>
+          </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="feature-card bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2">DVIR Vehicle Checklist</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            Guided pre-trip inspection via WhatsApp conversation. Standard template (35 items)
+            or ADR template (42 items). Defects captured with comments, records saved for audits.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">35 / 42 items</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">ADR template</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">Audit-ready</span>
+          </div>
+        </div>
+
+        <!-- Eco-zone -->
+        <div class="feature-card bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2">Eco-Zone Checker</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            Driver asks "Can I enter Rotterdam with Euro-5 diesel?" — instant answer from a
+            40+ city database covering NL, IT, DE, BE, FR, AT, PL, CH. AI fallback for uncovered cities.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">40+ cities</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">8 countries</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">AI fallback</span>
+          </div>
+        </div>
+
+        <!-- Cargo PIN -->
+        <div class="feature-card bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2">Cargo Release PIN</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            Shipper registers a 6-digit PIN per shipment. Driver confirms at delivery —
+            creating a tamper-proof digital audit trail. Eliminates delivery disputes.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">72h validity</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">Audit trail</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">No disputes</span>
+          </div>
+        </div>
+
+        <!-- GDPR -->
+        <div class="feature-card bg-gray-900 border border-green-900/40 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2">GDPR by Design</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">
+            All data stored in Google Cloud <span class="text-white font-medium">europe-west4</span> (Netherlands).
+            Immutable BigQuery audit log, 90-day image retention, Data Processing Agreement available on request.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-green-900/50 text-green-400 px-2 py-1 rounded-lg">europe-west4</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">Immutable log</span>
+            <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-lg">DPA ready</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DEMO FORM ─── -->
+  <section id="demo" class="py-20 px-4 sm:px-6 bg-gray-900/40">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Get Started</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Request a Demo</h2>
+        <p class="text-gray-400 leading-relaxed">
+          We'll reach out within 24 hours to schedule a live walkthrough
+          tailored to your fleet's compliance needs.
+        </p>
+      </div>
+
+      <form
+        name="demo-request"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="bg-gray-900 border border-gray-800 rounded-2xl p-8 space-y-5">
+
+        <input type="hidden" name="form-name" value="demo-request">
+        <p class="hidden"><label>Do not fill: <input name="bot-field"></label></p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-1.5">First name</label>
+            <input type="text" name="first_name" required
+              class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-green-500 transition"
+              placeholder="Jan">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-1.5">Last name</label>
+            <input type="text" name="last_name" required
+              class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-green-500 transition"
+              placeholder="de Vries">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Company / Fleet name</label>
+          <input type="text" name="company" required
+            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-green-500 transition"
+            placeholder="Trans Europa BV">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Work email</label>
+          <input type="email" name="email" required
+            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-green-500 transition"
+            placeholder="jan@transeuropa.nl">
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-1.5">Fleet size</label>
+            <select name="fleet_size" required
+              class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-green-500 transition">
+              <option value="" disabled selected>Select range</option>
+              <option value="1-10">1 – 10 vehicles</option>
+              <option value="11-50">11 – 50 vehicles</option>
+              <option value="51-200">51 – 200 vehicles</option>
+              <option value="200+">200+ vehicles</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-1.5">Country</label>
+            <select name="country" required
+              class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-green-500 transition">
+              <option value="" disabled selected>Select country</option>
+              <option>Netherlands</option>
+              <option>Germany</option>
+              <option>Italy</option>
+              <option>Belgium</option>
+              <option>France</option>
+              <option>Poland</option>
+              <option>Austria</option>
+              <option>Switzerland</option>
+              <option>Portugal</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">
+            WhatsApp number
+            <span class="text-gray-500 font-normal">(optional — for a live trial)</span>
+          </label>
+          <input type="tel" name="whatsapp"
+            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-green-500 transition"
+            placeholder="+31 6 12345678">
+        </div>
+
+        <button type="submit"
+          class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-3.5 rounded-xl transition text-base wa-glow">
+          Request Demo →
+        </button>
+        <p class="text-xs text-gray-500 text-center">No commitment. We'll reply within 24 hours.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="border-t border-gray-800 py-10 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="#25D366">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="font-bold text-sm">TruckPilot</span>
+        <span class="text-gray-600 text-sm">&copy; 2026</span>
+      </div>
+      <p class="text-xs text-gray-600 text-center">
+        Data processed in Google Cloud europe-west4 &middot; GDPR compliant &middot;
+        <a href="#" class="underline hover:text-gray-400 transition">Privacy Policy</a>
+      </p>
+      <p class="text-xs text-gray-600">Powered by Gemini AI &amp; WhatsApp Business API</p>
+    </div>
+  </footer>
+
+</body>
+</html>
