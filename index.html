@@ -911,9 +911,31 @@
 
       <!-- S·H·S badge + name -->
       <div class="flex items-center gap-3">
-        <div class="px-2.5 py-1.5 rounded-lg bg-gray-900 border border-gray-700 font-extrabold text-xs text-green-400 tracking-[0.18em] select-none">
-          S&middot;H&middot;S
-        </div>
+        <!-- S.H.S logo — SVG recreation -->
+        <svg viewBox="0 0 116 38" xmlns="http://www.w3.org/2000/svg" class="h-9 w-auto" aria-label="S.H.S Logo">
+          <!-- network lines -->
+          <line x1="9" y1="9"  x2="19" y2="19" stroke="#22c55e" stroke-width="1.1" opacity="0.45"/>
+          <line x1="31" y1="9"  x2="19" y2="19" stroke="#22c55e" stroke-width="1.1" opacity="0.45"/>
+          <line x1="4"  y1="19" x2="19" y2="19" stroke="#22c55e" stroke-width="1.1" opacity="0.45"/>
+          <line x1="9"  y1="29" x2="19" y2="19" stroke="#22c55e" stroke-width="1.1" opacity="0.45"/>
+          <line x1="31" y1="29" x2="19" y2="19" stroke="#22c55e" stroke-width="1.1" opacity="0.45"/>
+          <line x1="4"  y1="19" x2="9"  y2="9"  stroke="#22c55e" stroke-width="0.7" opacity="0.25"/>
+          <line x1="4"  y1="19" x2="9"  y2="29" stroke="#22c55e" stroke-width="0.7" opacity="0.25"/>
+          <line x1="9"  y1="9"  x2="31" y2="9"  stroke="#22c55e" stroke-width="0.7" opacity="0.25"/>
+          <!-- outer nodes -->
+          <circle cx="9"  cy="9"  r="2.8" fill="#16a34a" opacity="0.85"/>
+          <circle cx="31" cy="9"  r="2.3" fill="#16a34a" opacity="0.70"/>
+          <circle cx="4"  cy="19" r="2.3" fill="#16a34a" opacity="0.70"/>
+          <circle cx="9"  cy="29" r="2.8" fill="#16a34a" opacity="0.85"/>
+          <circle cx="31" cy="29" r="2"   fill="#16a34a" opacity="0.60"/>
+          <!-- central AI node -->
+          <circle cx="19" cy="19" r="7" fill="#14532d" stroke="#22c55e" stroke-width="1.4"/>
+          <text x="19" y="22.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#bbf7d0">AI</text>
+          <!-- divider -->
+          <line x1="43" y1="5" x2="43" y2="33" stroke="#374151" stroke-width="1"/>
+          <!-- S.H.S -->
+          <text x="51" y="26" font-family="Inter,'Arial Black',Arial,sans-serif" font-size="16" font-weight="900" fill="white" letter-spacing="1.5">S.H.S</text>
+        </svg>
         <div>
           <p class="text-sm font-semibold text-gray-300">Saulo Henrique Silva</p>
           <p class="text-xs text-gray-600" data-t="footer_title">Data Engineer &amp; AI Solutions</p>
