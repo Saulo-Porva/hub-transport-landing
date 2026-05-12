@@ -56,8 +56,12 @@
     </div>
     <div class="flex items-center gap-2">
       <div class="flex items-center gap-1 mr-1">
-        <button onclick="applyLanguage('en')" data-lang="en" class="lang-btn w-8 h-8 rounded-lg flex items-center justify-center text-lg hover:bg-gray-800 transition" title="English">🇬🇧</button>
-        <button onclick="applyLanguage('it')" data-lang="it" class="lang-btn w-8 h-8 rounded-lg flex items-center justify-center text-lg hover:bg-gray-800 transition" title="Italiano">🇮🇹</button>
+        <button onclick="applyLanguage('en')" data-lang="en" class="lang-btn w-9 h-7 rounded flex items-center justify-center hover:opacity-80 transition overflow-hidden border-2 border-transparent" title="English">
+          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" width="32" height="21"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="14"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="9"/></svg>
+        </button>
+        <button onclick="applyLanguage('it')" data-lang="it" class="lang-btn w-9 h-7 rounded flex items-center justify-center hover:opacity-80 transition overflow-hidden border-2 border-transparent" title="Italiano">
+          <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" width="32" height="21"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE2B37"/></svg>
+        </button>
       </div>
       <a href="#demo" class="bg-green-500 hover:bg-green-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition wa-glow" data-t="nav_demo">Get a Demo</a>
     </div>
@@ -86,17 +90,13 @@
         Drivers send photos and messages on WhatsApp. TruckPilot reads documents, checks compliance rules, alerts your team and syncs the data with your TMS or ERP. Minimal onboarding. Less manual work. Faster compliance workflows.
       </p>
       <div class="flex flex-wrap gap-3 mb-8">
-        <a href="#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base wa-glow">
-          Request a Demo →
-        </a>
-        <a href="#features" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base">
-          Explore Features
-        </a>
+        <a href="#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base wa-glow" data-t="hero_cta1">Request a Demo →</a>
+        <a href="#features" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base" data-t="hero_cta2">Explore Features</a>
       </div>
       <div class="flex flex-wrap gap-5 text-sm text-gray-500">
-        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>No app install</span>
-        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Designed for GDPR</span>
-        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>TMS / ERP ready</span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="badge_no_app">No app install</span></span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="badge_gdpr">Designed for GDPR</span></span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="badge_tms">TMS / ERP ready</span></span>
         <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>EN · NL · IT · DE · PT</span>
       </div>
     </div>
@@ -190,10 +190,10 @@
 <!-- ═══ STATS ═══ -->
 <section class="border-y border-gray-800 bg-gray-900/40 py-10 px-4">
   <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-    <div><p class="text-3xl font-extrabold gradient-text">&lt;30s</p><p class="text-sm text-gray-500 mt-1">Photo to structured data</p></div>
-    <div><p class="text-3xl font-extrabold gradient-text">7</p><p class="text-sm text-gray-500 mt-1">WhatsApp workflows</p></div>
-    <div><p class="text-3xl font-extrabold gradient-text">5</p><p class="text-sm text-gray-500 mt-1">Driver languages supported</p></div>
-    <div><p class="text-3xl font-extrabold gradient-text">40+</p><p class="text-sm text-gray-500 mt-1">EU eco-zones in database</p></div>
+    <div><p class="text-3xl font-extrabold gradient-text">&lt;30s</p><p class="text-sm text-gray-500 mt-1" data-t="stat1">Photo to structured data</p></div>
+    <div><p class="text-3xl font-extrabold gradient-text">7</p><p class="text-sm text-gray-500 mt-1" data-t="stat2">WhatsApp workflows</p></div>
+    <div><p class="text-3xl font-extrabold gradient-text">5</p><p class="text-sm text-gray-500 mt-1" data-t="stat3">Driver languages supported</p></div>
+    <div><p class="text-3xl font-extrabold gradient-text">40+</p><p class="text-sm text-gray-500 mt-1" data-t="stat4">EU eco-zones in database</p></div>
   </div>
 </section>
 
@@ -201,9 +201,9 @@
 <section id="for-who" class="py-20 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Built for the road</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Who uses TruckPilot?</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Three roles. One WhatsApp number. Everyone wins.</p>
+      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="who_label">Built for the road</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="who_h2">Who uses TruckPilot?</h2>
+      <p class="text-gray-400 max-w-xl mx-auto" data-t="who_sub">Three roles. One WhatsApp number. Everyone wins.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-5">
 
@@ -211,14 +211,14 @@
         <div class="w-14 h-14 rounded-2xl bg-blue-950 border border-blue-900/50 flex items-center justify-center mb-5">
           <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
         </div>
-        <h3 class="text-lg font-bold mb-2">Fleet Operations Manager</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-5">
+        <h3 class="text-lg font-bold mb-2" data-t="who1_title">Fleet Operations Manager</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5" data-t="who1_desc">
           Tired of chasing drivers for documents and discovering expired certificates only after a vehicle is detained at the border.
         </p>
         <ul class="space-y-2 text-sm text-gray-400 mt-auto">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Real-time compliance dashboard</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Automatic certificate renewal alerts</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full audit trail on every CMR</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who1_li1">Real-time compliance dashboard</span></li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who1_li2">Automatic certificate renewal alerts</span></li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who1_li3">Full audit trail on every CMR</span></li>
         </ul>
       </div>
 
@@ -226,14 +226,14 @@
         <div class="w-14 h-14 rounded-2xl bg-purple-950 border border-purple-900/50 flex items-center justify-center mb-5">
           <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
         </div>
-        <h3 class="text-lg font-bold mb-2">Transport Company Owner</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-5">
+        <h3 class="text-lg font-bold mb-2" data-t="who2_title">Transport Company Owner</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5" data-t="who2_desc">
           Every compliance failure is money lost — fines, detained vehicles, lost contracts. Manual processes don't scale as the fleet grows.
         </p>
         <ul class="space-y-2 text-sm text-gray-400 mt-auto">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Reduce ICS2 delays and customs penalties</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Integrate with your TMS / ERP</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Scale from 5 to 500 vehicles</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who2_li1">Reduce ICS2 delays and customs penalties</span></li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who2_li2">Integrate with your TMS / ERP</span></li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who2_li3">Scale from 5 to 500 vehicles</span></li>
         </ul>
       </div>
 
@@ -241,14 +241,14 @@
         <div class="w-14 h-14 rounded-2xl bg-green-950 border border-green-900/50 flex items-center justify-center mb-5">
           <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
         </div>
-        <h3 class="text-lg font-bold mb-2">Professional Driver</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-5">
+        <h3 class="text-lg font-bold mb-2" data-t="who3_title">Professional Driver</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5" data-t="who3_desc">
           On the road 12 hours a day. No time to learn new apps or dig through paper folders at every border crossing.
         </p>
         <ul class="space-y-2 text-sm text-gray-400 mt-auto">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>WhatsApp already on your phone</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Instant answers: eco-zone, fine amounts</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>All your documents, one message away</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who3_li1">WhatsApp already on your phone</span></li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who3_li2">Instant answers: eco-zone, fine amounts</span></li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-t="who3_li3">All your documents, one message away</span></li>
         </ul>
       </div>
 
@@ -263,9 +263,9 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-16">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Seven workflows</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">One WhatsApp. Full compliance.</h2>
-      <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="feat_label">Seven workflows</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="feat_h2">One WhatsApp. Full compliance.</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed" data-t="feat_sub">
         Every touchpoint in your fleet's compliance workflow — covered by a conversation your drivers already know how to have.
       </p>
     </div>
@@ -303,12 +303,12 @@
         <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
           <span>01</span> CMR Digital Scan
         </div>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Photo in. Validated data out. TMS synced.</h3>
-        <p class="text-gray-400 leading-relaxed mb-5">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="cmr_h3">Photo in. Validated data out. TMS synced.</h3>
+        <p class="text-gray-400 leading-relaxed mb-5" data-th="cmr_desc">
           Driver photographs the signed, dated CMR after delivery. AI reads <strong class="text-white">up to 45 fields across 24 UNECE boxes</strong> in under 30 seconds. If a field is missing or the image is illegible, the process rejects and requests a retake. Once confirmed, data is pushed to your TMS or ERP — with zero manual entry.
         </p>
         <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mb-5">
-          <p class="text-xs font-semibold text-gray-300 mb-3">Extracted automatically:</p>
+          <p class="text-xs font-semibold text-gray-300 mb-3" data-t="cmr_box_label">Extracted automatically:</p>
           <div class="grid grid-cols-2 gap-y-1.5 text-xs text-gray-500">
             <span class="flex items-center gap-1.5"><span class="text-green-500">✓</span> Sender &amp; Consignee</span>
             <span class="flex items-center gap-1.5"><span class="text-green-500">✓</span> Goods &amp; weight</span>
@@ -333,13 +333,13 @@
         <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
           <span>02</span> Vehicle Inspection Checklist
         </div>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Full inspection. Zero paperwork.</h3>
-        <p class="text-gray-400 leading-relaxed mb-5">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="chk_h3">Full inspection. Zero paperwork.</h3>
+        <p class="text-gray-400 leading-relaxed mb-5" data-th="chk_desc">
           TruckPilot guides the driver through every inspection point via conversation — no forms, no clipboards. Standard template covers <strong class="text-white">35 items</strong>, ADR loads get <strong class="text-white">42 items</strong> with hazard class validation against the driver's registered certificate.
           At the end, a <strong class="text-white">timestamped PDF report</strong> is generated automatically — available for download or included in your compliance dashboard.
         </p>
         <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mb-5">
-          <p class="text-xs font-semibold text-gray-300 mb-3">The generated report includes:</p>
+          <p class="text-xs font-semibold text-gray-300 mb-3" data-t="chk_box_label">The generated report includes:</p>
           <div class="grid grid-cols-2 gap-y-1.5 text-xs text-gray-500">
             <span class="flex items-center gap-1.5"><span class="text-green-500">✓</span> Date, time &amp; driver</span>
             <span class="flex items-center gap-1.5"><span class="text-green-500">✓</span> Vehicle plate</span>
@@ -416,8 +416,8 @@
         <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
           <span>03</span> Eco-Zone Checker
         </div>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Check before the gate — not after the fine.</h3>
-        <p class="text-gray-400 leading-relaxed mb-5">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="eco_h3">Check before the gate — not after the fine.</h3>
+        <p class="text-gray-400 leading-relaxed mb-5" data-t="eco_desc">
           Driver asks in plain language — or sends their GPS location. TruckPilot checks instantly: can they enter the zone, what time the window opens, where to park while waiting, and what the fine is if they risk it. Providing the delivery address fills in the complete picture.
         </p>
         <div class="grid grid-cols-3 gap-3 mb-5">
@@ -449,12 +449,12 @@
         <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
           <span>04</span> Cargo Release PIN
         </div>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Prove who picks up. Eliminate disputes.</h3>
-        <p class="text-gray-400 leading-relaxed mb-5">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="pin_h3">Prove who picks up. Eliminate disputes.</h3>
+        <p class="text-gray-400 leading-relaxed mb-5" data-th="pin_desc">
           Before cargo is released, the shipper registers a 6-digit PIN in TruckPilot. At the delivery point, the driver enters the PIN — which is cross-verified between both parties in real time. This creates an <strong class="text-white">immutable audit trail</strong> proving that the right carrier collected the right load.
         </p>
         <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mb-5">
-          <p class="text-xs font-semibold text-gray-300 mb-3">The double-check flow:</p>
+          <p class="text-xs font-semibold text-gray-300 mb-3" data-t="pin_box_label">The double-check flow:</p>
           <div class="space-y-2 text-xs text-gray-400">
             <div class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-950 border border-green-800 flex items-center justify-center text-green-400 font-bold shrink-0">1</span> Shipper registers PIN for delivery #4821</div>
             <div class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-950 border border-green-800 flex items-center justify-center text-green-400 font-bold shrink-0">2</span> Driver arrives → TruckPilot requests PIN</div>
@@ -527,8 +527,8 @@
         <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
           <span>05</span> ADR Certificate Control
         </div>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Never miss a renewal. Never lose a load.</h3>
-        <p class="text-gray-400 leading-relaxed mb-5">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="adr_cert_h3">Never miss a renewal. Never lose a load.</h3>
+        <p class="text-gray-400 leading-relaxed mb-5" data-th="adr_cert_desc">
           Driver photographs front and back of the ADR certificate. TruckPilot extracts holder name, authorized hazard classes, and expiry — then monitors it automatically. Renewal reminders escalate at <strong class="text-white">D-30, D-20, D-10, D-5</strong>, then daily. Driver triggers renewal directly from WhatsApp. Fleet manager receives every critical alert.
         </p>
         <div class="bg-gray-900/80 border border-red-900/30 rounded-xl p-4 mb-5">
@@ -550,12 +550,12 @@
         <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
           <span>06</span> ADR Roadside Verification
         </div>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Police stop. Inspector report ready in 20 seconds.</h3>
-        <p class="text-gray-400 leading-relaxed mb-5">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="adr_ver_h3">Police stop. Inspector report ready in 20 seconds.</h3>
+        <p class="text-gray-400 leading-relaxed mb-5" data-th="adr_ver_desc">
           When stopped by police or a transport authority, the driver attaches the ADR verification document. TruckPilot checks every conformity — certificate validity, authorized classes, vehicle equipment, cargo vs. certificate match — and generates a <strong class="text-white">structured verification report</strong> immediately.
         </p>
         <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mb-5">
-          <p class="text-xs font-semibold text-gray-300 mb-3">Verification covers:</p>
+          <p class="text-xs font-semibold text-gray-300 mb-3" data-t="adr_ver_box_label">Verification covers:</p>
           <div class="grid grid-cols-2 gap-y-1.5 text-xs text-gray-500">
             <span class="flex items-center gap-1.5"><span class="text-green-500">✓</span> Certificate validity</span>
             <span class="flex items-center gap-1.5"><span class="text-green-500">✓</span> Authorized classes</span>
@@ -601,8 +601,8 @@
           <div class="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-950/40 border border-green-900/40 px-3 py-1.5 rounded-full mb-4">
             <span>07</span> Document Wallet
           </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">Every document. One message away.</h3>
-          <p class="text-gray-400 leading-relaxed mb-6">
+          <h3 class="text-2xl sm:text-3xl font-extrabold mb-4" data-t="wallet_h3">Every document. One message away.</h3>
+          <p class="text-gray-400 leading-relaxed mb-6" data-th="wallet_desc">
             Driver types <strong class="text-white">"docs"</strong> and instantly sees the status of every compliance document in their profile. Expired or expiring items flagged in red. Any document can be downloaded directly from the chat — or shared with an inspector on the spot.
           </p>
           <div class="grid grid-cols-2 gap-3">
@@ -659,37 +659,37 @@
 <section id="compliance" class="py-20 px-4 sm:px-6 bg-gray-900/30">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <p class="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Regulatory Deadlines 2026</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Four mandates. Zero margin for error.</h2>
-      <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">Simultaneous EU compliance changes hitting carriers in 2026. Miss one: vehicles detained, fines issued, routes closed.</p>
+      <p class="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="reg_label">Regulatory Deadlines 2026</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="reg_h2">Four mandates. Zero margin for error.</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed" data-t="reg_sub">Simultaneous EU compliance changes hitting carriers in 2026. Miss one: vehicles detained, fines issued, routes closed.</p>
     </div>
     <div class="grid md:grid-cols-2 gap-4">
       <div class="bg-gray-900 border border-red-900/50 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-11 h-11 rounded-xl bg-red-950 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>
         <div>
-          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold">ADR Certificate Renewal</h3><span class="text-xs bg-red-950 text-red-400 px-2 py-0.5 rounded-full">June 2026</span></div>
-          <p class="text-sm text-gray-400">Expired cert = vehicle detained. No grace period in NL, DE, IT, BE.</p>
+          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold" data-t="reg1_title">ADR Certificate Renewal</h3><span class="text-xs bg-red-950 text-red-400 px-2 py-0.5 rounded-full" data-t="reg1_date">June 2026</span></div>
+          <p class="text-sm text-gray-400" data-t="reg1_desc">Expired cert = vehicle detained. No grace period in NL, DE, IT, BE.</p>
         </div>
       </div>
       <div class="bg-gray-900 border border-orange-900/50 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-11 h-11 rounded-xl bg-orange-950 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></div>
         <div>
-          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold">ICS2 Border Declaration</h3><span class="text-xs bg-orange-950 text-orange-400 px-2 py-0.5 rounded-full">Live Now — NL/DE/CZ</span></div>
-          <p class="text-sm text-gray-400">Pre-arrival filing required. Non-compliance: risk of customs delays and penalties varying by country.</p>
+          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold" data-t="reg2_title">ICS2 Border Declaration</h3><span class="text-xs bg-orange-950 text-orange-400 px-2 py-0.5 rounded-full" data-t="reg2_date">Live Now — NL/DE/CZ</span></div>
+          <p class="text-sm text-gray-400" data-t="reg2_desc">Pre-arrival filing required. Non-compliance: risk of customs delays and penalties varying by country.</p>
         </div>
       </div>
       <div class="bg-gray-900 border border-yellow-900/50 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-11 h-11 rounded-xl bg-yellow-950 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
         <div>
-          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold">Smart Tachograph G2V2</h3><span class="text-xs bg-yellow-950 text-yellow-400 px-2 py-0.5 rounded-full">July 1, 2026</span></div>
-          <p class="text-sm text-gray-400">Mandatory for vans. Working time must be digitally logged and accessible.</p>
+          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold" data-t="reg3_title">Smart Tachograph G2V2</h3><span class="text-xs bg-yellow-950 text-yellow-400 px-2 py-0.5 rounded-full" data-t="reg3_date">July 1, 2026</span></div>
+          <p class="text-sm text-gray-400" data-t="reg3_desc">Mandatory for vans. Working time must be digitally logged and accessible.</p>
         </div>
       </div>
       <div class="bg-gray-900 border border-blue-900/50 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-11 h-11 rounded-xl bg-blue-950 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
         <div>
-          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold">eCMR Digital Standard</h3><span class="text-xs bg-blue-950 text-blue-400 px-2 py-0.5 rounded-full">2027 Mandate</span></div>
-          <p class="text-sm text-gray-400">EU authorities must accept certified digital freight documents from July 2027 — start building your digital archive now.</p>
+          <div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-bold" data-t="reg4_title">eCMR Digital Standard</h3><span class="text-xs bg-blue-950 text-blue-400 px-2 py-0.5 rounded-full" data-t="reg4_date">2027 Mandate</span></div>
+          <p class="text-sm text-gray-400" data-t="reg4_desc">EU authorities must accept certified digital freight documents from July 2027 — start building your digital archive now.</p>
         </div>
       </div>
     </div>
@@ -700,25 +700,25 @@
 <section id="how-it-works" class="py-20 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Zero learning curve</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Three steps. That's it.</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Minimal onboarding. No new logins. Drivers use the same WhatsApp already on their phone.</p>
+      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="how_label">Zero learning curve</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="how_h2">Three steps. That's it.</h2>
+      <p class="text-gray-400 max-w-xl mx-auto" data-t="how_sub">Minimal onboarding. No new logins. Drivers use the same WhatsApp already on their phone.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-8">
       <div class="text-center">
         <div class="w-16 h-16 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5"><span class="text-2xl font-extrabold text-green-400">1</span></div>
-        <h3 class="text-lg font-bold mb-3">Send a photo or message</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">CMR photo, ADR certificate, checklist request, eco-zone query — via regular WhatsApp from any device.</p>
+        <h3 class="text-lg font-bold mb-3" data-t="how1_title">Send a photo or message</h3>
+        <p class="text-gray-400 text-sm leading-relaxed" data-t="how1_desc">CMR photo, ADR certificate, checklist request, eco-zone query — via regular WhatsApp from any device.</p>
       </div>
       <div class="text-center">
         <div class="w-16 h-16 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5"><span class="text-2xl font-extrabold text-green-400">2</span></div>
-        <h3 class="text-lg font-bold mb-3">AI processes in under 30 seconds</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Gemini AI reads documents, validates fields, checks compliance rules, and replies in the driver's language — EN, NL, IT, DE or PT.</p>
+        <h3 class="text-lg font-bold mb-3" data-t="how2_title">AI processes in under 30 seconds</h3>
+        <p class="text-gray-400 text-sm leading-relaxed" data-t="how2_desc">Gemini AI reads documents, validates fields, checks compliance rules, and replies in the driver's language — EN, NL, IT, DE or PT.</p>
       </div>
       <div class="text-center">
         <div class="w-16 h-16 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5"><span class="text-2xl font-extrabold text-green-400">3</span></div>
-        <h3 class="text-lg font-bold mb-3">Data synced. Audit trail created.</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Every document stored, every expiry tracked, every delivery confirmed. TMS/ERP updated. No manual entry.</p>
+        <h3 class="text-lg font-bold mb-3" data-t="how3_title">Data synced. Audit trail created.</h3>
+        <p class="text-gray-400 text-sm leading-relaxed" data-t="how3_desc">Every document stored, every expiry tracked, every delivery confirmed. TMS/ERP updated. No manual entry.</p>
       </div>
     </div>
   </div>
@@ -728,68 +728,68 @@
 <section id="faq" class="py-20 px-4 sm:px-6 bg-gray-900/30">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-12">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Common questions</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold">FAQ</h2>
+      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="faq_label">Common questions</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold" data-t="faq_h2">FAQ</h2>
     </div>
     <div class="space-y-3" id="faq-list">
 
       <div class="faq-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-semibold text-base">Do drivers need to install a new app?</span>
+          <span class="font-semibold text-base" data-t="faq1_q">Do drivers need to install a new app?</span>
           <svg class="faq-icon w-5 h-5 text-green-400 shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body px-6 pb-0 overflow-hidden max-h-0 transition-all duration-300">
-          <p class="text-gray-400 text-sm leading-relaxed pb-5">No. TruckPilot runs entirely through the WhatsApp they already have on their phone. You share a WhatsApp Business number and they start messaging immediately — no downloads, no accounts, no passwords.</p>
+          <p class="text-gray-400 text-sm leading-relaxed pb-5" data-t="faq1_a">No. TruckPilot runs entirely through the WhatsApp they already have on their phone. You share a WhatsApp Business number and they start messaging immediately — no downloads, no accounts, no passwords.</p>
         </div>
       </div>
 
       <div class="faq-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-semibold text-base">How long does TMS / ERP integration take?</span>
+          <span class="font-semibold text-base" data-t="faq2_q">How long does TMS / ERP integration take?</span>
           <svg class="faq-icon w-5 h-5 text-green-400 shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body px-6 pb-0 overflow-hidden max-h-0 transition-all duration-300">
-          <p class="text-gray-400 text-sm leading-relaxed pb-5">Under 1 minute for standard REST API integrations. We provide a webhook endpoint that sends structured JSON on every confirmed CMR or checklist. For custom TMS connectors (SAP, Transics, etc.) we estimate 1–2 days of setup.</p>
+          <p class="text-gray-400 text-sm leading-relaxed pb-5" data-t="faq2_a">Under 1 minute for standard REST API integrations. We provide a webhook endpoint that sends structured JSON on every confirmed CMR or checklist. For custom TMS connectors (SAP, Transics, etc.) we estimate 1–2 days of setup.</p>
         </div>
       </div>
 
       <div class="faq-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-semibold text-base">What languages are supported?</span>
+          <span class="font-semibold text-base" data-t="faq3_q">What languages are supported?</span>
           <svg class="faq-icon w-5 h-5 text-green-400 shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body px-6 pb-0 overflow-hidden max-h-0 transition-all duration-300">
-          <p class="text-gray-400 text-sm leading-relaxed pb-5">English, Dutch, Italian, German and Portuguese. TruckPilot auto-detects the driver's language from their first message and replies accordingly. CMR extraction works regardless of the document's language.</p>
+          <p class="text-gray-400 text-sm leading-relaxed pb-5" data-t="faq3_a">English, Dutch, Italian, German and Portuguese. TruckPilot auto-detects the driver's language from their first message and replies accordingly. CMR extraction works regardless of the document's language.</p>
         </div>
       </div>
 
       <div class="faq-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-semibold text-base">Is our data GDPR compliant?</span>
+          <span class="font-semibold text-base" data-t="faq4_q">Is our data GDPR compliant?</span>
           <svg class="faq-icon w-5 h-5 text-green-400 shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body px-6 pb-0 overflow-hidden max-h-0 transition-all duration-300">
-          <p class="text-gray-400 text-sm leading-relaxed pb-5">Yes. All data is stored and processed in Google Cloud <strong class="text-white">europe-west4</strong> (Netherlands). Document images are retained for 90 days, compliance data for 365 days. We provide a Data Processing Agreement (DPA) on request.</p>
+          <p class="text-gray-400 text-sm leading-relaxed pb-5" data-th="faq4_a">Yes. All data is stored and processed in Google Cloud <strong class="text-white">europe-west4</strong> (Netherlands). Document images are retained for 90 days, compliance data for 365 days. We provide a Data Processing Agreement (DPA) on request.</p>
         </div>
       </div>
 
       <div class="faq-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-semibold text-base">What if the AI can't read a document?</span>
+          <span class="font-semibold text-base" data-t="faq5_q">What if the AI can't read a document?</span>
           <svg class="faq-icon w-5 h-5 text-green-400 shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body px-6 pb-0 overflow-hidden max-h-0 transition-all duration-300">
-          <p class="text-gray-400 text-sm leading-relaxed pb-5">TruckPilot rejects low-confidence extractions and asks the driver to retake the photo — specifying exactly what was unclear (blur, angle, missing boxes). If a second attempt also fails, the session is flagged and a fleet manager is notified. There's also a fallback LLM provider (OpenRouter) if the primary model is unavailable.</p>
+          <p class="text-gray-400 text-sm leading-relaxed pb-5" data-t="faq5_a">TruckPilot rejects low-confidence extractions and asks the driver to retake the photo — specifying exactly what was unclear (blur, angle, missing boxes). If a second attempt also fails, the session is flagged and a fleet manager is notified. There's also a fallback LLM provider (OpenRouter) if the primary model is unavailable.</p>
         </div>
       </div>
 
       <div class="faq-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-semibold text-base">How much does it cost?</span>
+          <span class="font-semibold text-base" data-t="faq6_q">How much does it cost?</span>
           <svg class="faq-icon w-5 h-5 text-green-400 shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body px-6 pb-0 overflow-hidden max-h-0 transition-all duration-300">
-          <p class="text-gray-400 text-sm leading-relaxed pb-5">Pricing is based on fleet size and usage volume. Infrastructure cost per processed document is under $0.01. Contact us for a tailored quote — we'll build a proposal around your fleet's specific compliance profile and integration needs.</p>
+          <p class="text-gray-400 text-sm leading-relaxed pb-5" data-t="faq6_a">Pricing is based on fleet size and usage volume. Contact us for a tailored quote — we'll build a proposal around your fleet's specific compliance profile and integration needs.</p>
         </div>
       </div>
 
@@ -801,9 +801,9 @@
 <section id="demo" class="py-20 px-4 sm:px-6">
   <div class="max-w-xl mx-auto">
     <div class="text-center mb-10">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3">Get started</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Request a Demo</h2>
-      <p class="text-gray-400 leading-relaxed">We'll reach out within 24 hours for a live walkthrough tailored to your fleet.</p>
+      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="demo_label">Get started</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="demo_h2">Request a Demo</h2>
+      <p class="text-gray-400 leading-relaxed" data-t="demo_sub">We'll reach out within 24 hours for a live walkthrough tailored to your fleet.</p>
     </div>
     <form id="demo-form" name="demo-request" method="POST" data-netlify="true" netlify-honeypot="bot-field"
       class="bg-gray-900 border border-gray-800 rounded-2xl p-8 space-y-5">
@@ -891,10 +891,10 @@
       <span class="text-gray-600 text-sm">&copy; 2026</span>
     </div>
     <p class="text-xs text-gray-600 text-center">
-      Data in Google Cloud europe-west4 &middot; GDPR compliant &middot;
-      <a href="#" class="underline hover:text-gray-400 transition">Privacy Policy</a>
+      Data in Google Cloud europe-west4 &middot; Designed for GDPR &middot;
+      <a href="#" class="underline hover:text-gray-400 transition" data-t="footer_privacy">Privacy Policy</a>
     </p>
-    <p class="text-xs text-gray-600">Powered by Gemini AI &amp; WhatsApp Business API</p>
+    <p class="text-xs text-gray-600" data-t="footer_powered">Powered by Gemini AI &amp; WhatsApp Business API</p>
   </div>
 </footer>
 
@@ -915,42 +915,146 @@
   /* ── i18n ── */
   const T = {
     en: {
-      nav_who: "Who it's for", nav_features: "Features", nav_compliance: "Compliance",
-      nav_faq: "FAQ", nav_demo: "Get a Demo",
-      hero_badge: "2026 EU Compliance — Ready Now",
-      hero_h1: 'Turn WhatsApp into your<br><span class="gradient-text">fleet compliance</span><br>assistant.',
-      hero_subtitle: "Drivers send photos and messages on WhatsApp. TruckPilot reads documents, checks compliance rules, alerts your team and syncs the data with your TMS or ERP. Minimal onboarding. Less manual work. Faster compliance workflows.",
-      modules_label: "7 WhatsApp workflows",
-      form_first_name: "First name", form_last_name: "Last name",
-      form_company: "Company / Fleet name", form_email: "Work email",
-      form_fleet: "Fleet size", form_fleet_select: "Select range",
-      form_country: "Country", form_country_select: "Select country",
-      form_whatsapp: "WhatsApp number", form_whatsapp_opt: "(optional — for a live trial)",
-      form_submit: "Request Demo →", form_note: "No commitment. We'll reply within 24 hours.",
-      form_ph_first: "Jan", form_ph_last: "de Vries",
-      form_ph_company: "Trans Europa BV", form_ph_email: "jan@transeuropa.nl",
-      success_title: "Request sent!",
-      success_body: "We’ll get in touch within <strong class=\"text-white\">24 hours</strong> to schedule a live walkthrough for your fleet.",
-      form_error: "Something went wrong. Please try again or email us directly."
+      /* nav */
+      nav_who:"Who it’s for", nav_features:"Features", nav_compliance:"Compliance", nav_faq:"FAQ", nav_demo:"Get a Demo",
+      /* hero */
+      hero_badge:"2026 EU Compliance — Ready Now",
+      hero_h1:’Turn WhatsApp into your<br><span class="gradient-text">fleet compliance</span><br>assistant.’,
+      hero_subtitle:"Drivers send photos and messages on WhatsApp. TruckPilot reads documents, checks compliance rules, alerts your team and syncs the data with your TMS or ERP. Minimal onboarding. Less manual work. Faster compliance workflows.",
+      hero_cta1:"Request a Demo →", hero_cta2:"Explore Features",
+      badge_no_app:"No app install", badge_gdpr:"Designed for GDPR", badge_tms:"TMS / ERP ready",
+      /* stats */
+      modules_label:"7 WhatsApp workflows",
+      stat1:"Photo to structured data", stat2:"WhatsApp workflows", stat3:"Driver languages supported", stat4:"EU eco-zones in database",
+      /* who */
+      who_label:"Built for the road", who_h2:"Who uses TruckPilot?", who_sub:"Three roles. One WhatsApp number. Everyone wins.",
+      who1_title:"Fleet Operations Manager", who1_desc:"Tired of chasing drivers for documents and discovering expired certificates only after a vehicle is detained at the border.",
+      who1_li1:"Real-time compliance dashboard", who1_li2:"Automatic certificate renewal alerts", who1_li3:"Full audit trail on every CMR",
+      who2_title:"Transport Company Owner", who2_desc:"Every compliance failure is money lost — fines, detained vehicles, lost contracts. Manual processes don’t scale as the fleet grows.",
+      who2_li1:"Reduce ICS2 delays and customs penalties", who2_li2:"Integrate with your TMS / ERP", who2_li3:"Scale from 5 to 500 vehicles",
+      who3_title:"Professional Driver", who3_desc:"On the road 12 hours a day. No time to learn new apps or dig through paper folders at every border crossing.",
+      who3_li1:"WhatsApp already on your phone", who3_li2:"Instant answers: eco-zone, fine amounts", who3_li3:"All your documents, one message away",
+      /* features */
+      feat_label:"Seven workflows", feat_h2:"One WhatsApp. Full compliance.", feat_sub:"Every touchpoint in your fleet’s compliance workflow — covered by a conversation your drivers already know how to have.",
+      cmr_h3:"Photo in. Validated data out. TMS synced.",
+      cmr_desc:’Driver photographs the signed, dated CMR after delivery. AI reads <strong class="text-white">up to 45 fields across 24 UNECE boxes</strong> in under 30 seconds. If a field is missing or the image is illegible, the process rejects and requests a retake. Once confirmed, data is pushed to your TMS or ERP — with zero manual entry.’,
+      cmr_box_label:"Extracted automatically:",
+      chk_h3:"Full inspection. Zero paperwork.",
+      chk_desc:’TruckPilot guides the driver through every inspection point via conversation — no forms, no clipboards. Standard template covers <strong class="text-white">35 items</strong>, ADR loads get <strong class="text-white">42 items</strong> with hazard class validation against the driver\’s registered certificate. At the end, a <strong class="text-white">timestamped PDF report</strong> is generated automatically.’,
+      chk_box_label:"The generated report includes:",
+      eco_h3:"Check before the gate — not after the fine.",
+      eco_desc:"Driver asks in plain language — or sends their GPS location. TruckPilot checks instantly: can they enter the zone, what time the window opens, where to park while waiting, and what the fine is if they risk it.",
+      pin_h3:"Prove who picks up. Eliminate disputes.",
+      pin_desc:’Before cargo is released, the shipper registers a 6-digit PIN in TruckPilot. At the delivery point, the driver enters the PIN — which is cross-verified between both parties in real time. This creates an <strong class="text-white">immutable audit trail</strong> proving that the right carrier collected the right load.’,
+      pin_box_label:"The double-check flow:",
+      adr_cert_h3:"Never miss a renewal. Never lose a load.",
+      adr_cert_desc:’Driver photographs front and back of the ADR certificate. TruckPilot extracts holder name, authorized hazard classes, and expiry — then monitors it automatically. Renewal reminders escalate at <strong class="text-white">D-30, D-20, D-10, D-5</strong>, then daily. Driver triggers renewal directly from WhatsApp. Fleet manager receives every critical alert.’,
+      adr_ver_h3:"Police stop. Inspector report ready in 20 seconds.",
+      adr_ver_desc:’When stopped by police or a transport authority, the driver attaches the ADR verification document. TruckPilot checks every conformity — certificate validity, authorized classes, vehicle equipment, cargo vs. certificate match — and generates a <strong class="text-white">structured verification report</strong> immediately.’,
+      adr_ver_box_label:"Verification covers:",
+      wallet_h3:"Every document. One message away.",
+      wallet_desc:’Driver types <strong class="text-white">"docs"</strong> and instantly sees the status of every compliance document in their profile. Expired or expiring items flagged in red. Any document can be downloaded directly from the chat — or shared with an inspector on the spot.’,
+      /* regulatory */
+      reg_label:"Regulatory Deadlines 2026", reg_h2:"Four mandates. Zero margin for error.", reg_sub:"Simultaneous EU compliance changes hitting carriers in 2026. Miss one: vehicles detained, fines issued, routes closed.",
+      reg1_title:"ADR Certificate Renewal", reg1_date:"June 2026", reg1_desc:"Expired cert = vehicle detained. No grace period in NL, DE, IT, BE.",
+      reg2_title:"ICS2 Border Declaration", reg2_date:"Live Now — NL/DE/CZ", reg2_desc:"Pre-arrival filing required. Non-compliance: risk of customs delays and penalties varying by country.",
+      reg3_title:"Smart Tachograph G2V2", reg3_date:"July 1, 2026", reg3_desc:"Mandatory for vans. Working time must be digitally logged and accessible.",
+      reg4_title:"eCMR Digital Standard", reg4_date:"2027 Mandate", reg4_desc:"EU authorities must accept certified digital freight documents from July 2027 — start building your digital archive now.",
+      /* how it works */
+      how_label:"Zero learning curve", how_h2:"Three steps. That’s it.", how_sub:"Minimal onboarding. No new logins. Drivers use the same WhatsApp already on their phone.",
+      how1_title:"Send a photo or message", how1_desc:"CMR photo, ADR certificate, checklist request, eco-zone query — via regular WhatsApp from any device.",
+      how2_title:"AI processes in under 30 seconds", how2_desc:"Gemini AI reads documents, validates fields, checks compliance rules, and replies in the driver’s language — EN, NL, IT, DE or PT.",
+      how3_title:"Data synced. Audit trail created.", how3_desc:"Every document stored, every expiry tracked, every delivery confirmed. TMS/ERP updated. No manual entry.",
+      /* faq */
+      faq_label:"Common questions", faq_h2:"FAQ",
+      faq1_q:"Do drivers need to install a new app?", faq1_a:"No. TruckPilot runs entirely through the WhatsApp they already have on their phone. You share a WhatsApp Business number and they start messaging immediately — no downloads, no accounts, no passwords.",
+      faq2_q:"How long does TMS / ERP integration take?", faq2_a:"Under 1 minute for standard REST API integrations. We provide a webhook endpoint that sends structured JSON on every confirmed CMR or checklist. For custom TMS connectors (SAP, Transics, etc.) we estimate 1–2 days of setup.",
+      faq3_q:"What languages are supported?", faq3_a:"English, Dutch, Italian, German and Portuguese. TruckPilot auto-detects the driver’s language from their first message and replies accordingly. CMR extraction works regardless of the document’s language.",
+      faq4_q:"Is our data GDPR compliant?", faq4_a:’Yes. All data is stored and processed in Google Cloud <strong class="text-white">europe-west4</strong> (Netherlands). Document images are retained for 90 days, compliance data for 365 days. We provide a Data Processing Agreement (DPA) on request.’,
+      faq5_q:"What if the AI can’t read a document?", faq5_a:"TruckPilot rejects low-confidence extractions and asks the driver to retake the photo — specifying exactly what was unclear (blur, angle, missing boxes). If a second attempt also fails, the session is flagged and a fleet manager is notified.",
+      faq6_q:"How much does it cost?", faq6_a:"Pricing is based on fleet size and usage volume. Contact us for a tailored quote — we’ll build a proposal around your fleet’s specific compliance profile and integration needs.",
+      /* demo form */
+      demo_label:"Get started", demo_h2:"Request a Demo", demo_sub:"We’ll reach out within 24 hours for a live walkthrough tailored to your fleet.",
+      form_first_name:"First name", form_last_name:"Last name", form_company:"Company / Fleet name", form_email:"Work email",
+      form_fleet:"Fleet size", form_fleet_select:"Select range", form_country:"Country", form_country_select:"Select country",
+      form_whatsapp:"WhatsApp number", form_whatsapp_opt:"(optional — for a live trial)",
+      form_submit:"Request Demo →", form_note:"No commitment. We’ll reply within 24 hours.",
+      form_ph_first:"Jan", form_ph_last:"de Vries", form_ph_company:"Trans Europa BV", form_ph_email:"jan@transeuropa.nl",
+      success_title:"Request sent!", success_body:’We\’ll get in touch within <strong class="text-white">24 hours</strong> to schedule a live walkthrough for your fleet.’,
+      form_error:"Something went wrong. Please try again or email us directly.",
+      /* footer */
+      footer_privacy:"Privacy Policy", footer_powered:"Powered by Gemini AI & WhatsApp Business API"
     },
     it: {
-      nav_who: "Per chi è", nav_features: "Funzionalità", nav_compliance: "Conformità",
-      nav_faq: "FAQ", nav_demo: "Richiedi Demo",
-      hero_badge: "Conformità EU 2026 — Pronto Ora",
-      hero_h1: 'Trasforma WhatsApp nel tuo<br><span class="gradient-text">assistente di conformità</span><br>per flotte.',
-      hero_subtitle: "I conducenti inviano foto e messaggi su WhatsApp. TruckPilot legge i documenti, verifica le conformità, avvisa il tuo team e sincronizza i dati con il TMS o ERP. Onboarding minimo. Meno lavoro manuale. Processi di conformità più veloci.",
-      modules_label: "7 flussi WhatsApp",
-      form_first_name: "Nome", form_last_name: "Cognome",
-      form_company: "Azienda / Nome flotta", form_email: "Email aziendale",
-      form_fleet: "Dimensione flotta", form_fleet_select: "Seleziona",
-      form_country: "Paese", form_country_select: "Seleziona paese",
-      form_whatsapp: "Numero WhatsApp", form_whatsapp_opt: "(opzionale — per una prova dal vivo)",
-      form_submit: "Richiedi Demo →", form_note: "Nessun impegno. Risponderemo entro 24 ore.",
-      form_ph_first: "Mario", form_ph_last: "Rossi",
-      form_ph_company: "Trasporti Rossi SRL", form_ph_email: "mario@trasporti.it",
-      success_title: "Richiesta inviata!",
-      success_body: "Ti contatteremo entro <strong class=\"text-white\">24 ore</strong> per organizzare una demo dal vivo per la tua flotta.",
-      form_error: "Qualcosa è andato storto. Riprova o scrivici direttamente."
+      /* nav */
+      nav_who:"Per chi è", nav_features:"Funzionalità", nav_compliance:"Conformità", nav_faq:"FAQ", nav_demo:"Richiedi Demo",
+      /* hero */
+      hero_badge:"Conformità EU 2026 — Pronto Ora",
+      hero_h1:’Trasforma WhatsApp nel tuo<br><span class="gradient-text">assistente di conformità</span><br>per flotte.’,
+      hero_subtitle:"I conducenti inviano foto e messaggi su WhatsApp. TruckPilot legge i documenti, verifica le conformità, avvisa il tuo team e sincronizza i dati con il TMS o ERP. Onboarding minimo. Meno lavoro manuale. Processi di conformità più veloci.",
+      hero_cta1:"Richiedi una Demo →", hero_cta2:"Scopri le funzionalità",
+      badge_no_app:"Nessuna app da installare", badge_gdpr:"Progettato per il GDPR", badge_tms:"Compatibile con TMS / ERP",
+      /* stats */
+      modules_label:"7 flussi WhatsApp",
+      stat1:"Dalla foto ai dati strutturati", stat2:"Flussi WhatsApp", stat3:"Lingue per i conducenti", stat4:"Eco-zone EU nel database",
+      /* who */
+      who_label:"Fatto per la strada", who_h2:"Chi usa TruckPilot?", who_sub:"Tre ruoli. Un numero WhatsApp. Tutti ci guadagnano.",
+      who1_title:"Responsabile operativo flotta", who1_desc:"Stanco di rincorrere i conducenti per i documenti e scoprire certificati scaduti solo dopo che un veicolo è stato fermo al confine.",
+      who1_li1:"Dashboard di conformità in tempo reale", who1_li2:"Avvisi automatici di rinnovo certificati", who1_li3:"Traccia completa per ogni CMR",
+      who2_title:"Titolare di azienda di trasporti", who2_desc:"Ogni violazione costa denaro — sanzioni, veicoli fermi, contratti persi. I processi manuali non scalano con la crescita della flotta.",
+      who2_li1:"Ridurre ritardi ICS2 e sanzioni doganali", who2_li2:"Integrazione con TMS / ERP", who2_li3:"Da 5 a 500 veicoli",
+      who3_title:"Conducente professionista", who3_desc:"12 ore al giorno in strada. Niente tempo per imparare nuove app o sfogliare cartelle di carta ad ogni confine.",
+      who3_li1:"WhatsApp già sul telefono", who3_li2:"Risposte immediate: eco-zone, importi sanzioni", who3_li3:"Tutti i documenti, a un messaggio di distanza",
+      /* features */
+      feat_label:"Sette flussi di lavoro", feat_h2:"Un WhatsApp. Conformità completa.", feat_sub:"Ogni passaggio nel flusso di conformità della tua flotta — coperto da una conversazione che i tuoi conducenti sanno già come avere.",
+      cmr_h3:"Foto dentro. Dati validati fuori. TMS sincronizzato.",
+      cmr_desc:’Il conducente fotografa il CMR firmato dopo la consegna. L\’IA legge <strong class="text-white">fino a 45 campi su 24 riquadri UNECE</strong> in meno di 30 secondi. Se manca un campo o l\’immagine è illeggibile, il sistema rifiuta e chiede una nuova foto. Una volta confermato, i dati vengono inviati al TMS o ERP — senza inserimento manuale.’,
+      cmr_box_label:"Estratto automaticamente:",
+      chk_h3:"Ispezione completa. Zero burocrazia.",
+      chk_desc:’TruckPilot guida il conducente attraverso ogni punto di ispezione via conversazione — nessun modulo, nessun appunto. Il template standard copre <strong class="text-white">35 voci</strong>, i carichi ADR ottengono <strong class="text-white">42 voci</strong> con validazione della classe di pericolo. Alla fine viene generato automaticamente un <strong class="text-white">rapporto PDF con data e ora</strong>.’,
+      chk_box_label:"Il rapporto generato include:",
+      eco_h3:"Controlla prima del cancello — non dopo la multa.",
+      eco_desc:"Il conducente chiede in linguaggio semplice — o invia la posizione GPS. TruckPilot controlla istantaneamente: può entrare nella zona, a che ora si apre la finestra, dove parcheggiare in attesa e qual è la multa se rischia.",
+      pin_h3:"Dimostra chi ritira. Elimina le controversie.",
+      pin_desc:’Prima che la merce venga rilasciata, il mittente registra un PIN a 6 cifre in TruckPilot. Al punto di consegna, il conducente inserisce il PIN — verificato in tempo reale tra entrambe le parti. Questo crea una <strong class="text-white">traccia immutabile</strong> che prova che il vettore corretto ha ritirato il carico corretto.’,
+      pin_box_label:"Il flusso di doppia verifica:",
+      adr_cert_h3:"Non perdere mai un rinnovo. Non perdere mai un carico.",
+      adr_cert_desc:’Il conducente fotografa fronte e retro del certificato ADR. TruckPilot estrae nome, classi di pericolo autorizzate e scadenza — poi monitora automaticamente. I promemoria escalation a <strong class="text-white">D-30, D-20, D-10, D-5</strong>, poi quotidiani. Il conducente avvia il rinnovo direttamente da WhatsApp. Il responsabile flotta riceve ogni avviso critico.’,
+      adr_ver_h3:"Controllo polizia. Rapporto pronto in 20 secondi.",
+      adr_ver_desc:’Quando viene fermato dalla polizia o da un\’autorità di trasporto, il conducente allega il documento di verifica ADR. TruckPilot controlla ogni conformità — validità certificato, classi autorizzate, attrezzatura veicolo, corrispondenza carico/certificato — e genera immediatamente un <strong class="text-white">rapporto di verifica strutturato</strong>.’,
+      adr_ver_box_label:"La verifica copre:",
+      wallet_h3:"Ogni documento. A un messaggio di distanza.",
+      wallet_desc:’Il conducente scrive <strong class="text-white">"docs"</strong> e vede immediatamente lo stato di ogni documento di conformità nel suo profilo. Gli elementi scaduti o in scadenza sono evidenziati in rosso. Qualsiasi documento può essere scaricato direttamente dalla chat — o condiviso con un ispettore sul posto.’,
+      /* regulatory */
+      reg_label:"Scadenze normative 2026", reg_h2:"Quattro obblighi. Zero margine di errore.", reg_sub:"Cambiamenti normativi EU simultanei che colpiscono i vettori nel 2026. Mancarne uno: veicoli fermi, sanzioni emesse, rotte chiuse.",
+      reg1_title:"Rinnovo certificato ADR", reg1_date:"Giugno 2026", reg1_desc:"Certificato scaduto = veicolo fermo. Nessun periodo di tolleranza in NL, DE, IT, BE.",
+      reg2_title:"Dichiarazione doganale ICS2", reg2_date:"Attivo ora — NL/DE/CZ", reg2_desc:"Dichiarazione pre-arrivo obbligatoria. Non conformità: rischio di ritardi doganali e sanzioni variabili per paese.",
+      reg3_title:"Tachigrafo intelligente G2V2", reg3_date:"1 luglio 2026", reg3_desc:"Obbligatorio per furgoni. L’orario di lavoro deve essere registrato digitalmente e accessibile.",
+      reg4_title:"Standard digitale eCMR", reg4_date:"Obbligo 2027", reg4_desc:"Le autorità EU devono accettare documenti di trasporto digitali certificati da luglio 2027 — inizia ora a costruire il tuo archivio digitale.",
+      /* how it works */
+      how_label:"Curva di apprendimento zero", how_h2:"Tre passi. Fine.", how_sub:"Onboarding minimo. Nessun nuovo accesso. I conducenti usano lo stesso WhatsApp già sul telefono.",
+      how1_title:"Invia una foto o un messaggio", how1_desc:"Foto CMR, certificato ADR, richiesta checklist, domanda eco-zone — via WhatsApp normale da qualsiasi dispositivo.",
+      how2_title:"L’IA elabora in meno di 30 secondi", how2_desc:"L’IA Gemini legge i documenti, valida i campi, controlla le conformità e risponde nella lingua del conducente — EN, NL, IT, DE o PT.",
+      how3_title:"Dati sincronizzati. Traccia creata.", how3_desc:"Ogni documento archiviato, ogni scadenza monitorata, ogni consegna confermata. TMS/ERP aggiornato. Nessuna immissione manuale.",
+      /* faq */
+      faq_label:"Domande frequenti", faq_h2:"FAQ",
+      faq1_q:"I conducenti devono installare una nuova app?", faq1_a:"No. TruckPilot funziona interamente tramite il WhatsApp già presente sul loro telefono. Condividi un numero WhatsApp Business e iniziano a scrivere immediatamente — nessun download, nessun account, nessuna password.",
+      faq2_q:"Quanto tempo richiede l’integrazione TMS / ERP?", faq2_a:"Meno di 1 minuto per integrazioni REST API standard. Forniamo un endpoint webhook che invia JSON strutturato per ogni CMR o checklist confermato. Per connettori TMS personalizzati (SAP, Transics, ecc.) stimiamo 1–2 giorni di configurazione.",
+      faq3_q:"Quali lingue sono supportate?", faq3_a:"Inglese, olandese, italiano, tedesco e portoghese. TruckPilot rileva automaticamente la lingua del conducente dal primo messaggio e risponde di conseguenza. L’estrazione CMR funziona indipendentemente dalla lingua del documento.",
+      faq4_q:"I nostri dati sono conformi al GDPR?", faq4_a:’Sì. Tutti i dati sono archiviati ed elaborati su Google Cloud <strong class="text-white">europe-west4</strong> (Paesi Bassi). Le immagini dei documenti sono conservate per 90 giorni, i dati di conformità per 365 giorni. Forniamo un Accordo di Elaborazione dei Dati (DPA) su richiesta.’,
+      faq5_q:"E se l’IA non riesce a leggere un documento?", faq5_a:"TruckPilot rifiuta le estrazioni a bassa confidenza e chiede al conducente di ripetere la foto — specificando esattamente cosa era poco chiaro (sfocatura, angolazione, riquadri mancanti). Se anche il secondo tentativo fallisce, la sessione viene segnalata e il responsabile flotta viene notificato.",
+      faq6_q:"Quanto costa?", faq6_a:"Il prezzo è basato sulla dimensione della flotta e sul volume di utilizzo. Contattaci per un preventivo personalizzato — costruiremo una proposta attorno al profilo di conformità specifico della tua flotta.",
+      /* demo form */
+      demo_label:"Inizia ora", demo_h2:"Richiedi una Demo", demo_sub:"Ti contatteremo entro 24 ore per una demo dal vivo su misura per la tua flotta.",
+      form_first_name:"Nome", form_last_name:"Cognome", form_company:"Azienda / Nome flotta", form_email:"Email aziendale",
+      form_fleet:"Dimensione flotta", form_fleet_select:"Seleziona", form_country:"Paese", form_country_select:"Seleziona paese",
+      form_whatsapp:"Numero WhatsApp", form_whatsapp_opt:"(opzionale — per una prova dal vivo)",
+      form_submit:"Richiedi Demo →", form_note:"Nessun impegno. Risponderemo entro 24 ore.",
+      form_ph_first:"Mario", form_ph_last:"Rossi", form_ph_company:"Trasporti Rossi SRL", form_ph_email:"mario@trasporti.it",
+      success_title:"Richiesta inviata!", success_body:’Ti contatteremo entro <strong class="text-white">24 ore</strong> per organizzare una demo dal vivo per la tua flotta.’,
+      form_error:"Qualcosa è andato storto. Riprova o scrivici direttamente.",
+      /* footer */
+      footer_privacy:"Informativa sulla privacy", footer_powered:"Sviluppato con Gemini AI e WhatsApp Business API"
     }
   };
 
