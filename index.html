@@ -805,10 +805,13 @@
       <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="demo_h2">Request a Demo</h2>
       <p class="text-gray-400 leading-relaxed" data-t="demo_sub">We'll reach out within 24 hours for a live walkthrough tailored to your fleet.</p>
     </div>
-    <form id="demo-form" name="demo-request" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field"
+    <form id="demo-form" method="POST" action="https://formsubmit.co/saulohs@icloud.com"
       class="bg-gray-900 border border-gray-800 rounded-2xl p-8 space-y-5">
-      <input type="hidden" name="form-name" value="demo-request">
-      <p class="hidden"><label>Do not fill: <input name="bot-field"></label></p>
+      <input type="hidden" name="_next" value="https://truckpilot.netlify.app/">
+      <input type="hidden" name="_subject" value="New Demo Request — TruckPilot">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <p class="hidden"><label>Do not fill: <input name="_honey"></label></p>
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
@@ -899,21 +902,49 @@
 </footer>
 
 <script>
-  /* ── FAQ ── */
-  function toggleFaq(btn) {
-    const body = btn.nextElementSibling;
-    const icon = btn.querySelector('.faq-icon');
-    const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
-    document.querySelectorAll('.faq-body').forEach(b => b.style.maxHeight = '0px');
-    document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = '');
-    if (!isOpen) {
-      body.style.maxHeight = body.scrollHeight + 'px';
-      icon.style.transform = 'rotate(180deg)';
-    }
+function toggleFaq(btn) {
+  var body = btn.nextElementSibling;
+  var icon = btn.querySelector('.faq-icon');
+  var isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-body').forEach(function(b) { b.style.maxHeight = '0px'; });
+  document.querySelectorAll('.faq-icon').forEach(function(i) { i.style.transform = ''; });
+  if (!isOpen) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    icon.style.transform = 'rotate(180deg)';
   }
+}
+</script>
 
-  /* ── i18n ── */
-  const T = {
+<script>
+var T = {};
+var currentLang = 'en';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('tp_lang', lang);
+  document.querySelectorAll('[data-t]').forEach(function(el) {
+    var k = el.dataset.t;
+    if (T[lang] && T[lang][k] !== undefined) el.textContent = T[lang][k];
+  });
+  document.querySelectorAll('[data-th]').forEach(function(el) {
+    var k = el.dataset.th;
+    if (T[lang] && T[lang][k] !== undefined) el.innerHTML = T[lang][k];
+  });
+  document.querySelectorAll('[data-tp]').forEach(function(el) {
+    var k = el.dataset.tp;
+    if (T[lang] && T[lang][k] !== undefined) el.placeholder = T[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    var active = b.dataset.lang === lang;
+    b.classList.toggle('ring-2', active);
+    b.classList.toggle('ring-green-500', active);
+    b.classList.toggle('ring-offset-1', active);
+    b.classList.toggle('ring-offset-gray-950', active);
+  });
+}
+
+try {
+  T = {
     en: {
       /* nav */
       nav_who:"Who it’s for", nav_features:"Features", nav_compliance:"Compliance", nav_faq:"FAQ", nav_demo:"Get a Demo",
@@ -1058,68 +1089,45 @@
     }
   };
 
-  let currentLang = localStorage.getItem('tp_lang') || 'en';
-
-  function applyLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('tp_lang', lang);
-    document.querySelectorAll('[data-t]').forEach(el => {
-      const k = el.dataset.t;
-      if (T[lang][k] !== undefined) el.textContent = T[lang][k];
-    });
-    document.querySelectorAll('[data-th]').forEach(el => {
-      const k = el.dataset.th;
-      if (T[lang][k] !== undefined) el.innerHTML = T[lang][k];
-    });
-    document.querySelectorAll('[data-tp]').forEach(el => {
-      const k = el.dataset.tp;
-      if (T[lang][k] !== undefined) el.placeholder = T[lang][k];
-    });
-    document.querySelectorAll('.lang-btn').forEach(b => {
-      const active = b.dataset.lang === lang;
-      b.classList.toggle('ring-2', active);
-      b.classList.toggle('ring-green-500', active);
-      b.classList.toggle('ring-offset-1', active);
-      b.classList.toggle('ring-offset-gray-950', active);
-    });
-  }
-
-  /* ── Language init (script is at bottom of body, DOM is ready) ── */
+  currentLang = localStorage.getItem('tp_lang') || 'en';
   applyLanguage(currentLang);
+} catch(e) {
+  console.error('i18n error:', e);
+}
+</script>
 
-  /* ── Form JS handler ── */
-  (function () {
-    var form = document.getElementById('demo-form');
-    var btn  = document.getElementById('submit-btn');
+<script>
+(function() {
+  var form = document.getElementById('demo-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submit-btn');
     var successEl = document.getElementById('form-success');
-    var errorEl   = document.getElementById('form-error');
-    if (!form) return;
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      errorEl.style.display = 'none';
-      btn.disabled = true;
-      btn.textContent = '...';
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      })
-      .then(function (res) {
-        if (res.ok) {
-          form.style.display = 'none';
-          successEl.style.display = 'block';
-        } else {
-          throw new Error('bad response');
-        }
-      })
-      .catch(function () {
-        errorEl.style.display = 'block';
+    var errorEl = document.getElementById('form-error');
+    if (btn) { btn.disabled = true; btn.textContent = '...'; }
+    if (errorEl) errorEl.style.display = 'none';
+    fetch('https://formsubmit.co/ajax/saulohs@icloud.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.success === 'true' || d.success === true) {
+        form.style.display = 'none';
+        if (successEl) successEl.style.display = 'block';
+      } else { throw new Error(); }
+    })
+    .catch(function() {
+      if (errorEl) errorEl.style.display = 'block';
+      if (btn) {
         btn.disabled = false;
-        btn.textContent = T[currentLang].form_submit;
-      });
+        try { btn.textContent = T[currentLang].form_submit; } catch(ex) { btn.textContent = 'Request Demo'; }
+      }
     });
-  }());
+  });
+}());
 </script>
 
 </body>
