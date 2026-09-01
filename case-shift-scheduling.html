@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: Shift Scheduling Engine — compliant rosters generated from clocked hours, cutting unnecessary overtime.">
+  <title>Shift Scheduling Engine — Case Study | S.H.S</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased">
+
+<div id="cookie" class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur border-t border-gray-800 p-4">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <p class="text-sm text-gray-400">Cookies used. Designed for GDPR.</p>
+    <button onclick="document.getElementById('cookie').remove()" class="shrink-0 bg-green-500 hover:bg-green-400 text-black text-sm font-bold px-5 py-2 rounded-lg transition">Accept</button>
+  </div>
+</div>
+
+<nav class="fixed top-0 inset-x-0 z-40 bg-gray-950/85 backdrop-blur border-b border-gray-800/60">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center text-black font-extrabold text-xs shrink-0">SH</div>
+      <div class="flex items-center gap-2">
+        <span class="text-lg font-bold">TruckPilot</span>
+        <span class="hidden sm:inline text-[10px] font-semibold text-gray-500 border border-gray-800 rounded-full px-2 py-0.5">by S.H.S</span>
+      </div>
+    </a>
+    <a href="index.html#solutions" class="hidden md:flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition">← All solutions</a>
+    <a href="index.html#demo" class="bg-green-500 hover:bg-green-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition wa-glow">Get in touch</a>
+  </div>
+</nav>
+
+<section class="pt-32 pb-16 px-4 sm:px-6 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-purple-950/20 via-transparent to-transparent pointer-events-none"></div>
+  <div class="max-w-4xl mx-auto relative">
+    <p class="case-kicker text-purple-400 text-sm font-semibold uppercase tracking-widest mb-4">Case Study 03 — Workforce &amp; HR</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">Shift Scheduling Engine — <span class="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Compliant Rosters</span>, No Spreadsheet Marathon</h1>
+    <p class="text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl">A system that reads clocked hours and builds the schedule, instead of a manager rebuilding it from scratch every week.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-gray-800 pt-6">
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Client</p><p class="text-sm font-semibold">Multi-shift operations</p></div>
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Sector</p><p class="text-sm font-semibold">Retail &amp; Workforce Ops</p></div>
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Stack</p><p class="text-sm font-semibold">Scheduling engine + labor-law rules</p></div>
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Status</p><p class="text-sm font-semibold text-green-400">Live</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="border-y border-gray-800 bg-gray-900/40 py-10 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-3xl font-extrabold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Overtime, cut</p>
+    <p class="text-sm text-gray-500 mt-1">Fewer excess hours, fewer compliance flags</p>
+  </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <p class="case-kicker text-purple-400 text-sm font-semibold uppercase tracking-widest mb-3">01 / The Problem</p>
+    <p class="text-gray-300 leading-relaxed">Shift planning was a weekly spreadsheet exercise — built from memory, adjusted by hand, and only checked against labor law after the fact, when an overtime bill or a compliance flag showed the mistake. One wrong roster was one violation away, and nobody had time to check every shift against every rule before publishing.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <p class="case-kicker text-purple-400 text-sm font-semibold uppercase tracking-widest mb-3">02 / The Approach</p>
+    <p class="text-gray-300 leading-relaxed">I started from the constraint that actually matters: what the law requires — rest periods, weekly hour caps, contract terms — has to be satisfied before a schedule is even suggested, not checked afterward. So the engine reads clocked hours first, applies the rules as hard constraints, and only then proposes the shift mix, instead of leaving compliance as a manual review step at the end.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6 bg-gray-900/20">
+  <div class="max-w-4xl mx-auto">
+    <p class="case-kicker text-purple-400 text-sm font-semibold uppercase tracking-widest mb-8">03 / The Solution</p>
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Reads clocked hours automatically — no manual timesheet entry.</p>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Generates a compliant schedule as the default output, not an afterthought.</p>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Suggests the shift mix with the least waste and fewest overtime hours.</p>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Flags anything that would break a labor-law constraint before publishing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="case-kicker text-purple-400 text-sm font-semibold uppercase tracking-widest mb-3">04 / The Result</p>
+    <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">The time a manager used to spend rebuilding the roster by hand goes into reviewing a schedule that's already compliant — the checking happens before publishing, not after a violation shows up.</p>
+    <div class="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-400 bg-purple-950/40 border border-purple-800/30 rounded-full px-4 py-2">Pays for itself in hours saved</div>
+  </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6 text-center">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Have a problem shaped like this one?</h2>
+    <p class="text-gray-400 leading-relaxed mb-8">Workforce planning, compliance, or something else entirely — if it's slow, manual, or scattered across tools, I've probably got a way to fix it.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="index.html#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base wa-glow">Tell me about it →</a>
+      <a href="index.html#solutions" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base">← All solutions</a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-gray-800 py-10 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center text-black font-extrabold text-[9px] shrink-0">SH</div>
+      <span class="font-bold text-sm">S.H.S</span>
+      <span class="text-gray-600 text-sm">&copy; 2026</span>
+    </div>
+    <p class="text-xs text-gray-600">Saulo Henrique Silva · <a href="index.html" class="underline hover:text-gray-400 transition">Back to home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

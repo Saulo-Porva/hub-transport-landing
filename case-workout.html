@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: Workout Companion — training plans that explain themselves, and a trainer dashboard that shows real activity.">
+  <title>Workout Companion — Case Study | S.H.S</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased">
+
+<div id="cookie" class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur border-t border-gray-800 p-4">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <p class="text-sm text-gray-400">Cookies used. Designed for GDPR.</p>
+    <button onclick="document.getElementById('cookie').remove()" class="shrink-0 bg-green-500 hover:bg-green-400 text-black text-sm font-bold px-5 py-2 rounded-lg transition">Accept</button>
+  </div>
+</div>
+
+<nav class="fixed top-0 inset-x-0 z-40 bg-gray-950/85 backdrop-blur border-b border-gray-800/60">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center text-black font-extrabold text-xs shrink-0">SH</div>
+      <div class="flex items-center gap-2">
+        <span class="text-lg font-bold">TruckPilot</span>
+        <span class="hidden sm:inline text-[10px] font-semibold text-gray-500 border border-gray-800 rounded-full px-2 py-0.5">by S.H.S</span>
+      </div>
+    </a>
+    <a href="index.html#solutions" class="hidden md:flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition">← All solutions</a>
+    <a href="index.html#demo" class="bg-green-500 hover:bg-green-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition wa-glow">Get in touch</a>
+  </div>
+</nav>
+
+<section class="pt-32 pb-16 px-4 sm:px-6 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-orange-950/20 via-transparent to-transparent pointer-events-none"></div>
+  <div class="max-w-4xl mx-auto relative">
+    <p class="case-kicker text-orange-400 text-sm font-semibold uppercase tracking-widest mb-4">Case Study 07 — Fitness &amp; Coaching</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">Workout Companion — <span class="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">A Coach</span> in Your Pocket</h1>
+    <p class="text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl">Every exercise explained, every session tracked, without the trainer having to ask.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-gray-800 pt-6">
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Client</p><p class="text-sm font-semibold">Personal trainers &amp; gyms</p></div>
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Sector</p><p class="text-sm font-semibold">Fitness &amp; Coaching</p></div>
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Stack</p><p class="text-sm font-semibold">Mobile app + trainer dashboard</p></div>
+      <div><p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Status</p><p class="text-sm font-semibold text-green-400">Live</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="border-y border-gray-800 bg-gray-900/40 py-10 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-3xl font-extrabold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Paper → Pocket</p>
+    <p class="text-sm text-gray-500 mt-1">Every movement explained, tracked, and visible to the coach</p>
+  </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <p class="case-kicker text-orange-400 text-sm font-semibold uppercase tracking-widest mb-3">01 / The Problem</p>
+    <p class="text-gray-300 leading-relaxed">Training plans lived on printed sheets — a list of exercise names with no photo of the machine, no explanation of the movement, and no way to tell which muscle was actually meant to be working. Trainers had no visibility into whether a client trained at all between sessions, let alone whether they did it right.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <p class="case-kicker text-orange-400 text-sm font-semibold uppercase tracking-widest mb-3">02 / The Approach</p>
+    <p class="text-gray-300 leading-relaxed">A workout plan only works if the person doing it understands it without the trainer standing next to them. So every exercise needed to carry its own explanation — what it looks like, how to do it, what it's working — and the trainer needed a way to see activity without having to ask.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6 bg-gray-900/20">
+  <div class="max-w-4xl mx-auto">
+    <p class="case-kicker text-orange-400 text-sm font-semibold uppercase tracking-widest mb-8">03 / The Solution</p>
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-orange-950/60 border border-orange-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5l6.74-6.76zM16 8L8 16"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Equipment photo, exercise explanation, and demo video for every movement.</p>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-orange-950/60 border border-orange-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Muscle diagram showing what's being worked.</p>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-orange-950/60 border border-orange-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Tracks weight, measurements, and goals over time.</p>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-orange-950/60 border border-orange-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div>
+        <p class="text-sm text-gray-300 leading-relaxed">Gamifies consistency with streak badges — and a trainer dashboard shows exactly what each student is doing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="case-kicker text-orange-400 text-sm font-semibold uppercase tracking-widest mb-3">04 / The Result</p>
+    <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">Clients train correctly even without the trainer in the room, and the trainer finally has visibility into what actually happened between sessions.</p>
+    <div class="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-400 bg-orange-950/40 border border-orange-800/30 rounded-full px-4 py-2">From a printed sheet to a coach in your pocket</div>
+  </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6 text-center">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Have a problem shaped like this one?</h2>
+    <p class="text-gray-400 leading-relaxed mb-8">Coaching, tracking, or something else entirely — if it's slow, manual, or scattered across tools, I've probably got a way to fix it.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="index.html#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base wa-glow">Tell me about it →</a>
+      <a href="index.html#solutions" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base">← All solutions</a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-gray-800 py-10 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center text-black font-extrabold text-[9px] shrink-0">SH</div>
+      <span class="font-bold text-sm">S.H.S</span>
+      <span class="text-gray-600 text-sm">&copy; 2026</span>
+    </div>
+    <p class="text-xs text-gray-600">Saulo Henrique Silva · <a href="index.html" class="underline hover:text-gray-400 transition">Back to home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
