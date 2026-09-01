@@ -1,177 +1,123 @@
-# Row Level Security (RLS) — Políticas e Debugging
+# RLS Policies
 
-> **Purpose**: Escrever, debugar e entender RLS no Supabase
-> **MCP Validated**: 2026-06-20
+> Row Level Security restricts which rows each database role can read or write — the primary cause of silent empty results in Supabase.
 
-## Overview
+## O que é
 
-RLS filtra rows automaticamente com base no utilizador autenticado. Uma query que retorna `[]` quando deveria retornar dados é quase sempre um problema de RLS — não um bug de código.
+RLS é uma feature do PostgreSQL ativada por tabela. Quando habilitado, todas as queries são filtradas pelas policies definidas — incluindo queries do SDK. Se nenhuma policy permitir acesso ao role atual (`anon`, `authenticated`, `service_role`), a query retorna `[]` **sem erro**.
 
-**Regra de ouro:** `createClient()` está sujeito a RLS. `createAdminClient()` (serviceRole) bypassa RLS.
+`service_role` bypass RLS automaticamente. `anon` e `authenticated` são filtrados por policies.
 
-## Activar RLS
+## Quando usar
 
-```sql
--- RLS está DESACTIVADO por defeito nas tabelas novas
-ALTER TABLE viagens ENABLE ROW LEVEL SECURITY;
+- Toda tabela que contém dados de usuário deve ter RLS habilitado
+- Desabilitar RLS só em tabelas de lookup público sem dados sensíveis (ex: `countries`)
+- Usar service_role client apenas server-side para operações admin
 
--- Verificar estado de todas as tabelas
-SELECT tablename, rowsecurity
-FROM pg_tables
-WHERE schemaname = 'public';
-```
-
-## Tipos de Policy
-
-### SELECT — Quem pode ler
+## Sintaxe / API
 
 ```sql
--- Utilizador vê só os seus registos
-CREATE POLICY "motorista_vê_próprias_viagens" ON viagens
-  FOR SELECT
-  USING (auth.uid() = motorista_id);
+-- 1. Habilitar (obrigatório antes de criar policies)
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Admin vê tudo
-CREATE POLICY "admin_vê_tudo" ON viagens
+-- 2. Policy de leitura (USING = filtro no SELECT)
+CREATE POLICY "authenticated_read_own_profile"
+  ON public.profiles
   FOR SELECT
+  TO authenticated
+  USING (auth.uid() = id);
+
+-- 3. Policy de escrita (WITH CHECK = validação no INSERT/UPDATE)
+CREATE POLICY "authenticated_insert_own_profile"
+  ON public.profiles
+  FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = id);
+
+-- 4. Policy combinada UPDATE (USING filtra quais linhas, WITH CHECK valida novos dados)
+CREATE POLICY "authenticated_update_own_profile"
+  ON public.profiles
+  FOR UPDATE
+  TO authenticated
+  USING (auth.uid() = id)
+  WITH CHECK (auth.uid() = id);
+
+-- 5. DELETE
+CREATE POLICY "authenticated_delete_own"
+  ON public.profiles
+  FOR DELETE
+  TO authenticated
+  USING (auth.uid() = id);
+
+-- 6. Acesso público (anon pode ler)
+CREATE POLICY "public_read_products"
+  ON public.products
+  FOR SELECT
+  TO anon, authenticated
+  USING (true);
+
+-- 7. Policy baseada em foreign key (ex: items de um pedido do usuário)
+CREATE POLICY "authenticated_read_order_items"
+  ON public.order_items
+  FOR SELECT
+  TO authenticated
   USING (
     EXISTS (
-      SELECT 1 FROM profiles
-      WHERE id = auth.uid() AND role = 'admin'
+      SELECT 1 FROM public.orders
+      WHERE orders.id = order_items.order_id
+        AND orders.user_id = auth.uid()
     )
   );
 
--- Qualquer autenticado vê
-CREATE POLICY "autenticados_vêem" ON viagens
-  FOR SELECT
-  USING (auth.role() = 'authenticated');
+-- 8. Funções úteis nas policies
+auth.uid()        -- uuid do usuário autenticado
+auth.role()       -- 'anon' | 'authenticated' | 'service_role'
+auth.jwt()        -- jsonb com payload completo do JWT
+auth.jwt() ->> 'email'          -- campo customizado do JWT
+(auth.jwt() -> 'app_metadata' ->> 'role')  -- role customizado
 ```
 
-### INSERT — Quem pode criar
+## SSR Auth — Next.js App Router
 
-```sql
--- Utilizador cria viagens para si próprio
-CREATE POLICY "motorista_cria_próprias" ON viagens
-  FOR INSERT
-  WITH CHECK (auth.uid() = motorista_id);
-```
+```typescript
+// lib/supabase/server.ts
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 
-### UPDATE — Quem pode editar
-
-```sql
--- Só o dono pode editar, e só o próprio registo
-CREATE POLICY "motorista_edita_próprias" ON viagens
-  FOR UPDATE
-  USING (auth.uid() = motorista_id)
-  WITH CHECK (auth.uid() = motorista_id);
-```
-
-### DELETE — Quem pode apagar
-
-```sql
-CREATE POLICY "motorista_apaga_próprias" ON viagens
-  FOR DELETE
-  USING (auth.uid() = motorista_id);
-```
-
-### Policy para Todas as Operações
-
-```sql
-CREATE POLICY "admin_total_access" ON viagens
-  FOR ALL
-  USING (
-    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
+export async function createClient() {
+  const cookieStore = await cookies()
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll: () => cookieStore.getAll(),
+        setAll: (cookiesToSet) => {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options))
+        },
+      },
+    }
   )
-  WITH CHECK (
-    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
-  );
+}
+
+// Server Action example
+'use server'
+export async function getProfile() {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .single()
+  if (error) throw error
+  return data
+}
 ```
 
-## Debugging RLS
+## Armadilhas comuns
 
-### 1. Verificar se RLS está activo
-
-```sql
-SELECT tablename, rowsecurity
-FROM pg_tables
-WHERE schemaname = 'public' AND tablename = 'viagens';
--- rowsecurity = true → RLS activo
-```
-
-### 2. Listar policies existentes
-
-```sql
-SELECT policyname, cmd, qual, with_check
-FROM pg_policies
-WHERE tablename = 'viagens';
-```
-
-### 3. Simular como utilizador específico
-
-```sql
--- No SQL Editor do Supabase Dashboard
-SET LOCAL role TO authenticated;
-SET LOCAL "request.jwt.claims" TO '{"sub": "UUID_DO_UTILIZADOR"}';
-SELECT * FROM viagens;  -- vê o que o utilizador veria
-```
-
-### 4. Query sem RLS (Supabase Dashboard)
-
-O SQL Editor do dashboard corre como `postgres` (superuser) — bypassa RLS. Se vês dados no dashboard mas não na app, é problema de RLS.
-
-## Erros Comuns de RLS
-
-### Resultado vazio sem error
-
-```typescript
-const { data, error } = await supabase.from('viagens').select('*')
-// data: []
-// error: null
-// → RLS está a filtrar todas as rows
-```
-
-**Diagnóstico:** Verificar se `auth.uid()` corresponde ao `motorista_id` nas rows.
-
-### Policy em loop / recursão
-
-```sql
--- ❌ NUNCA fazer SELECT na mesma tabela dentro de USING
-CREATE POLICY "bad" ON viagens
-  FOR SELECT USING (
-    id IN (SELECT id FROM viagens WHERE motorista_id = auth.uid())  -- loop!
-  );
-
--- ✅ Referência directa
-CREATE POLICY "good" ON viagens
-  FOR SELECT USING (motorista_id = auth.uid());
-```
-
-### Policy com TRUE (inseguro)
-
-```sql
--- ❌ Qualquer um pode ver tudo — só para debug
-CREATE POLICY "debug_all" ON viagens
-  FOR SELECT USING (true);
--- Remover antes de produção!
-```
-
-## Testar RLS na Aplicação
-
-```typescript
-// Testar se utilizador A não vê registos do utilizador B
-const supabaseA = createClientWithUser(userA_token)
-const supabaseB = createClientWithUser(userB_token)
-
-const { data: dataFromA } = await supabaseA.from('viagens').select('*')
-const { data: dataFromB } = await supabaseB.from('viagens').select('*')
-
-// dataFromA deve ter só viagens de A
-// dataFromB deve ter só viagens de B
-// nenhum deve ver viagens do outro
-```
-
-## See Also
-
-- [client-types.md](./client-types.md) — createClient vs createAdminClient
-- [../patterns/debug-rls.md](../patterns/debug-rls.md) — protocolo de diagnóstico passo a passo
-- [../patterns/admin-bypass.md](../patterns/admin-bypass.md) — quando fazer bypass de RLS
+- Criar policy sem chamar `ENABLE ROW LEVEL SECURITY` primeiro — policies não têm efeito
+- Esquecer `WITH CHECK` no INSERT — política incompleta permite inserção com user_id errado
+- Usar `createClient` com service_role no client-side — key vazada no bundle
+- `FOR ALL` cria uma policy para todos os verbos — cuidado, pode ser excessivamente permissivo
+- Não adicionar `TO authenticated` explicitamente — policy aplica a todos os roles por padrão

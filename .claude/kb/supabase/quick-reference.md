@@ -1,127 +1,122 @@
 # Supabase Quick Reference
 
-> **Purpose**: Lookup rápido de clients, RLS, auth, erros comuns
-> **MCP Validated**: 2026-06-20
+## RLS Cheatsheet
+
+```sql
+-- Enable RLS (mandatory before creating policies)
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+
+-- SELECT: authenticated users see own rows
+CREATE POLICY "users_select_own" ON public.orders
+  FOR SELECT USING (auth.uid() = user_id);
+
+-- INSERT: authenticated users insert own rows
+CREATE POLICY "users_insert_own" ON public.orders
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+-- UPDATE: authenticated users update own rows
+CREATE POLICY "users_update_own" ON public.orders
+  FOR UPDATE USING (auth.uid() = user_id)
+  WITH CHECK (auth.uid() = user_id);
+
+-- Admin bypass (service_role skips RLS automatically)
+-- No policy needed when using service_role key
+
+-- Public read (anon)
+CREATE POLICY "public_read" ON public.products
+  FOR SELECT USING (true);
+
+-- Check current user role in a policy
+auth.role()     -- 'anon' | 'authenticated' | 'service_role'
+auth.uid()      -- uuid of authenticated user, null if anon
+auth.jwt()      -- full JWT payload as jsonb
+```
 
 ## Client Types
 
-| Client | Função | Sujeito a RLS? | Onde usar |
-|--------|--------|----------------|-----------|
-| `createClient()` | User context | **SIM** | Server Components, Server Actions, Route Handlers |
-| `createAdminClient()` | Service role | **NÃO** | Apenas Server-side para bypass intencional de RLS |
-| Browser client | Anon/User | **SIM** | Client Components (via @supabase/ssr) |
-
-## Setup Rápido
-
 ```typescript
-// lib/supabase/server.ts — SSR-safe
+// Server-side (Server Component / Server Action / middleware)
 import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+const supabase = createServerClient(url, anonKey, { cookies })
 
-export async function createClient() {
-  const cookieStore = await cookies()
-  return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: ... } }
-  )
-}
+// Client-side (Client Component)
+import { createBrowserClient } from '@supabase/ssr'
+const supabase = createBrowserClient(url, anonKey)
 
-export function createAdminClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,   // NUNCA NEXT_PUBLIC_
-  )
-}
+// Admin (bypasses RLS — server only, never expose key)
+import { createClient } from '@supabase/supabase-js'
+const admin = createClient(url, serviceRoleKey)
 ```
 
-## Auth — Métodos Chave
-
-| Método | Uso | Nota |
-|--------|-----|------|
-| `auth.getUser()` | Validar token no servidor | ✅ Seguro — consulta o servidor Supabase |
-| `auth.getSession()` | Ler sessão local | ⚠️ Não valida token — usar só no cliente para UI |
-| `auth.signInWithPassword()` | Login com email/password | Em Server Action |
-| `auth.signOut()` | Logout | Invalida token |
-| `auth.signInWithOAuth()` | OAuth (Google, GitHub) | Redirect flow |
-
-## Queries Comuns
-
-```typescript
-// SELECT com filtro
-const { data, error } = await supabase
-  .from('viagens')
-  .select('id, destino, motorista_id')
-  .eq('status', 'activa')
-  .order('created_at', { ascending: false })
-
-// SELECT com join
-const { data } = await supabase
-  .from('viagens')
-  .select('*, motoristas(nome, telefone)')
-  .eq('id', viagemId)
-  .single()
-
-// INSERT
-const { data, error } = await supabase
-  .from('viagens')
-  .insert({ destino: 'Porto', motorista_id: userId })
-  .select()
-  .single()
-
-// UPDATE
-const { error } = await supabase
-  .from('viagens')
-  .update({ status: 'concluida' })
-  .eq('id', viagemId)
-
-// DELETE
-const { error } = await supabase
-  .from('viagens')
-  .delete()
-  .eq('id', viagemId)
-```
-
-## RLS — Padrões de Policy
+## pgvector Cheatsheet
 
 ```sql
--- Utilizador vê só os seus registos
-CREATE POLICY "user_sees_own" ON viagens
-  FOR SELECT USING (auth.uid() = motorista_id);
+-- Enable extension
+CREATE EXTENSION IF NOT EXISTS vector;
 
--- Admin vê tudo
-CREATE POLICY "admin_sees_all" ON viagens
-  FOR ALL USING (
-    EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
-  );
+-- Column type
+embedding vector(1536)  -- OpenAI ada-002
+embedding vector(768)   -- text-embedding-3-small
 
--- Verificar se RLS está activo
-SELECT tablename, rowsecurity FROM pg_tables WHERE schemaname = 'public';
+-- Index (create after bulk insert)
+CREATE INDEX ON documents USING ivfflat (embedding vector_cosine_ops)
+  WITH (lists = 100);
 
--- Listar policies de uma tabela
-SELECT policyname, cmd, qual FROM pg_policies WHERE tablename = 'viagens';
+-- Similarity search
+SELECT id, content, 1 - (embedding <=> query_embedding) AS similarity
+FROM documents
+ORDER BY embedding <=> query_embedding
+LIMIT 5;
 ```
 
-## Erros Comuns
+## Realtime Cheatsheet
 
-| Erro | Causa | Fix |
-|------|-------|-----|
-| `row-level security` / resultado vazio | RLS bloqueia a query | Verificar policy ou usar adminClient |
-| `JWT expired` | Token expirado | Refresh automático se middleware correcto |
-| `Invalid API key` | Chave errada | Confirmar ANON vs SERVICE_ROLE |
-| `duplicate key` | INSERT com id já existente | Usar `.upsert()` ou verificar antes |
-| `Not authenticated` em Server Action | `createClient()` sem cookies | Usar `await cookies()` no setup |
+```typescript
+const channel = supabase
+  .channel('room:123')
+  .on('postgres_changes', { event: '*', schema: 'public', table: 'messages' },
+    (payload) => console.log(payload))
+  .subscribe()
 
-## Variáveis de Ambiente
+// Cleanup
+supabase.removeChannel(channel)
+```
 
-| Var | Scope | Propósito |
-|-----|-------|-----------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Public | URL do projecto Supabase |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Chave anon (sujeita a RLS) |
-| `SUPABASE_SERVICE_ROLE_KEY` | **Privada** | Bypass RLS — NUNCA NEXT_PUBLIC_ |
+## Edge Function Cheatsheet
 
-## See Also
+```typescript
+// supabase/functions/my-fn/index.ts
+import { serve } from 'https://deno.land/std/http/server.ts'
+serve(async (req) => {
+  const { name } = await req.json()
+  return new Response(JSON.stringify({ hello: name }), {
+    headers: { 'Content-Type': 'application/json' },
+  })
+})
+```
 
-- [concepts/rls-policies.md](concepts/rls-policies.md)
-- [concepts/client-types.md](concepts/client-types.md)
-- [patterns/debug-rls.md](patterns/debug-rls.md)
+```bash
+supabase functions deploy my-fn
+supabase functions serve my-fn --env-file .env.local
+```
+
+## Debugging Empty Results
+
+```sql
+-- Check if RLS is enabled
+SELECT tablename, rowsecurity FROM pg_tables WHERE schemaname = 'public';
+
+-- Check existing policies
+SELECT * FROM pg_policies WHERE tablename = 'orders';
+
+-- Test as anon user
+SET role anon;
+SELECT * FROM orders;
+RESET role;
+
+-- Test as authenticated user
+SET role authenticated;
+SET request.jwt.claim.sub = 'user-uuid-here';
+SELECT * FROM orders;
+RESET role;
+```

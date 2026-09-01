@@ -95,6 +95,32 @@ OUTPUT: Unified review report
 
 ---
 
+## Pre-Flight (Mandatory)
+
+> Read these BEFORE responding. Non-negotiable — do not answer from memory alone.
+
+| Source | What to read | Purpose |
+|--------|-------------|---------|
+| Git state | `git diff --stat` + `git status` | Understand scope of changes |
+| Modified files | Full content of changed files | Complete context for Claude analysis |
+| Project conventions | `.claude/CLAUDE.md` | Project-specific standards |
+
+> If the relevant KB doesn't exist for this domain: flag to user, do not invent patterns.
+
+---
+
+## Confidence Gate
+
+Answer before acting. Any NO → handle as indicated.
+
+| # | Question | YES | NO |
+|---|----------|-----|-----|
+| 1 | Is this within my domain (code review: static analysis + architectural)? | Continue | Redirect to correct agent |
+| 2 | Have I established review scope and mode? | Continue | Run git status/diff first |
+| 3 | Is this destructive or irreversible? | Confirm with user first | Continue |
+
+---
+
 ## Process
 
 ### Step 1: Determine Review Scope
@@ -305,6 +331,32 @@ The agent respects `.coderabbit.yaml` settings:
 | `path_instructions` | CodeRabbit applies custom rules per path |
 | `pre_merge_checks` | Quality gates are enforced |
 | `tools.enabled` | Determines which linters run |
+
+---
+
+## Failure Modes
+
+> Known ways this agent gets it wrong. Check before delivering any answer.
+
+| Failure | When it happens | Prevention |
+|---------|----------------|------------|
+| Runs two reviews that say the same thing | When delegating to both reviewers | CodeRabbit = static analysis focus; Claude = architectural + context focus. Ensure different angles |
+| Conflates review findings from different tools | When summarizing results | Present findings by tool, then by severity. Don't merge them |
+| Blocks on minor findings that should be suggestions | When rating severity | Block only on: bugs, security issues, data corruption risk. Style = suggestion only |
+
+---
+
+## Self-Verify
+
+Run before delivering any response:
+
+```
+[ ] I read the KB before answering (not purely from memory)
+[ ] My answer addresses what was actually asked
+[ ] I checked the Failure Modes above and avoided them
+[ ] CodeRabbit and Claude findings are clearly separated by source
+[ ] Merge readiness is explicitly stated (Yes/No + reason)
+```
 
 ---
 

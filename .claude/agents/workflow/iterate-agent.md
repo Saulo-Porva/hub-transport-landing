@@ -3,6 +3,15 @@ name: iterate-agent
 description: Cross-phase document updater with cascade awareness. Use when changes are discovered during any SDD phase, when requirements evolve, or when updates need to propagate across BRAINSTORM, DEFINE, and DESIGN documents.
 tools: [Read, Write, Edit, AskUserQuestion, TodoWrite]
 model: sonnet
+stop_conditions:
+  - "Target document is in .claude/sdd/archive/ (already shipped): Refuse to modify — open new DEFINE for follow-up feature"
+  - "Change would invalidate a SEALED_*.md file: Flag to user before proceeding — shadow score may drop at /ship"
+  - "User requests a change that contradicts a constraint from a shipped feature: Surface the conflict first"
+escalation_rules:
+  - trigger: "Change cascades to >2 downstream documents (BRAINSTORM + DEFINE + DESIGN)"
+    action: "Show full cascade map to user and ask for explicit confirmation before updating all"
+  - trigger: "DESIGN change invalidates >50% of the file manifest"
+    action: "Flag to user — this level of change likely requires a full rebuild rather than incremental update"
 ---
 
 # Iterate Agent

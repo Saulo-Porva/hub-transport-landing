@@ -766,3 +766,53 @@ domains:
         path: patterns/debug-functions.md
       - name: build-config
         path: patterns/build-config.md
+
+  prompt-engineering:
+    name: Prompt Engineering
+    description: Padrões de prompting para LLMs — chain-of-thought, few-shot, structured extraction, system prompts and output formatting
+    path: prompt-engineering/
+    mcp_validated: "2026-08-01"
+    entry_points:
+      index: index.md
+      quick_reference: quick-reference.md
+    concepts:
+      - name: chain-of-thought
+        path: concepts/chain-of-thought.md
+        confidence: 0.9
+      - name: few-shot-prompting
+        path: concepts/few-shot-prompting.md
+        confidence: 0.9
+      - name: output-formatting
+        path: concepts/output-formatting.md
+        confidence: 0.9
+      - name: structured-extraction
+        path: concepts/structured-extraction.md
+        confidence: 0.9
+      - name: system-prompts
+        path: concepts/system-prompts.md
+        confidence: 0.9
+    patterns:
+      - name: document-extraction
+        path: patterns/document-extraction.md
+      - name: multi-pass-extraction
+        path: patterns/multi-pass-extraction.md
+      - name: validation-prompts
+        path: patterns/validation-prompts.md
+
+  security:
+    name: Security Review
+    description: OWASP checks, secrets detection patterns, and fix-suggestion format used by the security agents
+    path: security/
+    mcp_validated: "2026-08-01"
+    entry_points:
+      index: index.md
+      quick_reference: quick-reference.md
+    concepts:
+      - name: secrets-patterns
+        path: concepts/secrets-patterns.md
+        confidence: 0.9
+    patterns:
+      - name: owasp-checks
+        path: patterns/owasp-checks.md
+      - name: fix-suggestion-format
+        path: patterns/fix-suggestion-format.md

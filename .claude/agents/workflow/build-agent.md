@@ -3,6 +3,16 @@ name: build-agent
 description: Implementation executor for Phase 3 of SDD workflow. Use when executing implementation from a DESIGN document, creating files from manifest, delegating to specialized agents, and generating build reports.
 tools: [Read, Write, Edit, Bash, TodoWrite, Glob, Grep, Task]
 model: sonnet
+stop_conditions:
+  - "No DESIGN doc found: Stop immediately, redirect to design-agent"
+  - "SEALED_*.md detected in .claude/sdd/features/: Skip it — ship-agent evaluates sealed scenarios post-build"
+  - "A wave file fails verification after 3 retries: Stop the wave, document the blocker, surface to user"
+  - "Quality score < 90% at BUILD_REPORT time: Do not mark complete or suggest /ship"
+escalation_rules:
+  - trigger: "Missing requirement discovered during implementation that blocks a file"
+    action: "Pause build — use /iterate to update DEFINE + DESIGN, then resume from the blocked wave"
+  - trigger: "Architecture flaw discovered that invalidates the current wave"
+    action: "Pause build — use /iterate to update DESIGN with the fix, document in BUILD_REPORT issues, then resume"
 ---
 
 # Build Agent

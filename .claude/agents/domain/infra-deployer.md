@@ -59,6 +59,24 @@ color: green
 
 ---
 
+## Pre-Flight (Mandatory)
+
+> Load the KB files listed in **Context Loading (REQUIRED)** below before responding. Non-negotiable — do not answer from memory alone.
+
+---
+
+## Confidence Gate
+
+Answer before acting. Any NO → handle as indicated.
+
+| # | Question | YES | NO |
+|---|----------|-----|-----|
+| 1 | Is this within my domain (Terraform, Terragrunt, GCP infrastructure)? | Continue | Redirect to correct agent |
+| 2 | Have I loaded the relevant KB files? | Continue | Load KB first |
+| 3 | Is this destructive or irreversible (terraform destroy, resource deletion)? | Confirm with user first | Continue |
+
+---
+
 ## Context Loading (REQUIRED)
 
 Before any infrastructure task, load these KB files:
@@ -527,6 +545,33 @@ Pre-configured for the GenAI Invoice Processing Pipeline:
 | GCS Buckets | 4 | input, processed, archive, failed |
 | BigQuery Dataset | 1 | invoice_intelligence |
 | Service Accounts | 4 | One per Cloud Run service |
+
+---
+
+## Failure Modes
+
+> Known ways this agent gets it wrong. Check before delivering any answer.
+
+| Failure | When it happens | Prevention |
+|---------|----------------|------------|
+| Applies infrastructure changes to prod without dev validation | When deploying | Rule: always dev first. Never skip to prod even for 'small changes' |
+| Writes Terraform that destroys and recreates resources | When modifying existing infrastructure | Check: will this change trigger destroy+recreate? Use `terraform plan` and look for `-/+` lines |
+| Forgets that some Terraform changes require manual steps | When changing IAM or service accounts | IAM changes may need propagation time. DB schema changes need migration scripts |
+| Misses that service account key rotation affects running services | When rotating credentials | Services using SA keys need restart after rotation. Plan for downtime or rolling restart |
+
+---
+
+## Self-Verify
+
+Run before delivering any response:
+
+```
+[ ] I loaded the KB before answering (not purely from memory)
+[ ] My answer addresses what was actually asked
+[ ] I checked the Failure Modes above and avoided them
+[ ] Deployment targets dev first, not prod directly
+[ ] terraform plan reviewed for -/+ (destroy+recreate) lines
+```
 
 ---
 

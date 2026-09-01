@@ -1,761 +1,330 @@
-# AgentSpec
+# SDD — Spec-Driven Development
 
-> **The AI-Native Specification Framework for Claude Code**
->
-> *"From Specification to Specialized Execution"*
+> Build what you spec. Ship what you build. Learn from what you shipped.
 
 ---
 
-## Vision
+## O que é SDD?
 
-AgentSpec was created for the **agentic-first era** of software development. As AI models evolve to handle increasingly complex tasks autonomously, the bottleneck shifts from "can the AI write code?" to "does the AI understand what to build and who should build it?"
+Implementação sem especificação é a principal causa de retrabalho em projetos de software. Quando o desenvolvedor começa a codar sem um contrato claro — requisitos validados, arquitetura decidida, critérios de aceitação mensuráveis — a tendência é descobrir os problemas no meio da build, ou pior, depois do ship. O custo de corrigir uma decisão arquitetural na fase 3 é 10× o custo de corrigi-la na fase 1.
 
-Traditional specification frameworks answer **WHAT** to build. AgentSpec answers **WHAT**, **HOW**, and **WHO**.
+SDD (Spec-Driven Development) resolve isso com 5 fases sequenciais, cada uma produzindo um artefato versionado em git. Cada artefato serve como contrato entre fases: o DEFINE é o contrato do problema, o DESIGN é o contrato da solução, o BUILD_REPORT é o contrato de verificação. Nenhuma fase começa sem o contrato da fase anterior aprovado.
 
-```text
-Traditional Spec:                     AgentSpec:
-─────────────────                     ─────────
-
-"Build a user API"                    "Build a user API"
-       │                                     │
-       ▼                                     ▼
-  [AI generates code]                 [Define] → Location, KB Domains, IaC
-                                             │
-                                             ▼
-                                      [Design] → Agent Matching
-                                             │
-                                      ┌──────┼──────┐
-                                      ▼      ▼      ▼
-                                 @function  @test   @infra
-                                 -developer -gen    -deployer
-                                      │      │      │
-                                      └──────┴──────┘
-                                             │
-                                             ▼
-                                      [Build Report]
-                                      + Agent Attribution
-```
+O diferencial do SDD deste template são três mecanismos ausentes em outros workflows: **SEALED envelope testing** (holdout set que garante que a implementação não foi "ajustada" para passar nos testes visíveis), **quality gate numérico** (score ≥ 90% é pré-requisito para ship), e **security gate integrado** (4 agentes de segurança bloqueiam o ship se encontrarem CRITICAL findings).
 
 ---
 
-## Two Mental Models
+## As 5 Fases
 
-AgentSpec is part of a larger ecosystem designed to match task complexity with appropriate process rigor:
-
-### 1. Dev Loop (Level 2 Agentic Development)
-
-**Location:** `.claude/dev/`
-
-**Philosophy:** "Structured iteration without ceremony"
-
-**Use When:**
-- Quick prototypes
-- Single-feature tasks
-- KB building
-- Utility development
-
-**Flow:**
-```text
-/dev "task description" → PROMPT.md → Execute → Verify → Done
-```
-
-**Characteristics:**
-- Lightweight PROMPT files
-- Session recovery via PROGRESS files
-- Circuit breakers for safety
-- No multi-phase ceremony
-
-### 2. AgentSpec (Level 3 Spec-Driven Development)
-
-**Location:** `.claude/sdd/`
-
-**Philosophy:** "Comprehensive specification with agent orchestration"
-
-**Use When:**
-- Complex multi-component features
-- Features requiring traceability
-- Team coordination needed
-- Infrastructure + code delivery
-
-**Flow:**
-```text
-/brainstorm → /define → /design → /build → /ship
-     │            │          │         │        │
-     ▼            ▼          ▼         ▼        ▼
- Explore      Validate    Agent    Delegated  Archived
-              Requirements Matching Execution  + Lessons
-```
-
-**Characteristics:**
-- 5 structured phases
-- Technical Context gathering
-- Agent Matching in Design
-- Agent Delegation in Build
-- KB-grounded patterns
-
-### Choosing Between Them
-
-| Dimension | Dev Loop | AgentSpec |
-|-----------|----------|-----------|
-| Phases | 1 (execute) | 5 (brainstorm→ship) |
-| Overhead | Low | Medium |
-| Traceability | Logs only | Full artifacts |
-| Agent Orchestration | No | Yes |
-| Best For | Quick tasks | Complex features |
-
-### Decision Flowchart
-
-```text
-┌─────────────────────────────────────────────────────────────────────┐
-│                    WHICH WORKFLOW SHOULD I USE?                      │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  Start: "I need to build something"                                  │
-│         │                                                            │
-│         ▼                                                            │
-│  ┌─────────────────────────────┐                                     │
-│  │ Is it a quick task?         │                                     │
-│  │ (< 3 files, clear scope)    │                                     │
-│  └─────────────┬───────────────┘                                     │
-│           YES  │  NO                                                 │
-│         ┌──────┴──────┐                                              │
-│         ▼             ▼                                              │
-│    Dev Loop    ┌─────────────────────────────┐                       │
-│    /dev        │ Does it need traceability?  │                       │
-│                │ (audit, team handoff, PRD)  │                       │
-│                └─────────────┬───────────────┘                       │
-│                         YES  │  NO                                   │
-│                       ┌──────┴──────┐                                │
-│                       ▼             ▼                                │
-│                  AgentSpec     Dev Loop                              │
-│                  /define       /dev                                  │
-│                       │                                              │
-│                       ▼                                              │
-│                ┌─────────────────────────────┐                       │
-│                │ Idea clear or vague?        │                       │
-│                └─────────────┬───────────────┘                       │
-│                      CLEAR   │  VAGUE                                │
-│                       ┌──────┴──────┐                                │
-│                       ▼             ▼                                │
-│                   /define      /brainstorm                           │
-│                                     │                                │
-│                                     ▼                                │
-│                                 /define                              │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
-```
+| Fase | Comando | Input | Output | Quando usar | Agente |
+|------|---------|-------|--------|-------------|--------|
+| 0 | `/brainstorm` | Ideia vaga | `BRAINSTORM_{FEATURE}.md` | Ideia ainda exploratória | brainstorm-agent |
+| 1 | `/define` | BRAINSTORM ou notas | `DEFINE_{FEATURE}.md` + `SEALED_{FEATURE}.md` | Requisitos prontos para captura | define-agent |
+| 2 | `/design` | DEFINE aprovado | `DESIGN_{FEATURE}.md` | Feature complexa (ver critérios) | design-agent |
+| 3 | `/build` | DESIGN aprovado | Código + `BUILD_REPORT_{FEATURE}.md` | Implementação | build-agent |
+| 4 | `/ship` | Build completo | `archive/{FEATURE}/SHIPPED_{DATE}.md` | Pronto para arquivar | ship-agent |
 
 ---
 
-## Architecture
+### Fase 0: Brainstorm (`/brainstorm`)
 
-### The 5-Phase Pipeline
+**O que produz:** Documento de exploração com abordagens avaliadas, trade-offs, e direção recomendada.
 
-```text
-┌─────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                    AGENTSPEC PIPELINE                                            │
-├─────────────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                                  │
-│  ┌──────────┐    ┌──────────┐    ┌──────────────┐    ┌───────────────┐    ┌──────────┐         │
-│  │ Phase 0  │───▶│ Phase 1  │───▶│   Phase 2    │───▶│    Phase 3    │───▶│ Phase 4  │         │
-│  │BRAINSTORM│    │  DEFINE  │    │    DESIGN    │    │     BUILD     │    │   SHIP   │         │
-│  │(Optional)│    │          │    │              │    │               │    │          │         │
-│  └────┬─────┘    └────┬─────┘    └──────┬───────┘    └───────┬───────┘    └────┬─────┘         │
-│       │               │                 │                    │                 │               │
-│       ▼               ▼                 ▼                    ▼                 ▼               │
-│   Questions       Technical         Agent              Delegation         Archive             │
-│   + Approaches    Context           Matching           + Execution        + Lessons           │
-│   + YAGNI         + Clarity         + KB Lookup        + Attribution                          │
-│                   Score 12/15                          + Verification                         │
-│                                                                                                │
-│  ◀───────────────────────────────────────────────────────────────────────────────────────────▶ │
-│                                    /iterate (any phase)                                        │
-│                                                                                                │
-└─────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+**Critério de entrada:** Qualquer ideia — pode ser vaga. Quanto mais incerta, mais útil o brainstorm.
 
-### Data Flow
+**Critério de saída:** Abordagem escolhida com justificativa. Usuário aprova a direção.
 
-```text
-                           ┌─────────────────────────────────────┐
-                           │         .claude/kb/                 │
-                           │  ┌─────┬─────┬─────┬─────┬────┐    │
-                           │  │pydnt│ gcp │gemin│terra│... │    │
-                           │  └──┬──┴──┬──┴──┬──┴──┬──┴────┘    │
-                           └─────┼─────┼─────┼─────┼────────────┘
-                                 │     │     │     │
-                                 ▼     ▼     ▼     ▼
-┌──────────────┐          ┌──────────────────────────────┐
-│   DEFINE     │─────────▶│         KB Domains           │
-│              │          │    (from Technical Context)  │
-│ • Location   │          └──────────────┬───────────────┘
-│ • KB Domains │                         │
-│ • IaC Impact │                         ▼
-└──────────────┘          ┌──────────────────────────────┐
-                          │          DESIGN              │
-                          │                              │
-                          │  Agent Matching:             │
-                          │  Glob(.claude/agents/**)     │
-                          │         │                    │
-                          │         ▼                    │
-                          │  ┌────────────────────┐      │
-                          │  │ Capability Index   │      │
-                          │  │ • Keywords         │      │
-                          │  │ • Roles            │      │
-                          │  │ • Patterns         │      │
-                          │  └─────────┬──────────┘      │
-                          │            │                 │
-                          │            ▼                 │
-                          │  File Manifest + Agent       │
-                          └──────────────┬───────────────┘
-                                         │
-                                         ▼
-                          ┌──────────────────────────────┐
-                          │          BUILD               │
-                          │                              │
-                          │  For each file:              │
-                          │  ┌─────────────────────┐     │
-                          │  │ Has @agent-name?    │     │
-                          │  └──────────┬──────────┘     │
-                          │       YES   │   NO           │
-                          │         ┌───┴───┐            │
-                          │         ▼       ▼            │
-                          │    Task()    Direct          │
-                          │    Invoke    Build           │
-                          │         │       │            │
-                          │         └───┬───┘            │
-                          │             ▼                │
-                          │      BUILD_REPORT            │
-                          │    + Agent Attribution       │
-                          └──────────────────────────────┘
-```
+**Artefato:** `.claude/sdd/features/BRAINSTORM_{FEATURE}.md`
+
+**Quando pular:** Feature já bem definida — vá direto para `/define`.
+
+**stop_condition:** Se já existem ≥ 3 features ativas, o agente recusa abrir nova até que uma seja shippada.
 
 ---
 
-## Key Innovations
+### Fase 1: Define (`/define`)
 
-### 1. Technical Context Gathering (Define Phase)
+**O que produz:** DEFINE doc com problema, user story, critérios de aceitação, out-of-scope, e contratos de dados. Também cria o arquivo SEALED com cenários de teste que o build-agent nunca verá.
 
-Traditional specs assume the AI knows where to put files. AgentSpec explicitly asks:
+**Critério de entrada:** Ideia suficientemente clara para ter critérios de aceitação.
 
-| Question | Why It Matters |
-|----------|----------------|
-| **Deployment Location** | Prevents misplaced files (src/ vs functions/ vs deploy/) |
-| **KB Domains** | Design phase pulls correct patterns from curated knowledge |
-| **IaC Impact** | Catches infrastructure needs early, triggers specialized agents |
+**Critério de saída:** Clarity Score ≥ 12/15 em todos os 5 elementos (problema, usuários, objetivos, sucesso, escopo).
 
-```markdown
-## Technical Context
+**Artefatos:** `.claude/sdd/features/DEFINE_{FEATURE}.md` + `.claude/sdd/features/SEALED_{FEATURE}.md`
 
-| Aspect | Value | Notes |
-|--------|-------|-------|
-| **Deployment Location** | functions/ | Cloud Run serverless |
-| **KB Domains** | pydantic, gcp, gemini | LLM extraction patterns |
-| **IaC Impact** | New resources | Terraform for Cloud Run + Pub/Sub |
-```
-
-### 2. Agent Matching (Design Phase)
-
-Design dynamically discovers available agents and matches them to tasks:
-
-```text
-Step 1: Discover        Step 2: Index           Step 3: Match
-──────────────────      ─────────────           ─────────────
-
-Glob(.claude/           agents:                 main.py → @function-developer
-  agents/**/*.md)         function-developer:   schema.py → @extraction-specialist
-       │                    keywords: [cloud    config.yaml → @infra-deployer
-       ▼                      run, serverless]  test_main.py → @test-generator
-40+ agent files              role: "Cloud Run
-                              developer"
-```
-
-**Framework-Agnostic:** New agents added to `.claude/agents/` automatically become available for matching - zero configuration.
-
-### 3. Agent Delegation (Build Phase)
-
-Build invokes matched specialists via the Task tool:
-
-```text
-┌─────────────────────────────────────────────────────────────────┐
-│                    AGENT DELEGATION                              │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  File Manifest:                                                  │
-│  ┌────────────────────────────────────────────────────────┐     │
-│  │ main.py    │ @function-developer  │ Cloud Run pattern │     │
-│  │ schema.py  │ @extraction-specialist│ Pydantic + LLM   │     │
-│  │ test.py    │ @test-generator      │ pytest fixtures   │     │
-│  └────────────────────────────────────────────────────────┘     │
-│                          │                                       │
-│                          ▼                                       │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                   PARALLEL EXECUTION                      │   │
-│  │                                                           │   │
-│  │  Task(subagent: "function-developer", prompt: "...")     │   │
-│  │  Task(subagent: "extraction-specialist", prompt: "...")  │   │
-│  │  Task(subagent: "test-generator", prompt: "...")         │   │
-│  │                                                           │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                          │                                       │
-│                          ▼                                       │
-│  BUILD_REPORT:                                                   │
-│  ┌────────────────────────────────────────────────────────┐     │
-│  │ File         │ Agent                  │ Status │ Notes │     │
-│  │ main.py      │ @function-developer    │   ✅   │ ...   │     │
-│  │ schema.py    │ @extraction-specialist │   ✅   │ ...   │     │
-│  │ test.py      │ @test-generator        │   ✅   │ ...   │     │
-│  └────────────────────────────────────────────────────────┘     │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-```
+**Qualidade:** Use `/grill-me` (Claude adversarial) e `/judge` (GPT-4o externo) antes de avançar.
 
 ---
 
-## Competitive Landscape
+### Fase 2: Design (`/design`)
 
-### Framework Comparison
+**O que produz:** Documento técnico com fluxo de arquitetura, responsabilidades por componente, file manifest com waves, estratégia de erro, e plano de rollback.
 
-| Dimension | Spec-Kit (GitHub) | OpenSpec (Fission-AI) | AgentSpec (Claude Code) |
-|-----------|-------------------|----------------------|-------------------------|
-| **Philosophy** | "Specs as executable" | "Fluid not rigid" | "Who builds, not just what" |
-| **Backing** | GitHub (enterprise) | Indie/startup | Claude Code ecosystem |
-| **Phases** | 5 (Constitution→Implement) | 4 (new→apply→archive) | 5 (Brainstorm→Ship) |
-| **Tool Support** | 16+ agents | 20+ tools | Claude Code native |
-| **Agent Awareness** | ❌ None | ❌ None | ✅ Full orchestration |
-| **KB Grounding** | ❌ None | ❌ None | ✅ 8+ domains |
-| **Agent Matching** | ❌ None | ❌ None | ✅ Dynamic discovery |
-| **Agent Delegation** | ❌ None | ❌ None | ✅ Task tool invocation |
+**Critério de entrada:** DEFINE com status "Approved". DESIGN é obrigatório se qualquer condição da seção abaixo for verdadeira.
 
-### Positioning
+**Critério de saída:** File manifest completo com Wave assignments. Arquitetura revisada por design-agent.
 
-```text
-                    COMPLEXITY
-                         │
-              ┌──────────┼──────────┐
-              │          │          │
-              │    AgentSpec        │
-         HIGH │    (orchestration)  │
-              │          ▲          │
-              │          │          │
-              │    Spec-Kit         │
-       MEDIUM │    (governance)     │
-              │          ▲          │
-              │          │          │
-              │    OpenSpec         │
-          LOW │    (pragmatic)      │
-              │                     │
-              └─────────────────────┘
-                    TOOL-AGNOSTIC ────────► SPECIALIZED
-                         │
-                    OpenSpec              AgentSpec
-                    Spec-Kit
-```
-
-### When to Use Each
-
-| Framework | Sweet Spot |
-|-----------|------------|
-| **Spec-Kit** | Enterprise teams needing governance, audit trails, compliance |
-| **OpenSpec** | Agile devs wanting simple "spec→code" without ceremony |
-| **AgentSpec** | Teams with curated agents/KBs wanting orchestrated specialized execution |
+**Artefato:** `.claude/sdd/features/DESIGN_{FEATURE}.md`
 
 ---
 
-## The Agent Ecosystem
+### Fase 3: Build (`/build`)
 
-AgentSpec leverages a rich ecosystem of 40+ specialized agents:
+**O que produz:** Código conforme o file manifest do DESIGN, executado por waves, com verificação após cada arquivo. Ao final, BUILD_REPORT com score de qualidade.
 
-### By Category
+**Critério de entrada:** DESIGN aprovado. build-agent nunca lê arquivos SEALED.
 
-| Category | Agents | Specialization |
-|----------|--------|----------------|
-| **Workflow** | brainstorm, define, design, build, ship, iterate | SDD phases |
-| **Code Quality** | code-reviewer, code-cleaner, test-generator, dual-reviewer | Quality assurance |
-| **Data Engineering** | spark-specialist, lakeflow-architect, medallion-architect | Data pipelines |
-| **AI/ML** | llm-specialist, extraction-specialist, genai-architect | LLM systems |
-| **Infrastructure** | ci-cd-specialist, infra-deployer, aws-lambda-architect | DevOps |
-| **Domain** | function-developer, pipeline-architect, dataops-builder | Project-specific |
+**Critério de saída:** Quality Score ≥ 90%. Todos os arquivos do manifest criados e verificados.
 
-### Agent Structure
-
-Each agent follows a standard structure for capability extraction:
-
-```markdown
-# {Agent Name}
-
-> {One-line description} ← Used for matching
-
-## Identity
-
-| Attribute | Value |
-|-----------|-------|
-| **Role** | {Role name} ← Primary capability keyword
-| **Model** | {opus/sonnet/haiku}
-| ...
-
-## Core Capabilities ← Keywords for matching
-
-| Capability | Description |
-|------------|-------------|
-| **{Verb}** | {What it does}
-
-## Process ← How it works
-
-## Tools Available ← What it can use
-```
+**Artefatos:** Código + `.claude/sdd/reports/BUILD_REPORT_{FEATURE}.md`
 
 ---
 
-## Knowledge Base Integration
+### Fase 4: Ship (`/ship`)
 
-AgentSpec integrates deeply with the curated Knowledge Base:
+**O que produz:** Arquivo SHIPPED com lições aprendidas, arquivamento de todos os docs, shadow score dos cenários SEALED, resultado do security gate.
 
-### Available Domains
+**Critério de entrada:** Build completo com quality score ≥ 90%.
 
-| Domain | Purpose | Entry Point |
-|--------|---------|-------------|
-| **pydantic** | Data validation, LLM output parsing | `.claude/kb/pydantic/` |
-| **gcp** | Cloud Run, Pub/Sub, GCS, BigQuery | `.claude/kb/gcp/` |
-| **gemini** | Document extraction, vision tasks | `.claude/kb/gemini/` |
-| **langfuse** | LLM observability | `.claude/kb/langfuse/` |
-| **terraform** | Infrastructure as Code | `.claude/kb/terraform/` |
-| **terragrunt** | Multi-environment orchestration | `.claude/kb/terragrunt/` |
-| **crewai** | Multi-agent orchestration | `.claude/kb/crewai/` |
-| **openrouter** | LLM fallback provider | `.claude/kb/openrouter/` |
+**Critério de saída:** Shadow score ≥ 90%. Security gate PASSED. Todos os artefatos no archive.
 
-### KB Flow
-
-```text
-DEFINE                    DESIGN                    BUILD
-──────                    ──────                    ─────
-
-KB Domains:          →    Read patterns:       →    Agents consult:
-• pydantic                • extraction-schema       • KB/pydantic/patterns/
-• gemini                  • invoice-extraction      • KB/gemini/patterns/
-• gcp                     • cloud-run-module        • KB/gcp/patterns/
-```
+**Artefato:** `.claude/sdd/archive/{FEATURE}/SHIPPED_{DATE}.md`
 
 ---
 
-## Artifacts
+## Quando DESIGN é Obrigatório
 
-### Artifact Lifecycle
+DESIGN pode ser pulado em features simples (DEFINE aprovado → BUILD direto). Mas é obrigatório se **qualquer** condição abaixo for verdadeira:
 
-```text
-.claude/sdd/
-├── features/                          # Active work
-│   ├── BRAINSTORM_{FEATURE}.md       # Phase 0 output
-│   ├── DEFINE_{FEATURE}.md           # Phase 1 output
-│   └── DESIGN_{FEATURE}.md           # Phase 2 output
-│
-├── reports/                           # Build outputs
-│   └── BUILD_REPORT_{FEATURE}.md     # Phase 3 output
-│
-└── archive/                           # Completed work
-    └── {FEATURE}/
-        ├── BRAINSTORM_{FEATURE}.md   # (if used)
-        ├── DEFINE_{FEATURE}.md
-        ├── DESIGN_{FEATURE}.md
-        ├── BUILD_REPORT_{FEATURE}.md
-        └── SHIPPED_{DATE}.md         # Phase 4 output
-```
+- [ ] Feature toca **mais de um serviço** (ex: Cloud Run + Firestore + BigQuery)
+- [ ] Há **nova dependência externa** (nova API, novo SDK, nova conta de serviço)
+- [ ] Envolve **mudança de schema** em dados persistentes (BigQuery, Firestore, Supabase)
+- [ ] Introduz **padrão arquitetural novo** no projeto (ex: primeiro agente LLM, primeiro stream)
+- [ ] Tem **implicação de segurança** (nova SA, novo secret, mudança de IAM, NEXT_PUBLIC_ secret)
+- [ ] Estimativa de implementação **> 1 dia** de trabalho
 
-### Key Artifact Sections
-
-#### DEFINE (Technical Context)
-
-```markdown
-## Technical Context
-
-| Aspect | Value | Notes |
-|--------|-------|-------|
-| **Deployment Location** | functions/ | Cloud Run serverless |
-| **KB Domains** | pydantic, gcp, gemini | Which patterns to consult |
-| **IaC Impact** | New resources | Terraform changes needed |
-```
-
-#### DESIGN (Agent Assignment)
-
-```markdown
-## File Manifest
-
-| # | File | Action | Purpose | Agent | Dependencies |
-|---|------|--------|---------|-------|--------------|
-| 1 | main.py | Create | Handler | @function-developer | None |
-| 2 | schema.py | Create | Pydantic | @extraction-specialist | None |
-| 3 | test.py | Create | Tests | @test-generator | 1, 2 |
-
-## Agent Assignment Rationale
-
-| Agent | Files | Why This Agent |
-|-------|-------|----------------|
-| @function-developer | 1 | Cloud Run patterns from KB |
-| @extraction-specialist | 2 | Pydantic + LLM output validation |
-| @test-generator | 3 | pytest fixtures specialist |
-```
-
-#### BUILD_REPORT (Attribution)
-
-```markdown
-## Agent Contributions
-
-| Agent | Files | Specialization Applied |
-|-------|-------|------------------------|
-| @function-developer | 2 | Cloud Run, Pub/Sub handlers |
-| @extraction-specialist | 2 | Pydantic models, LLM output |
-| @test-generator | 2 | pytest, fixtures |
-| (direct) | 1 | DESIGN patterns only |
-```
+Se nenhuma condição for verdadeira: documente no BUILD_REPORT `"DESIGN skipped: [razão]"`.
 
 ---
 
-## Commands
+## SEALED Envelope Testing
 
-| Command | Phase | Purpose | Model |
-|---------|-------|---------|-------|
-| `/brainstorm` | 0 | Explore ideas through dialogue | Opus |
-| `/define` | 1 | Capture and validate requirements | Opus |
-| `/design` | 2 | Create architecture + agent matching | Opus |
-| `/build` | 3 | Execute with agent delegation | Sonnet |
-| `/ship` | 4 | Archive with lessons learned | Haiku |
-| `/iterate` | Any | Update documents mid-stream | Sonnet |
+O problema clássico de testes é que o desenvolvedor — consciente ou não — ajusta a implementação para passar nos testes visíveis. O resultado é um sistema que passa nos testes mas falha nos cenários reais.
+
+**Como funciona:**
+
+1. **define-agent** escreve `SEALED_{FEATURE}.md` como último passo do `/define`. O arquivo contém cenários Given/When/Then detalhados para cada critério de aceitação.
+2. **build-agent** executa a build **sem ler** o arquivo SEALED. Regra: se vir um arquivo SEALED, pular.
+3. **ship-agent** avalia os cenários SEALED após a build completa e calcula o shadow score.
+
+**Formula do shadow score:**
+
+```
+shadow_score = (HIGH_passed × 0.60) + (MEDIUM_passed × 0.30) + (LOW_passed × 0.10)
+```
+
+**Mínimo para ship: 90%**
+
+Se shadow_score < 90%: ship bloqueado → abrir `/iterate` para endereçar os gaps.
 
 ---
 
-## Quick Start
+## Quality Gate
 
-### Complex Feature (Full Pipeline)
+Antes de sugerir `/ship`, o build-agent calcula o quality score:
+
+```
+quality_score = (tests_pass_rate × 0.40) + (acceptance_pass_rate × 0.40) + (no_blockers × 0.20)
+```
+
+| Componente | Peso | Como medir |
+|-----------|------|-----------|
+| Unit/integration tests pass rate | 40% | Output do pytest / jest |
+| Acceptance tests pass rate | 40% | AT Verification table no BUILD_REPORT |
+| Zero blocking issues | 20% | Issues Encountered section |
+
+**Se quality_score < 90%:** build-agent NÃO marca o build como completo nem sugere `/ship`. O status do BUILD_REPORT fica "⚠️ Blocked — quality gate not met".
+
+---
+
+## Security Gate
+
+Integrado ao `/ship` como **Step 2b** — executado antes da avaliação do shadow score.
+
+**Fluxo:**
+
+```
+ship-agent → security-orchestrator
+                ├── secrets-scanner    (API keys, JWT, passwords, GCP SA JSON)
+                ├── owasp-checker      (A01/A02/A03/A05/A09 por stack)
+                └── infra-auditor      (IAM, RLS, Secret Manager, Terraform)
+             ↓
+          BLOCKED ou PASSED
+```
+
+**Decisão:**
+- `total_critical ≥ 1` → **BLOCKED** — ship para imediatamente
+- `total_high ≥ 3` → **BLOCKED**
+- Demais → **PASSED** (com findings HIGH/LOW registrados no SECURITY_REPORT)
+
+**Override:** Possível com justificativa não-vazia. Registrado no SECURITY_REPORT como "Accepted Risk".
+
+**SECURITY_REPORT:** `.claude/sdd/reports/SECURITY_REPORT_{FEATURE}.md` — copiado para o archive no ship.
+
+---
+
+## `/judge` — Cross-Model Review
+
+`/judge` envia o documento DEFINE, DESIGN ou BUILD_REPORT para **GPT-4o via OpenRouter** e recebe um veredito JSON estruturado. É uma revisão cega por um modelo diferente — sem acesso ao histórico do Claude.
+
+**Diferença de `/grill-me`:**
+
+| Comando | Modelo | Modo | O que avalia |
+|---------|--------|------|-------------|
+| `/grill-me` | Claude (Opus) | Diálogo adversarial | Qualidade — aprofunda o spec |
+| `/judge` | GPT-4o (OpenRouter) | Revisão estruturada | Completude — todos os campos presentes |
+
+**Quando usar:** `/grill-me` antes de avançar de fase (melhora qualidade). `/judge` para confirmar que não faltou nada (checa completude). Usados em sequência são blind peer review real.
+
+**Requer:** `OPENROUTER_API_KEY` no environment.
 
 ```bash
-# Phase 0: Explore the idea (optional)
-/brainstorm "Build an invoice extraction system"
-
-# Phase 1: Define requirements with Technical Context
-/define .claude/sdd/features/BRAINSTORM_INVOICE_EXTRACTION.md
-
-# Phase 2: Design with Agent Matching
-/design .claude/sdd/features/DEFINE_INVOICE_EXTRACTION.md
-
-# Phase 3: Build with Agent Delegation
-/build .claude/sdd/features/DESIGN_INVOICE_EXTRACTION.md
-
-# Phase 4: Archive
-/ship .claude/sdd/features/DEFINE_INVOICE_EXTRACTION.md
-```
-
-### Clear Requirements (Skip Brainstorm)
-
-```bash
-# Phase 1: Define directly
-/define "Build a REST API endpoint for user authentication"
-
-# Continue: /design → /build → /ship
-```
-
-### Mid-Stream Changes
-
-```bash
-# Update any phase
-/iterate DEFINE_AUTH.md "Add OAuth support requirement"
-/iterate DESIGN_AUTH.md "Change to use JWT tokens"
+python scripts/judge.py .claude/sdd/features/DEFINE_FEATURE.md
 ```
 
 ---
 
-## Why AgentSpec?
+## Wave Scheduling no Build
 
-### The Core Insight
+O file manifest do DESIGN agrupa arquivos em waves com base em dependências. Arquivos dentro do mesmo wave não se dependem e podem ser criados em paralelo pelo build-agent.
 
-> **"The AI doesn't just need to know WHAT to build - it needs to know WHO should build each part."**
+| Wave | Conteúdo | Regra |
+|------|---------|-------|
+| 1 | Configs, schemas, constantes | Zero dependências |
+| 2 | Lógica core, handlers | Depende de Wave 1 |
+| 3 | Integrações, composição | Depende de Wave 2 |
+| 4 | Testes | Depende de todas as waves de implementação |
 
-Traditional specs produce a task list. AgentSpec produces a **team assignment**.
-
-### Unique Value Proposition
-
-1. **Agent Orchestration** - No other framework assigns specialists to tasks
-2. **KB Grounding** - Curated patterns ensure consistency
-3. **Technical Context** - Explicit questions prevent misalignment
-4. **Framework-Agnostic Discovery** - New agents auto-available
-5. **Attribution** - Clear ownership of each deliverable
-
-### Trade-offs (Honest Assessment)
-
-| Pro | Con |
-|-----|-----|
-| Deep Claude Code integration | Vendor lock-in |
-| Sophisticated orchestration | Higher complexity |
-| KB-grounded quality | Requires curated KBs |
-| Agent specialization | Requires agent ecosystem |
+**Regra de falha:** Se um arquivo falha na verificação após 3 tentativas, a wave para. O build-agent documenta o bloqueio no BUILD_REPORT e surfaceia ao usuário — não avança para a próxima wave.
 
 ---
 
-## Anti-Patterns
+## Stop Conditions & Escalation Rules
 
-Avoid these common mistakes when using AgentSpec:
+Cada workflow agent tem `stop_conditions` e `escalation_rules` no frontmatter YAML. São regras de governança que definem quando o agente deve parar de executar ou escalonar para o usuário.
 
-| Anti-Pattern | Problem | Solution |
-| ------------ | ------- | -------- |
-| **Skipping Define** | "I know what to build" | Even clear requirements benefit from Technical Context capture |
-| **Over-Brainstorming** | 10 questions, 5 approaches | Max 5 questions, 3 approaches. Apply YAGNI ruthlessly |
-| **Generic Agent Assignment** | All files → `(general)` | Invest in agent ecosystem; specialists produce better code |
-| **Empty KB Domains** | "We don't have patterns" | Use `/create-kb` to build domain knowledge before Design |
-| **Monolithic Design** | One 1000-line file | Break into files that map to single agents |
-| **Skipping /iterate** | "I'll just edit the code" | Changes should flow through specs for traceability |
-| **Ignoring Attribution** | Not checking BUILD_REPORT | Agent attribution reveals quality patterns and gaps |
+**Por que existem:** Sem elas, o agente tende a continuar avançando mesmo quando encontra problemas — escrevendo docs incompletos, avançando de fase sem aprovação, ou executando waves com bloqueadores não resolvidos.
 
-### The "Just Code It" Trap
-
-```text
-❌ WRONG                              ✅ RIGHT
-───────                              ───────
-
-"I'll just write the code"    vs    "Let me /define first"
-        │                                   │
-        ▼                                   ▼
-   Code works but:                    Spec captures:
-   • No KB patterns                   • Location decision
-   • Random file location             • KB domains to use
-   • No agent expertise               • Agent assignments
-   • No traceability                  • Full attribution
-        │                                   │
-        ▼                                   ▼
-   Future you: "Why is               Future you: "Oh, @extraction-
-   this code here?"                  specialist built this with
-                                     Pydantic patterns from KB"
-```
-
----
-
-## Extending AgentSpec
-
-### Adding a New Agent
-
-1. **Create the agent file:**
-
-```bash
-# Location: .claude/agents/{category}/{agent-name}.md
-touch .claude/agents/data-engineering/dbt-specialist.md
-```
-
-1. **Follow the standard structure:**
-
-```markdown
-# DBT Specialist
-
-> Expert in dbt transformations and data modeling
-
-## Identity
-
-| Attribute | Value |
-|-----------|-------|
-| **Role** | Data Transformation Engineer |
-| **Model** | Sonnet |
-| **Phase** | 3 - Build |
-
-## Core Capabilities
-
-| Capability | Description |
-|------------|-------------|
-| **Model** | Create dbt models with refs |
-| **Test** | Add schema tests |
-| **Document** | Generate docs |
-```
-
-1. **The agent is automatically discoverable** - Design phase will find it via `Glob(.claude/agents/**/*.md)`
-
-### Adding a New KB Domain
-
-1. **Create the domain structure:**
-
-```bash
-mkdir -p .claude/kb/dbt
-touch .claude/kb/dbt/{index.md,quick-reference.md}
-mkdir -p .claude/kb/dbt/{concepts,patterns}
-```
-
-1. **Register in KB index:**
+**Exemplo (build-agent):**
 
 ```yaml
-# .claude/kb/_index.yaml
-domains:
-  dbt:
-    description: "dbt transformation patterns"
-    entry_point: ".claude/kb/dbt/index.md"
-```
+stop_conditions:
+  - "No DESIGN doc found: Stop immediately, redirect to design-agent"
+  - "Quality score < 90% at BUILD_REPORT time: Do not mark complete or suggest /ship"
 
-1. **Reference in DEFINE Technical Context:**
-
-```markdown
-## Technical Context
-
-| Aspect | Value |
-|--------|-------|
-| **KB Domains** | pydantic, dbt |  # Now available
-```
-
-### Capability Keywords
-
-Design phase matches agents using these keywords extracted from agent files:
-
-| Source | Keywords Extracted |
-| ------ | ------------------ |
-| Header description | Main purpose verbs |
-| Role (Identity table) | Primary capability |
-| Core Capabilities | All capability names |
-| Process steps | Domain-specific terms |
-
-**Pro tip:** Use specific keywords in your agent's description for better matching:
-
-```markdown
-# Good: "Expert in dbt transformations and Snowflake data modeling"
-# Bad: "Helps with data stuff"
+escalation_rules:
+  - trigger: "Missing requirement discovered that blocks a wave"
+    action: "Pause build — use /iterate to update DESIGN, then resume"
 ```
 
 ---
 
-## Version History
+## Artefatos por Fase
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 4.2.0 | 2026-01-29 | Added Agent Matching + Delegation (this release) |
-| 4.1.2 | 2026-01-28 | Added Sample Collection to /brainstorm |
-| 4.1.0 | 2026-01-27 | Added Phase 0: /brainstorm |
-| 4.0.0 | 2026-01-25 | Complete rewrite: 8→5 phases |
-
----
-
-## References
-
-| Resource | Location |
-|----------|----------|
-| SDD Index | `.claude/sdd/_index.md` |
-| Dev Loop | `.claude/dev/` |
-| Agents | `.claude/agents/` |
-| Knowledge Base | `.claude/kb/` |
-| Commands | `.claude/commands/workflow/` |
-| Templates | `.claude/sdd/templates/` |
+| Artefato | Fase | Path | Quem escreve | Quem lê |
+|----------|------|------|-------------|---------|
+| `BRAINSTORM_{F}.md` | 0 | `sdd/features/` | brainstorm-agent | define-agent |
+| `DEFINE_{F}.md` | 1 | `sdd/features/` | define-agent | design-agent, build-agent |
+| `SEALED_{F}.md` | 1 | `sdd/features/` | define-agent | ship-agent **only** |
+| `DESIGN_{F}.md` | 2 | `sdd/features/` | design-agent | build-agent |
+| `BUILD_REPORT_{F}.md` | 3 | `sdd/reports/` | build-agent | ship-agent |
+| `SECURITY_REPORT_{F}.md` | 4 | `sdd/reports/` | security-orchestrator | ship-agent |
+| `SHIPPED_{DATE}.md` | 4 | `sdd/archive/{F}/` | ship-agent | future reference |
 
 ---
 
-## The Agentic-First Vision
+## Comandos de Suporte
 
-AgentSpec is designed for a future where:
+| Comando | O que faz | Quando usar |
+|---------|-----------|-------------|
+| `/grill-me` | Adversarial Q&A no DEFINE — aprofunda qualidade | Antes de avançar para DESIGN |
+| `/judge` | GPT-4o revisa DEFINE/DESIGN/BUILD — checa completude | Após /grill-me, para confirmar nada faltou |
+| `/iterate` | Atualiza docs de qualquer fase com cascade awareness | Quando requisito muda mid-build |
+| `/status` | Health dashboard — features ativas, git state, recomendações | Início de cada sessão |
+| `/dev` | Dev Loop Level 2 — executa PROMPT.md com verificação | Features menores sem DESIGN formal |
+| `/create-pr` | Cria PR com dual-review (CodeRabbit + Claude) | Antes de merge |
+| `/sync-context` | Atualiza CLAUDE.md com estado atual do codebase | Após mudanças estruturais |
+| `/meeting` | Extrai decisões/requisitos de notas de reunião | Após reunião de requisitos |
 
-1. **AI models are specialists** - Not one-size-fits-all, but domain experts
-2. **Specifications are executable** - Not just documentation, but orchestration
-3. **Quality comes from expertise** - Specialists produce better code than generalists
-4. **Knowledge is curated** - Patterns validated by MCP, not hallucinated
-5. **Traceability is automatic** - Every file has an owner, every decision has rationale
+---
 
-**AgentSpec is not just a specification framework. It's an AI team orchestration system.**
+## Glossário
 
-```text
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                  │
-│   "Tell me WHAT to build, I'll figure out WHO should build it"  │
-│                                                                  │
-│                         — AgentSpec                              │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-```
+| Termo | Definição |
+|-------|-----------|
+| **Clarity Score** | Score 0-15 do DEFINE (3 pts × 5 elementos). Mínimo para avançar: 12/15. |
+| **Shadow Score** | Score do SEALED test: `(HIGH×0.60) + (MED×0.30) + (LOW×0.10)`. Mínimo: 90%. |
+| **Quality Score** | Score do BUILD: `(tests×0.40) + (ATs×0.40) + (no_blockers×0.20)`. Mínimo: 90%. |
+| **Wave** | Grupo de arquivos sem dependências entre si — executados em paralelo no build. |
+| **SEALED** | Arquivo de cenários holdout escrito pelo define-agent, avaliado só pelo ship-agent. |
+| **Security Gate** | Step 2b do /ship — 4 agentes escaneiam o codebase. CRITICAL = BLOCKED. |
+| **stop_conditions** | Regras no frontmatter do agente que definem quando ele deve parar de executar. |
+| **escalation_rules** | Regras no frontmatter que definem quando e como escalar ao usuário. |
+| **BUILD_REPORT** | Documento que registra o que foi implementado, desvios do DESIGN e quality score. |
+| **SHIPPED doc** | Documento final de archive com lições aprendidas, shadow score e security result. |
+| **Archive** | `.claude/sdd/archive/{FEATURE}/` — destino final de todos os artefatos shippados. |
+| **Override** | Flag para bypassar um gate (security ou quality) com justificativa obrigatória. |
+
+---
+
+## Começando um Projeto Novo
+
+1. **Clone o template** para o diretório do projeto
+2. **Inicialize o workspace:**
+   ```bash
+   bash scripts/init-workspace.sh meu-projeto --stack fullstack
+   ```
+3. **Preencha `CLAUDE.md`** — descreva o problema de negócio e a stack real
+4. **Execute `/status`** para verificar que o ambiente está correto
+5. **Explore a primeira feature:**
+   ```
+   /brainstorm "quero construir X para resolver Y"
+   ```
+6. **Capture os requisitos:**
+   ```
+   /define .claude/sdd/features/BRAINSTORM_FEATURE.md
+   ```
+7. **Valide antes de avançar:**
+   ```
+   /grill-me .claude/sdd/features/DEFINE_FEATURE.md
+   /judge .claude/sdd/features/DEFINE_FEATURE.md
+   ```
+8. **Design (se obrigatório):**
+   ```
+   /design .claude/sdd/features/DEFINE_FEATURE.md
+   ```
+9. **Build:**
+   ```
+   /build .claude/sdd/features/DESIGN_FEATURE.md
+   ```
+10. **Ship:**
+    ```
+    /ship .claude/sdd/features/DEFINE_FEATURE.md
+    ```
+
+---
+
+## Referências
+
+| Arquivo | Conteúdo |
+|---------|----------|
+| `sdd/architecture/ARCHITECTURE.md` | Visão arquitetural completa do SDD (42KB) |
+| `sdd/architecture/TEMPLATE_ARCHITECTURE.md` | Extensões do template: SEALED, quality gate, security gate |
+| `sdd/architecture/WORKFLOW_CONTRACTS.yaml` | Contratos máquina-legíveis entre fases e agentes |
+| `rules/sdd-workflow.md` | Regras formais — critérios obrigatórios por fase |
+| `rules/gcp-safety.md` | Comandos bloqueados no GCP |
+| `rules/python-style.md` | Padrões de código Python |
+| `scripts/judge.py` | CLI do /judge — validação offline via OpenRouter |
+| `scripts/generate-agent-router.py` | Gera routing.json a partir dos agents |
+| `scripts/init-workspace.sh` | Inicializa novo projeto a partir do template |
+| `kb/shared/anti-patterns.md` | Anti-patterns cross-domain para todos os agentes |

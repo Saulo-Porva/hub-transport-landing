@@ -1,49 +1,50 @@
-# Supabase Knowledge Base
+# Supabase KB — Index
 
-> **Purpose**: Supabase com Next.js App Router — RLS, Auth SSR, tipos de cliente, migrations, debugging
-> **MCP Validated**: 2026-06-20
+> Entry point for Supabase knowledge: RLS, pgvector/RAG, realtime, edge functions, and SSR auth.
+
+---
+
+## Domain Overview
+
+| Area | Scope | KB File |
+|------|-------|---------|
+| RLS Policies | Row-level security: roles, policies, debugging empty results | `concepts/rls-policies.md` |
+| pgvector | Vector embeddings, similarity search, IVFFlat index, match_documents | `concepts/pgvector-fundamentals.md` |
+| Realtime | Subscriptions, broadcast, presence, channel setup | `concepts/realtime.md` |
+| Edge Functions | Deno runtime, request handling, CORS, secrets | `concepts/edge-functions.md` |
+| Multi-tenant RLS | org_id isolation, team-based access patterns | `patterns/multi-tenant-rls.md` |
+| RAG Vector Store | pgvector + embeddings + similarity search pipeline | `patterns/rag-vector-store.md` |
+| Webhook Edge Function | Signature validation, idempotency, sync response | `patterns/webhook-edge-function.md` |
+
+---
 
 ## Quick Navigation
 
-### Concepts
-
-| File | Purpose |
-|------|---------|
-| [concepts/rls-policies.md](concepts/rls-policies.md) | Row Level Security — escrever, debugar, tipos de policy |
-| [concepts/client-types.md](concepts/client-types.md) | createClient vs createAdminClient — quando usar cada um |
-| [concepts/auth-ssr.md](concepts/auth-ssr.md) | Auth em Next.js App Router com @supabase/ssr |
-
-### Patterns
-
-| File | Purpose |
-|------|---------|
-| [patterns/server-client.md](patterns/server-client.md) | Setup do cliente SSR-safe em Server Components |
-| [patterns/admin-bypass.md](patterns/admin-bypass.md) | Quando e como usar serviceRole para bypass de RLS |
-| [patterns/debug-rls.md](patterns/debug-rls.md) | Protocolo de diagnóstico para queries silenciosamente vazias |
+- **Query returns empty without error?** → `concepts/rls-policies.md` → Debugging section
+- **Need to bypass RLS for admin?** → `patterns/multi-tenant-rls.md` → service_role pattern
+- **Building RAG?** → `patterns/rag-vector-store.md`
+- **Webhook validation?** → `patterns/webhook-edge-function.md`
+- **SSR auth session?** → `concepts/rls-policies.md` → SSR section
 
 ---
 
-## Quick Reference
+## Client Type Decision
 
-- [quick-reference.md](quick-reference.md) — lookup rápido de clients, políticas, erros comuns
+| Client | When | Import |
+|--------|------|--------|
+| `createServerClient` | Server Components, Server Actions, middleware | `@supabase/ssr` |
+| `createBrowserClient` | Client Components only | `@supabase/ssr` |
+| `createClient` (service_role) | Admin ops, bypass RLS | `@supabase/supabase-js` + `SUPABASE_SERVICE_ROLE_KEY` |
 
----
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| **RLS (Row Level Security)** | Políticas por row que controlam quem pode SELECT/INSERT/UPDATE/DELETE |
-| **createClient** | Cliente com contexto de auth do utilizador — sujeito a RLS |
-| **createAdminClient** | Cliente com serviceRole — bypassa RLS completamente |
-| **@supabase/ssr** | Biblioteca para Supabase em contexto SSR (Next.js, SvelteKit) |
-| **getUser()** | Valida token no servidor Supabase — mais seguro que getSession() |
+**Rule:** Never use `SUPABASE_SERVICE_ROLE_KEY` in client-side code. Always `SUPABASE_URL` + `SUPABASE_ANON_KEY` on the browser.
 
 ---
 
-## Agent Usage
+## Most Common Errors
 
-| Agent | Primary Files | Use Case |
-|-------|---------------|----------|
-| `supabase-specialist` | todos | Debugging, RLS, auth, migrations |
-| `nextjs-specialist` | patterns/server-client.md | Client setup em App Router |
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Query returns `[]` with no error | RLS blocking anon/authenticated | Add SELECT policy or use service_role |
+| `JWT expired` | Session not refreshed in SSR | Use `createServerClient` with cookie adapter |
+| `row-level security policy violation` | INSERT/UPDATE without matching policy | Add INSERT/UPDATE policy |
+| Realtime not firing | Table not in replication | Enable replication in Supabase Dashboard |

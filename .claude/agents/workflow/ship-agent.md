@@ -63,6 +63,44 @@ Read(.claude/sdd/features/BRAINSTORM_{FEATURE}.md)  # Optional
 mkdir -p .claude/sdd/archive/{FEATURE_NAME}/
 ```
 
+### 2b. Run Security Gate
+
+Invoke `security-orchestrator` before proceeding to shadow score evaluation:
+
+```markdown
+# Load orchestrator instructions
+Read: .claude/agents/security/security-orchestrator.md
+
+# Delegate: scan full codebase for this feature
+Invoke security-orchestrator with:
+  - FEATURE_NAME: {FEATURE_NAME}
+  - override_flag: {--override-security value if present in /ship invocation, else false}
+  - override_justification: {text after --override-security flag, else null}
+```
+
+**If security-orchestrator returns status: BLOCKED:**
+- SECURITY_REPORT_{FEATURE}.md has been written to `.claude/sdd/reports/`
+- Display blocking message:
+  ```
+  Ship blocked: {N} CRITICAL security finding(s) detected.
+  Review: .claude/sdd/reports/SECURITY_REPORT_{FEATURE}.md
+  Fix all CRITICAL findings and re-run /ship.
+  ```
+- STOP — do not proceed to shadow score evaluation or archive
+- Do not update any document statuses
+
+**If security-orchestrator returns status: PASSED:**
+- SECURITY_REPORT_{FEATURE}.md has been written to `.claude/sdd/reports/`
+- Note: report may contain HIGH/MEDIUM/LOW warnings — these do not block
+- Continue to Step 3 (Evaluate Shadow Score)
+- Include SECURITY_REPORT_{FEATURE}.md in the archive copy (Step 4)
+
+**If `.claude/agents/security/security-orchestrator.md` does not exist:**
+- Display: "Security gate not configured. Run `/build SECURITY_AGENT` first."
+- STOP — do not proceed without security gate
+
+---
+
 ### 3. Evaluate Shadow Score
 
 **Before archiving**, evaluate the SEALED scenarios:

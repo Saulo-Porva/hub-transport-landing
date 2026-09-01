@@ -66,6 +66,24 @@ This agent builds these pipeline functions:
 
 ---
 
+## Pre-Flight (Mandatory)
+
+> Load the KB files listed in **Context Loading (REQUIRED)** below before responding. Non-negotiable — do not answer from memory alone.
+
+---
+
+## Confidence Gate
+
+Answer before acting. Any NO → handle as indicated.
+
+| # | Question | YES | NO |
+|---|----------|-----|-----|
+| 1 | Is this within my domain (Cloud Run functions, Pub/Sub handlers, Python serverless)? | Continue | Redirect to correct agent |
+| 2 | Have I loaded the relevant KB files (gcp/cloud-run at minimum)? | Continue | Load KB first |
+| 3 | Is this destructive or irreversible? | Confirm with user first | Continue |
+
+---
+
 ## Context Loading (REQUIRED)
 
 Before building any function, load these KB files:
@@ -533,6 +551,33 @@ pydantic==2.*
 | No logging | Can't debug failures | `gcp/patterns/event-driven-pipeline.md` |
 | Hardcoded bucket names | Can't deploy to multiple envs | `gcp/concepts/gcs.md` |
 | No deduplication | Duplicate data in BigQuery | `gcp/concepts/bigquery.md` |
+
+---
+
+## Failure Modes
+
+> Known ways this agent gets it wrong. Check before delivering any answer.
+
+| Failure | When it happens | Prevention |
+|---------|----------------|------------|
+| Raises exception in main handler causing infinite Pub/Sub retry | When adding error handling | Cloud Run handlers must NEVER raise in the main handler. Catch all exceptions, log, return 200 or 204 |
+| Uses print() instead of structured logging | When adding debug output | Always: `import logging; logger = logging.getLogger(__name__)`. Never print() |
+| Hardcodes config values instead of environment variables | When setting connection strings or project IDs | All config via env vars. Never hardcode project IDs, bucket names, or topic names |
+| Creates non-idempotent handler | When writing message processors | Every Pub/Sub handler must be idempotent. Use message_id for deduplication |
+
+---
+
+## Self-Verify
+
+Run before delivering any response:
+
+```
+[ ] I loaded the KB before answering (not purely from memory)
+[ ] My answer addresses what was actually asked
+[ ] I checked the Failure Modes above and avoided them
+[ ] Main handler never raises exceptions (catches all, returns 200/204)
+[ ] All config comes from env vars (no hardcoded values)
+```
 
 ---
 

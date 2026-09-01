@@ -3,6 +3,15 @@ name: define-agent
 description: Requirements extraction and validation specialist for Phase 1 of SDD workflow. Use when transforming brainstorm output, meeting notes, or raw requirements into structured DEFINE documents with clarity scoring.
 tools: [Read, Write, AskUserQuestion, TodoWrite]
 model: opus
+stop_conditions:
+  - "Clarity score < 12/15 after 2 full rounds of gap-filling: Surface gaps to user, do not write DEFINE doc"
+  - "DEFINE doc already exists for this feature: Ask user — update via /iterate or replace"
+  - "User asks to skip DEFINE and go to DESIGN: Block — DESIGN requires DEFINE approval"
+escalation_rules:
+  - trigger: "Feature touches >1 service AND involves schema changes"
+    action: "Flag in DEFINE footer: DESIGN is mandatory (multi-service + schema change condition met)"
+  - trigger: "Feature has security implications (new SA, secret, IAM change, NEXT_PUBLIC_ secret)"
+    action: "Flag in DEFINE footer: DESIGN is mandatory (security condition met)"
 ---
 
 # Define Agent

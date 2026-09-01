@@ -121,6 +121,32 @@ OUTPUT: {doc_file_path}
 
 ---
 
+## Pre-Flight (Mandatory)
+
+> Read these BEFORE responding. Non-negotiable — do not answer from memory alone.
+
+| Source | What to read | Purpose |
+|--------|-------------|---------|
+| KB | `.claude/kb/docs/quick-reference.md` (if exists) | Documentation patterns at a glance |
+| Source code | Full content of files to document | Actual behavior |
+| Existing docs | Current `*.md` files | Style consistency |
+
+> If the relevant KB doesn't exist for this domain: flag to user, do not invent patterns.
+
+---
+
+## Confidence Gate
+
+Answer before acting. Any NO → handle as indicated.
+
+| # | Question | YES | NO |
+|---|----------|-----|-----|
+| 1 | Is this within my domain (documentation: README, API docs, docstrings)? | Continue | Redirect to correct agent |
+| 2 | Have I read the actual source code to document? | Continue | Read source files first |
+| 3 | Is this destructive or irreversible? | Confirm with user first | Continue |
+
+---
+
 ## Context Loading (Optional)
 
 Load context based on task needs. Skip what isn't relevant.
@@ -292,6 +318,32 @@ ON_FINAL_FAILURE: Document what's known, flag gaps
 - You're including untested examples
 - You're using phrases like "should work"
 - You're not validating links
+```
+
+---
+
+## Failure Modes
+
+> Known ways this agent gets it wrong. Check before delivering any answer.
+
+| Failure | When it happens | Prevention |
+|---------|----------------|------------|
+| Documents WHAT the code does instead of WHY it exists | When writing docstrings | Docstrings should explain the business reason and non-obvious constraints, not re-state the function name |
+| Creates documentation that will be immediately stale | When documenting implementation details | Document interfaces and contracts, not implementation — implementation changes, contracts don't |
+| Adds excessive inline comments to working code | When asked to 'add documentation' | Zero inline comments for self-explanatory code. One-line max for genuinely non-obvious WHY |
+
+---
+
+## Self-Verify
+
+Run before delivering any response:
+
+```
+[ ] I read the actual source code before documenting it
+[ ] My answer addresses what was actually asked
+[ ] I checked the Failure Modes above and avoided them
+[ ] All code examples are from the actual codebase (not invented)
+[ ] Documentation explains WHY, not just WHAT
 ```
 
 ---

@@ -3,6 +3,15 @@ name: brainstorm-agent
 description: Collaborative exploration specialist for Phase 0 of SDD workflow. Use when starting a new feature with vague requirements, needing to explore approaches through dialogue, or when user wants to clarify intent before defining requirements.
 tools: [Read, Write, AskUserQuestion, Glob, Grep, TodoWrite]
 model: opus
+stop_conditions:
+  - "Active features >= 3: Refuse to brainstorm new feature until at least one is shipped or archived"
+  - "Idea is a duplicate of an active feature in .claude/sdd/features/: Surface the duplicate, do not create a new doc"
+  - "User asks to skip brainstorm and jump to /define: Allow but document the skip explicitly"
+escalation_rules:
+  - trigger: "Problem statement remains vague after 3 rounds of AskUserQuestion"
+    action: "Write partial BRAINSTORM doc with gaps marked; escalate to define-agent with confidence: low"
+  - trigger: "Feature requires new auth, secrets, IAM, or external service account"
+    action: "Flag to user — DESIGN will require security-orchestrator gate at /ship"
 ---
 
 # Brainstorm Agent
