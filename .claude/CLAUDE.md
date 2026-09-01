@@ -1,29 +1,32 @@
-# Hub_Transport_Landing (TruckPilot)
+# Hub_Transport_Landing (S.H.S)
 
-> Marketing landing page for TruckPilot — a WhatsApp-based fleet compliance co-pilot for European carriers.
+> Founder-led software studio landing page. Problem-first positioning: "Show us the bottleneck. We'll build the system." Ships TruckPilot (WhatsApp fleet-compliance co-pilot) among 7 shipped systems.
 
 ---
 
 ## Project Context
 
-**Business Problem:** European road carriers manage compliance (CMR, ADR, eco-zone rules, document checklists) through manual, paper-heavy workflows. Drivers already live on WhatsApp; fleet offices don't want to force them into a new app.
+**Business Problem:** The site used to sell TruckPilot as a single product. It now sells one competency — turning operational bottlenecks (manual work, spreadsheets, no visibility, WhatsApp overload) into software — with TruckPilot as one of 7 proof points, 3 of them featured.
 
-**Solution:** This repo is the client-facing landing page that markets TruckPilot — a product where drivers send photos/messages on WhatsApp, and the (separate, not-in-this-repo) backend reads documents, checks compliance, alerts the office, and syncs with TMS/ERP. This page's job is to convert visitors into demo requests.
+**Solution:** A problem-first home page (hero → problem selector → results band → 3 featured + 4 "more systems" case tier → open funnel → demo form) links out to 7 individual case-study pages, each following Problem → Before → System → How It Works → Result → Technology → CTA. This page's job is to convert visitors into inquiries, not just demo requests.
 
-**Stack:** Static single-file HTML (`index.html`) + Tailwind CDN + vanilla JS (i18n, form handling), no build step, no backend. Deployed on Netlify. Form submissions via FormSubmit.co. Not a Python/cloud project — most of the KB/agents below (GCP, Terraform, Spark, BigQuery...) target the *product's* backend stack, not this repo, and won't be exercised here until/unless backend code lands in this project.
+**Stack:** Static multi-page HTML + Tailwind CDN + vanilla JS (i18n, form handling), no build step, no backend. Deployed on Netlify. Form submissions via FormSubmit.co. Not a Python/cloud project — most of the KB/agents below (GCP, Terraform, Spark, BigQuery...) target a *product's* backend stack, not this repo, and won't be exercised here until/unless backend code lands in this project.
 
 ---
 
 ## Architecture Overview
 
 ```text
-Visitor → index.html (S.H.S studio positioning, EN/IT/DE i18n)
-        → hero / about / how-it-works / solutions (7 equal-weight case cards)
-        → "See case study →" per card → case-{name}.html (Problem → Approach → Solution → Result)
-        → #demo form (on index.html) → FormSubmit.co → saulohs@icloud.com
+Visitor → index.html (light/editorial theme, EN/IT/DE i18n)
+        → hero ("Show us the bottleneck. We'll build the system.") → problem selector → results band
+        → about (founder-led studio) → how-it-works track
+        → solutions: 3 featured (Fleet Control, Workforce, AI Real Estate) + 4 "more systems"
+        → open funnel ("Don't see your exact problem here?")
+        → "See the case study →" per card → case-{name}.html (Problem → Before → System → How It Works → Result → Technology → CTA)
+        → #demo form (on index.html, generic problem-based fields) → FormSubmit.co → saulohs@icloud.com
         → success.html (fallback confirmation)
 
-Shared: styles.css (extracted from the old inline <style>, used by all 8 pages)
+Shared: styles.css (used by all 8 pages)
 
 Hosting: Netlify (netlify.toml — publish "." + security headers)
 ```
@@ -41,14 +44,14 @@ Hosting: Netlify (netlify.toml — publish "." + security headers)
 
 ```text
 Hub_Transport_Landing/
-├── index.html                  # Hero, About, How-it-works, Solutions (7 case cards), Contact — EN/IT/DE
-├── case-truckpilot.html        # Flagship case (full detail: 7 workflows, regulatory, FAQ) — EN/IT/DE
-├── case-rapportini.html        # Case study — EN only
-├── case-shift-scheduling.html  # Case study — EN only
-├── case-health-anywhere.html   # Case study — EN only
-├── case-contabile.html         # Case study — EN only
-├── case-real-estate.html       # Case study — EN only
-├── case-workout.html           # Case study — EN only
+├── index.html                  # Hero, problem selector, results band, About, How-it-works, Solutions (3 featured + 4 more), funnel, Contact — EN/IT/DE, light theme
+├── case-truckpilot.html        # More systems — full detail (7 WhatsApp workflows, regulatory, FAQ) — EN/IT/DE, light theme
+├── case-fleet-control.html     # Featured case — EN only (renamed from Rapportini)
+├── case-shift-scheduling.html  # Featured case, displayed as "Workforce" — EN only
+├── case-real-estate.html       # Featured case, displayed as "AI Real Estate" — EN only
+├── case-health-anywhere.html   # More systems — EN only
+├── case-contabile.html         # More systems — EN only
+├── case-workout.html           # More systems — EN only
 ├── styles.css                  # Shared CSS, used by all 8 pages above
 ├── success.html                # Fallback success page for form submission
 ├── shs-logo.png                # Footer logo asset
@@ -221,3 +224,4 @@ None. This is a fully static site — the demo form posts directly to FormSubmit
 | Date | Changes |
 |------|---------|
 | 2026-09-01 | Initial setup from claude-project-template (full .claude/ scaffold — agents/KB target the future backend stack, not this static landing repo) |
+| 2026-09-02 | Problem-first repositioning: light/editorial theme across all 8 pages, new hero + problem selector + results band, 3-featured/4-more-systems case tier, Rapportini renamed to Fleet Control, Before/Technology sub-steps added to every case page, demo form genericized, open funnel section added |

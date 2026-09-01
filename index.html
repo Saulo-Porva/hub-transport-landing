@@ -3,143 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="S.H.S — Data, AI & Software Solutions. Seven shipped systems across logistics, HR, health, finance, real estate and fitness — including TruckPilot, a WhatsApp compliance co-pilot for European carriers.">
+  <meta name="description" content="S.H.S — a founder-led software studio. Show us where your operation loses time, money or control — we turn it into software. Seven systems shipped so far, including TruckPilot, Fleet Control and an AI concierge for real estate.">
   <title>S.H.S — Data, AI &amp; Software Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+  <style>
+    .grid-fade { background-image: radial-gradient(circle,#e2e8f0 1px,transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, black 40%, transparent 80%); mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, black 40%, transparent 80%); }
+    .card-float { box-shadow: 0 20px 40px -12px rgba(15,23,42,0.15), 0 4px 12px -4px rgba(15,23,42,0.08); }
+  </style>
 </head>
-<body class="bg-gray-950 text-gray-100 antialiased">
+<body class="bg-white text-slate-900 antialiased">
 
 <!-- ═══ COOKIE ═══ -->
-<div id="cookie" class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur border-t border-gray-800 p-4">
+<div id="cookie" class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-slate-200 p-4">
   <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-    <p class="text-sm text-gray-400">Cookies used. Data in Google Cloud <strong class="text-white">europe-west4</strong> — designed for GDPR.</p>
+    <p class="text-sm text-slate-500">Cookies used. Data in Google Cloud <strong class="text-slate-900">europe-west4</strong> — designed for GDPR.</p>
     <button onclick="document.getElementById('cookie').remove()" class="shrink-0 bg-green-500 hover:bg-green-400 text-black text-sm font-bold px-5 py-2 rounded-lg transition">Accept</button>
   </div>
 </div>
 
 <!-- ═══ NAV ═══ -->
-<nav class="fixed top-0 inset-x-0 z-40 bg-gray-950/85 backdrop-blur border-b border-gray-800/60">
+<nav class="fixed top-0 inset-x-0 z-40 bg-white/85 backdrop-blur-md border-b border-slate-200">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
     <div class="flex items-center gap-2.5">
-      <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-extrabold text-xs shrink-0">SH</div>
       <div class="flex items-center gap-2">
-        <span class="text-lg font-bold">TruckPilot</span>
-        <span class="hidden sm:inline text-[10px] font-semibold text-gray-500 border border-gray-800 rounded-full px-2 py-0.5" data-t="nav_by">by S.H.S</span>
+        <span class="text-lg font-bold tracking-tight">S.H.S</span>
+        <span class="hidden sm:inline text-[10px] font-semibold text-slate-400 border border-slate-200 rounded-full px-2 py-0.5" data-t="nav_by">creators of TruckPilot &amp; 6 more systems</span>
       </div>
     </div>
-    <div class="hidden md:flex items-center gap-7 text-sm text-gray-400">
-      <a href="#about" class="hover:text-white transition" data-t="nav_about">About</a>
-      <a href="#solutions" class="hover:text-white transition" data-t="nav_solutions">Solutions</a>
-      <a href="case-truckpilot.html" class="hover:text-white transition" data-t="nav_case">TruckPilot Case</a>
+    <div class="hidden md:flex items-center gap-7 text-sm text-slate-500 font-medium">
+      <a href="#problems" class="hover:text-slate-900 transition" data-t="nav_problems">Problems we solve</a>
+      <a href="#solutions" class="hover:text-slate-900 transition" data-t="nav_solutions">Case studies</a>
+      <a href="#about" class="hover:text-slate-900 transition" data-t="nav_about">About</a>
     </div>
     <div class="flex items-center gap-2">
-      <div class="flex items-center gap-0.5 mr-1 bg-gray-900 border border-gray-800 rounded-lg p-0.5">
-        <button onclick="applyLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-gray-400 hover:text-white transition border-2 border-transparent" title="English">EN</button>
-        <button onclick="applyLanguage('it')" data-lang="it" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-gray-400 hover:text-white transition border-2 border-transparent" title="Italiano">IT</button>
-        <button onclick="applyLanguage('de')" data-lang="de" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-gray-400 hover:text-white transition border-2 border-transparent" title="Deutsch">DE</button>
+      <div class="flex items-center gap-0.5 mr-1 bg-slate-100 border border-slate-200 rounded-lg p-0.5">
+        <button onclick="applyLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-slate-400 hover:text-slate-900 transition border-2 border-transparent" title="English">EN</button>
+        <button onclick="applyLanguage('it')" data-lang="it" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-slate-400 hover:text-slate-900 transition border-2 border-transparent" title="Italiano">IT</button>
+        <button onclick="applyLanguage('de')" data-lang="de" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-slate-400 hover:text-slate-900 transition border-2 border-transparent" title="Deutsch">DE</button>
       </div>
-      <a href="#demo" class="bg-green-500 hover:bg-green-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition wa-glow" data-t="nav_demo">Get a Demo</a>
+      <a href="#demo" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition" data-t="nav_demo">Tell us your problem</a>
     </div>
   </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<section id="hero" class="pt-28 pb-16 px-4 sm:px-6 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-b from-green-950/20 via-transparent to-transparent pointer-events-none"></div>
-  <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-green-500/4 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image:radial-gradient(circle,#25D366 1px,transparent 1px);background-size:32px 32px;"></div>
+<section id="hero" class="pt-32 pb-20 px-4 sm:px-6 relative overflow-hidden">
+  <div class="absolute inset-0 grid-fade pointer-events-none"></div>
+  <div class="max-w-6xl mx-auto relative grid lg:grid-cols-[1.1fr,0.9fr] gap-16 items-center">
 
-  <div class="max-w-6xl mx-auto relative">
-
-    <div class="inline-flex items-center gap-2 bg-green-950/60 border border-green-800/50 text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-      <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
-      <span data-t="hero_badge">S.H.S — Data, AI &amp; Software Solutions</span>
-    </div>
-
-    <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05] mb-6 max-w-4xl" data-th="hero_h1">
-      I build the software your business is <span class="gradient-text">still missing.</span>
-    </h1>
-
-    <p class="text-lg text-gray-400 leading-relaxed mb-6 max-w-2xl" data-t="hero_subtitle">
-      Data engineer and AI/software builder. Seven solutions already live — logistics, HR, health, finance, real estate, fitness. If your team still runs on spreadsheets, paper, or endless WhatsApp threads, that's exactly what I fix.
-    </p>
-
-    <div class="inline-flex items-center gap-3 bg-gray-900/80 border border-gray-800 rounded-xl px-4 py-3 mb-8 max-w-xl">
-      <span class="text-xs text-gray-500 shrink-0" data-t="hero_rotator_label">Right now, solving:</span>
-      <span id="rotator" class="text-sm font-semibold text-green-400 transition-opacity duration-300"></span>
-    </div>
-
-    <div class="flex flex-wrap gap-3 mb-14">
-      <a href="#solutions" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base wa-glow" data-t="hero_cta1">See what I've built →</a>
-      <a href="#demo" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base" data-t="hero_cta2">Tell me your problem</a>
-    </div>
-
-    <!-- Solutions constellation -->
     <div>
-      <div class="flex items-center gap-2 mb-4">
-        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest" data-t="hero_grid_label">7 solutions. One builder.</p>
+      <div class="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-7">
+        <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+        <span data-t="hero_badge">Founder-led software studio</span>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-        <a href="case-truckpilot.html" class="module-pill bg-gray-900 border border-green-900/50 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <div class="w-10 h-10 rounded-xl bg-green-950 flex items-center justify-center"><svg class="w-5 h-5 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893C23.94 5.335 18.605 0 12.05 0z"/></svg></div>
-          <p class="text-xs font-bold text-white leading-tight">TruckPilot</p>
-        </a>
-        <a href="case-rapportini.html" class="module-pill bg-gray-900 border border-gray-800 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <div class="w-10 h-10 rounded-xl bg-blue-950 flex items-center justify-center"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg></div>
-          <p class="text-xs font-bold text-white leading-tight">Rapportini</p>
-        </a>
-        <a href="case-shift-scheduling.html" class="module-pill bg-gray-900 border border-gray-800 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <div class="w-10 h-10 rounded-xl bg-purple-950 flex items-center justify-center"><svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
-          <p class="text-xs font-bold text-white leading-tight" data-t="grid_shifts">Shift Scheduling</p>
-        </a>
-        <a href="case-health-anywhere.html" class="module-pill bg-gray-900 border border-gray-800 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <div class="w-10 h-10 rounded-xl bg-rose-950 flex items-center justify-center"><svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657L13.414 22.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-          <p class="text-xs font-bold text-white leading-tight">Health Anywhere</p>
-        </a>
-        <a href="case-contabile.html" class="module-pill bg-gray-900 border border-gray-800 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <img src="icons/contabile.png" alt="Contabile app icon" class="w-10 h-10 rounded-xl">
-          <p class="text-xs font-bold text-white leading-tight">Contabile</p>
-        </a>
-        <a href="case-real-estate.html" class="module-pill bg-gray-900 border border-gray-800 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950 flex items-center justify-center"><svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
-          <p class="text-xs font-bold text-white leading-tight" data-t="grid_realestate">Real Estate AI</p>
-        </a>
-        <a href="case-workout.html" class="module-pill bg-gray-900 border border-gray-800 rounded-2xl p-4 flex flex-col items-center text-center gap-2">
-          <img src="icons/workout.png" alt="Workout Companion app icon" class="w-10 h-10 rounded-xl">
-          <p class="text-xs font-bold text-white leading-tight" data-t="grid_workout">Workout Companion</p>
-        </a>
+
+      <h1 class="text-5xl sm:text-6xl lg:text-[4.2rem] font-extrabold leading-[1.02] tracking-tight mb-7" data-th="hero_h1">
+        Show us the<br>bottleneck.<br><span class="text-slate-400">We'll build the system.</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-500 leading-relaxed mb-8 max-w-lg" data-t="hero_subtitle">
+        We design software, AI and data solutions that reduce manual work, improve visibility and cut operational costs.
+      </p>
+
+      <div class="inline-flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 mb-8 max-w-xl">
+        <span class="text-xs text-slate-500 shrink-0" data-t="hero_rotator_label">Right now, solving:</span>
+        <span id="rotator" class="text-sm font-semibold text-green-600 transition-opacity duration-300"></span>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base shadow-lg shadow-green-500/20" data-t="hero_cta2">Tell us your problem →</a>
+        <a href="#solutions" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-900 font-semibold px-7 py-3.5 rounded-xl transition text-base border border-slate-200" data-t="hero_cta1">See what we've solved</a>
+      </div>
+    </div>
+
+    <!-- Floating result cards -->
+    <div class="relative h-[440px] hidden lg:block">
+      <div class="absolute top-0 right-2 w-64 bg-white rounded-2xl p-4 card-float border border-slate-100 rotate-[3deg]">
+        <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-1" data-t="hero_card1_label">Fleet Control</p>
+        <p class="text-2xl font-extrabold text-slate-900">60 → &lt;30<span class="text-sm font-semibold text-slate-400" data-t="hero_card1_unit"> days</span></p>
+        <p class="text-xs text-slate-500 mt-1" data-t="hero_card1_sub">operation to payment cycle</p>
+      </div>
+      <div class="absolute top-[190px] left-0 w-60 bg-white rounded-2xl p-4 card-float border border-slate-100 -rotate-[2deg]">
+        <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-1" data-t="hero_card2_label">AI Real Estate</p>
+        <p class="text-2xl font-extrabold text-slate-900">24/7</p>
+        <p class="text-xs text-slate-500 mt-1" data-t="hero_card2_sub">lead response, every hour</p>
+      </div>
+      <div class="absolute top-[220px] right-6 w-56 bg-white rounded-2xl p-4 card-float border border-slate-100 rotate-[2deg]">
+        <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-1" data-t="hero_card3_label">Workforce</p>
+        <p class="text-2xl font-extrabold text-slate-900"><span data-t="hero_card3_stat">Overtime</span> <span class="text-green-600">↓</span></p>
+        <p class="text-xs text-slate-500 mt-1" data-t="hero_card3_sub">compliant schedules, less waste</p>
+      </div>
+      <div class="absolute bottom-0 left-24 w-52 bg-white rounded-2xl p-3.5 card-float border border-slate-100 rotate-[5deg]">
+        <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-1">Contabile</p>
+        <p class="text-lg font-extrabold text-slate-900">72% <span class="text-sm font-semibold text-slate-400" data-t="hero_card4_sub">completed</span></p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ═══ ABOUT ═══ -->
-<section id="about" class="py-20 px-4 sm:px-6 border-t border-gray-800/60">
+<!-- ═══ PROBLEM SELECTOR ═══ -->
+<section id="problems" class="py-20 px-4 sm:px-6 bg-slate-50 border-y border-slate-100">
   <div class="max-w-5xl mx-auto">
-    <div class="grid md:grid-cols-[auto,1fr] gap-8 items-start">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" data-t="problems_h2">What is slowing your business down?</h2>
+      <p class="text-slate-500" data-t="problems_sub">Pick the one that sounds familiar — it's usually the start of the conversation.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">💸</span><span class="text-sm font-semibold text-slate-800" data-t="problem1">Too much manual work</span>
+      </a>
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">📑</span><span class="text-sm font-semibold text-slate-800" data-t="problem2">Too many spreadsheets</span>
+      </a>
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">📱</span><span class="text-sm font-semibold text-slate-800" data-t="problem3">Too much WhatsApp</span>
+      </a>
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">📊</span><span class="text-sm font-semibold text-slate-800" data-t="problem4">No visibility</span>
+      </a>
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">⏱</span><span class="text-sm font-semibold text-slate-800" data-t="problem5">Repetitive work</span>
+      </a>
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">💰</span><span class="text-sm font-semibold text-slate-800" data-t="problem6">High operational costs</span>
+      </a>
+      <a href="#solutions" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex items-center gap-3">
+        <span class="text-xl">👥</span><span class="text-sm font-semibold text-slate-800" data-t="problem7">Poor workforce planning</span>
+      </a>
+      <a href="#demo" class="group bg-slate-900 border border-slate-900 rounded-2xl p-5 hover:bg-slate-800 transition flex items-center gap-3">
+        <span class="text-xl">✳️</span><span class="text-sm font-semibold text-white" data-t="problem8">Something else →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS BAND ═══ -->
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div><p class="text-4xl sm:text-5xl font-extrabold tracking-tight">60→<span class="text-green-600">&lt;30</span></p><p class="text-sm text-slate-500 mt-2" data-t="result1">days, transport payment cycle</p></div>
+    <div><p class="text-4xl sm:text-5xl font-extrabold tracking-tight">24<span class="text-green-600">/7</span></p><p class="text-sm text-slate-500 mt-2" data-t="result2">AI customer service</p></div>
+    <div><p class="text-4xl sm:text-5xl font-extrabold tracking-tight text-green-600" data-t="result3_word">Real-time</p><p class="text-sm text-slate-500 mt-2" data-t="result3">operational documents</p></div>
+    <div><p class="text-4xl sm:text-5xl font-extrabold tracking-tight text-green-600" data-t="result4_word">Optimized</p><p class="text-sm text-slate-500 mt-2" data-t="result4">workforce scheduling</p></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="py-24 px-4 sm:px-6 border-t border-slate-100">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-[auto,1fr] gap-10 items-start">
       <div class="flex md:flex-col items-center md:items-start gap-4 md:gap-3 shrink-0">
-        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center text-black font-extrabold text-2xl shrink-0">SH</div>
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-white font-extrabold text-2xl shrink-0">SH</div>
         <div class="md:mt-1">
-          <p class="font-bold text-white">Saulo Henrique Silva</p>
-          <p class="text-sm text-gray-500" data-t="about_role">Data Engineer &amp; AI/Software Solutions</p>
+          <p class="font-bold text-slate-900">Saulo Henrique Silva</p>
+          <p class="text-sm text-slate-500" data-t="about_role">Founder, S.H.S — Data, AI &amp; Software</p>
         </div>
       </div>
       <div>
-        <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="about_label">Who's behind this</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mb-5" data-t="about_h2">One builder. Seven problems solved so far.</h2>
-        <p class="text-gray-400 leading-relaxed mb-4" data-t="about_p1">I design and ship systems end-to-end — data pipelines, AI agents, automations, dashboards, full applications. Not templates: solutions built around how a specific team actually works.</p>
-        <p class="text-gray-400 leading-relaxed mb-6" data-t="about_p2">Every solution below started the same way — someone described a process that was slow, manual, or breaking under its own weight. I built the system that fixed it. If that sounds like your team, we're already halfway there.</p>
+        <p class="text-green-600 text-sm font-semibold uppercase tracking-widest mb-3" data-t="about_label">Who's behind this</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-5" data-t="about_h2">A studio, not a freelancer. Founder-led, hands-on.</h2>
+        <p class="text-slate-500 leading-relaxed mb-4" data-t="about_p1">I design and ship systems end-to-end — data pipelines, AI agents, automations, dashboards, full applications. Not templates: solutions built around how a specific team actually works.</p>
+        <p class="text-slate-500 leading-relaxed mb-6" data-t="about_p2">Every system on this page started the same way — someone described a process that was slow, manual, or breaking under its own weight. I built what fixed it. If that sounds like your team, we're already halfway there.</p>
         <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-gray-900 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg" data-t="about_chip1">Data Engineering</span>
-          <span class="text-xs bg-gray-900 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg" data-t="about_chip2">AI / LLM Automation</span>
-          <span class="text-xs bg-gray-900 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg" data-t="about_chip3">Full-stack Software</span>
-          <span class="text-xs bg-gray-900 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg" data-t="about_chip4">Systems Architecture</span>
-          <span class="text-xs bg-gray-900 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg" data-t="about_chip5">Dashboards &amp; Reporting</span>
+          <span class="text-xs bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg" data-t="about_chip1">Data Engineering</span>
+          <span class="text-xs bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg" data-t="about_chip2">AI / LLM Automation</span>
+          <span class="text-xs bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg" data-t="about_chip3">Full-stack Software</span>
+          <span class="text-xs bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg" data-t="about_chip4">Systems Architecture</span>
+          <span class="text-xs bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg" data-t="about_chip5">Dashboards &amp; Reporting</span>
         </div>
       </div>
     </div>
@@ -147,328 +181,291 @@
 </section>
 
 <!-- ═══ HOW I WORK (TRACK) ═══ -->
-<section id="how-i-work" class="py-20 px-4 sm:px-6 border-t border-gray-800/60">
+<section id="how-i-work" class="py-24 px-4 sm:px-6 border-t border-slate-100 bg-slate-50">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-10">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="track_label">How it works</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="track_h2">From a real problem to a shipped solution.</h2>
-      <p class="text-gray-400 max-w-xl mx-auto" data-t="track_sub">Same track, every time — whatever shape the problem takes.</p>
+      <p class="text-green-600 text-sm font-semibold uppercase tracking-widest mb-3" data-t="track_label">How it works</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4" data-t="track_h2">From a real problem to a shipped system.</h2>
+      <p class="text-slate-500 max-w-xl mx-auto" data-t="track_sub">Same track, every time — whatever shape the problem takes.</p>
     </div>
 
     <div class="flex flex-wrap justify-center gap-2 mb-16">
-      <span class="text-xs bg-gray-900 border border-gray-800 text-gray-400 px-3 py-1.5 rounded-full" data-t="entry1">A messy, undocumented flow</span>
-      <span class="text-xs bg-gray-900 border border-gray-800 text-gray-400 px-3 py-1.5 rounded-full" data-t="entry2">A rigid, outdated process</span>
-      <span class="text-xs bg-gray-900 border border-gray-800 text-gray-400 px-3 py-1.5 rounded-full" data-t="entry3">Too many disconnected tools</span>
-      <span class="text-xs bg-gray-900 border border-gray-800 text-gray-400 px-3 py-1.5 rounded-full" data-t="entry4">A repetitive manual task</span>
-      <span class="text-xs bg-gray-900 border border-gray-800 text-gray-400 px-3 py-1.5 rounded-full" data-t="entry5">An idea with no system yet</span>
+      <span class="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1.5 rounded-full" data-t="entry1">A messy, undocumented flow</span>
+      <span class="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1.5 rounded-full" data-t="entry2">A rigid, outdated process</span>
+      <span class="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1.5 rounded-full" data-t="entry3">Too many disconnected tools</span>
+      <span class="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1.5 rounded-full" data-t="entry4">A repetitive manual task</span>
+      <span class="text-xs bg-white border border-slate-200 text-slate-500 px-3 py-1.5 rounded-full" data-t="entry5">An idea with no system yet</span>
     </div>
 
     <div class="relative grid md:grid-cols-3 gap-10">
-      <div class="hidden md:block absolute top-7 left-[16.5%] right-[16.5%] h-px bg-gradient-to-r from-green-800/60 via-green-600/40 to-green-800/60"></div>
+      <div class="hidden md:block absolute top-7 left-[16.5%] right-[16.5%] h-px bg-gradient-to-r from-slate-200 via-green-300 to-slate-200"></div>
 
       <div class="relative text-center">
-        <div class="w-14 h-14 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5 relative z-10"><span class="text-xl font-extrabold text-green-400">1</span></div>
-        <h3 class="text-lg font-bold mb-3" data-t="track1_title">Understand</h3>
-        <p class="text-gray-400 text-sm leading-relaxed" data-t="track1_desc">We talk through what's actually happening — not what the org chart says. Where time gets lost, what breaks, who's affected.</p>
+        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mx-auto mb-5 relative z-10"><span class="text-xl font-extrabold text-green-600">1</span></div>
+        <h3 class="text-lg font-bold mb-3" data-t="track1_title">Understand the problem</h3>
+        <p class="text-slate-500 text-sm leading-relaxed" data-t="track1_desc">We talk through what's actually happening — not what the org chart says. Where time gets lost, what breaks, who's affected.</p>
       </div>
       <div class="relative text-center">
-        <div class="w-14 h-14 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5 relative z-10"><span class="text-xl font-extrabold text-green-400">2</span></div>
-        <h3 class="text-lg font-bold mb-3" data-t="track2_title">Design</h3>
-        <p class="text-gray-400 text-sm leading-relaxed" data-t="track2_desc">I sketch the shape of the fix — unify what's scattered, automate what's repetitive, build what doesn't exist yet. You see the plan before a line of code.</p>
+        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mx-auto mb-5 relative z-10"><span class="text-xl font-extrabold text-green-600">2</span></div>
+        <h3 class="text-lg font-bold mb-3" data-t="track2_title">Build the system</h3>
+        <p class="text-slate-500 text-sm leading-relaxed" data-t="track2_desc">I design the fix — unify what's scattered, automate what's repetitive, build what doesn't exist yet. You see the plan before a line of code.</p>
       </div>
       <div class="relative text-center">
-        <div class="w-14 h-14 rounded-2xl bg-green-950 border border-green-800/60 flex items-center justify-center mx-auto mb-5 relative z-10"><span class="text-xl font-extrabold text-green-400">3</span></div>
-        <h3 class="text-lg font-bold mb-3" data-t="track3_title">Solve</h3>
-        <p class="text-gray-400 text-sm leading-relaxed" data-t="track3_desc">Shipped, tested, in your team's hands. Whatever shape the problem had, it now has a system — the seven below are proof.</p>
+        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mx-auto mb-5 relative z-10"><span class="text-xl font-extrabold text-green-600">3</span></div>
+        <h3 class="text-lg font-bold mb-3" data-t="track3_title">Ship the result</h3>
+        <p class="text-slate-500 text-sm leading-relaxed" data-t="track3_desc">Shipped, tested, in your team's hands. Whatever shape the problem had, it now has a system — the ones below are proof.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ SOLUTIONS ═══ -->
-<section id="solutions" class="py-20 px-4 sm:px-6 relative overflow-hidden bg-gray-900/20">
-  <div class="absolute inset-0 opacity-[0.07] pointer-events-none" style="background-image:radial-gradient(circle,#25D366 1px,transparent 1px);background-size:28px 28px;"></div>
-  <div class="max-w-6xl mx-auto relative">
+<section id="solutions" class="py-24 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="sol_label">What I've built</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="sol_h2">Seven problems. Seven shipped solutions.</h2>
-      <p class="text-gray-400 max-w-2xl mx-auto" data-t="sol_sub">Different industries, same method: understand the real workflow, then build the system that fits it. Yours could be the eighth.</p>
+      <p class="text-green-600 text-sm font-semibold uppercase tracking-widest mb-3" data-t="sol_label">Case studies</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4" data-t="sol_h2">Three systems, side by side. Four more below.</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto" data-t="sol_sub">Different industries, same method: understand the real workflow, then build the system that fits it. Yours could be the next one.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Featured tier (3) -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
 
-      <!-- TruckPilot -->
-      <div class="card-hover bg-gray-900/80 border border-green-800/40 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm">
-        <div class="h-24 bg-gray-950/60 flex items-center justify-center gap-2 px-4">
-          <div class="bg-gray-800 text-[10px] text-gray-300 px-2.5 py-1.5 rounded-lg rounded-bl-none">📎 CMR.jpg</div>
-          <svg class="w-3 h-3 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          <div class="bg-green-700 text-[10px] text-white px-2.5 py-1.5 rounded-lg rounded-br-none">Validated ✓</div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <div class="w-11 h-11 rounded-xl bg-green-950/60 border border-green-800/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893C23.94 5.335 18.605 0 12.05 0z"/></svg>
-          </div>
-          <div class="flex items-center gap-2 mb-2 flex-wrap">
-            <h3 class="font-bold text-base">TruckPilot</h3>
-            <span class="text-[9px] font-bold uppercase tracking-wide text-green-400 bg-green-950/60 border border-green-800/40 rounded-full px-2 py-0.5" data-t="sol0_badge">Flagship case</span>
-          </div>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol0_pain">Fleet compliance trapped in paperwork — expired certificates, missing CMRs, fines discovered too late.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol0_build">A full WhatsApp co-pilot: document scanning, ADR tracking, eco-zone checks, cargo verification, synced straight to the TMS.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-400 bg-green-950/40 border border-green-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol0_result">7 workflows, one WhatsApp number</div>
-          <a href="case-truckpilot.html" class="text-xs font-semibold text-green-400 hover:text-green-300 transition" data-t="sol0_cta">See the full case study ↓</a>
-        </div>
-      </div>
-
-      <!-- Rapportini -->
-      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm">
-        <div class="h-24 bg-gray-950/60 flex items-center justify-center px-4">
+      <!-- Fleet Control -->
+      <a href="case-fleet-control.html" class="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition">
+        <div class="h-32 bg-blue-50 flex items-center justify-center px-4 relative">
           <div class="flex items-center gap-2 w-full max-w-[180px]">
-            <span class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></span>
-            <span class="flex-1 border-t border-dashed border-blue-800"></span>
-            <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span class="flex-1 border-t border-dashed border-blue-800"></span>
-            <span class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></span>
+            <span class="w-2 h-2 rounded-full bg-blue-500 shrink-0"></span>
+            <span class="flex-1 border-t border-dashed border-blue-300"></span>
+            <svg class="w-4 h-4 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span class="flex-1 border-t border-dashed border-blue-300"></span>
+            <span class="w-2 h-2 rounded-full bg-blue-500 shrink-0"></span>
           </div>
+          <div class="absolute -bottom-3 right-4 bg-white rounded-xl px-3 py-1.5 card-float border border-slate-100 text-[11px] font-bold text-blue-600" data-t="sol1_badge">60d → &lt;30d</div>
         </div>
         <div class="p-6 flex flex-col flex-1">
-          <div class="w-11 h-11 rounded-xl bg-blue-950/60 border border-blue-800/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg>
+          <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg>
           </div>
-          <h3 class="font-bold text-base mb-2" data-t="sol1_title">Rapportini</h3>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol1_pain">Drivers logging trips on paper. Invoices taking up to 60 days to close. No visibility into what was loaded, or where.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol1_build">Trip-by-trip tracking, fuel and workshop cost control, a one-click load view per trailer, and a dispatch board that assigns the fastest-fitting trip to the right vehicle.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 bg-blue-950/40 border border-blue-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol1_result">Invoicing: 60 days → same month</div>
-          <a href="case-rapportini.html" class="text-xs font-semibold text-blue-400 hover:text-blue-300 transition">See case study ↓</a>
+          <h3 class="font-bold text-lg mb-2" data-t="sol1_title">Fleet Control</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-3" data-t="sol1_pain">Drivers logging trips on paper. Invoices taking up to 60 days to close. No visibility into what was loaded, or where.</p>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1" data-t="sol1_build">Trip-by-trip tracking, fuel and workshop cost control, a one-click load view per trailer, and a dispatch board that assigns the fastest-fitting trip to the right vehicle.</p>
+          <span class="text-sm font-semibold text-blue-600 group-hover:text-blue-700 transition" data-t="sol1_cta">See the case study →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- Shift Scheduling -->
-      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm">
-        <div class="h-24 bg-gray-950/60 flex items-center justify-center gap-1.5 px-4">
-          <div class="w-5 h-8 rounded bg-purple-900/40"></div>
-          <div class="w-5 h-8 rounded bg-purple-600"></div>
-          <div class="w-5 h-8 rounded bg-purple-600"></div>
-          <div class="w-5 h-8 rounded bg-purple-900/40"></div>
-          <div class="w-5 h-8 rounded bg-purple-600"></div>
-          <div class="w-5 h-8 rounded bg-purple-900/40"></div>
-          <div class="w-5 h-8 rounded bg-purple-900/40"></div>
+      <!-- Workforce -->
+      <a href="case-shift-scheduling.html" class="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition">
+        <div class="h-32 bg-purple-50 flex items-center justify-center gap-1.5 px-4 relative">
+          <div class="w-5 h-8 rounded bg-purple-200"></div>
+          <div class="w-5 h-8 rounded bg-purple-500"></div>
+          <div class="w-5 h-8 rounded bg-purple-500"></div>
+          <div class="w-5 h-8 rounded bg-purple-200"></div>
+          <div class="w-5 h-8 rounded bg-purple-500"></div>
+          <div class="w-5 h-8 rounded bg-purple-200"></div>
+          <div class="w-5 h-8 rounded bg-purple-200"></div>
+          <div class="absolute -bottom-3 right-4 bg-white rounded-xl px-3 py-1.5 card-float border border-slate-100 text-[11px] font-bold text-purple-600" data-t="sol2_badge">Overtime ↓</div>
         </div>
         <div class="p-6 flex flex-col flex-1">
-          <div class="w-11 h-11 rounded-xl bg-purple-950/60 border border-purple-800/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <div class="w-11 h-11 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
           </div>
-          <h3 class="font-bold text-base mb-2" data-t="sol2_title">Shift Scheduling Engine</h3>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol2_pain">Manual shift planning burning unnecessary overtime — one wrong roster away from a labor-law violation.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol2_build">Reads clocked hours, generates compliant schedules automatically, and suggests the shift mix with the least waste and the fewest overtime hours.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 bg-purple-950/40 border border-purple-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol2_result">Pays for itself in hours saved</div>
-          <a href="case-shift-scheduling.html" class="text-xs font-semibold text-purple-400 hover:text-purple-300 transition">See case study ↓</a>
+          <h3 class="font-bold text-lg mb-2" data-t="sol2_title">Workforce</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-3" data-t="sol2_pain">Manual shift planning burning unnecessary overtime — one wrong roster away from a labor-law violation.</p>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1" data-t="sol2_build">Reads clocked hours, generates compliant schedules automatically, and suggests the shift mix with the least waste and the fewest overtime hours.</p>
+          <span class="text-sm font-semibold text-purple-600 group-hover:text-purple-700 transition" data-t="sol2_cta">See the case study →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- Health Anywhere -->
-      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm">
-        <div class="h-24 bg-gray-950/60 flex items-center justify-center gap-3 px-4">
-          <svg class="w-6 h-6 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <div class="bg-gray-800 text-[10px] text-gray-300 px-2.5 py-1.5 rounded-lg">1.2 km away</div>
+      <!-- AI Real Estate -->
+      <a href="case-real-estate.html" class="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition">
+        <div class="h-32 bg-cyan-50 flex items-center justify-center px-4 relative">
+          <div class="bg-white text-[10px] text-slate-600 px-2.5 py-1.5 rounded-lg max-w-[200px] leading-snug border border-cyan-100" data-t="sol3_chat">🏠 3-room apartment, €450k — book a visit?</div>
+          <div class="absolute -bottom-3 right-4 bg-white rounded-xl px-3 py-1.5 card-float border border-slate-100 text-[11px] font-bold text-cyan-600">24/7</div>
         </div>
         <div class="p-6 flex flex-col flex-1">
-          <div class="w-11 h-11 rounded-xl bg-rose-950/60 border border-rose-800/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657L13.414 22.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div class="w-11 h-11 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           </div>
-          <h3 class="font-bold text-base mb-2" data-t="sol3_title">Health Anywhere</h3>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol3_pain">Patients couldn't find nearby doctors, or book the way that suited them.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol3_build">Doctors list availability — in-office, video, or home visit. Patients see distance on a map, message the doctor directly, and book in one flow.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-400 bg-rose-950/40 border border-rose-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol3_result">One app, three ways to see a doctor</div>
-          <a href="case-health-anywhere.html" class="text-xs font-semibold text-rose-400 hover:text-rose-300 transition">See case study ↓</a>
+          <h3 class="font-bold text-lg mb-2" data-t="sol3_title">AI Real Estate</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-3" data-t="sol3_pain">Leads going cold waiting for a human to answer — nights, weekends, after hours.</p>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1" data-t="sol3_build">A 24/7 AI chat that knows every listing and price, checks the agent's calendar, books visits, and takes offers — any hour, any day.</p>
+          <span class="text-sm font-semibold text-cyan-600 group-hover:text-cyan-700 transition" data-t="sol3_cta">See the case study →</span>
         </div>
-      </div>
-
-      <!-- Contabile -->
-      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm">
-        <div class="h-24 bg-gray-950/60 flex flex-col justify-center gap-1.5 px-6">
-          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded border border-amber-600 bg-amber-600 shrink-0"></span><span class="h-1.5 flex-1 bg-gray-800 rounded"></span></div>
-          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded border border-amber-600 shrink-0"></span><span class="h-1.5 flex-1 bg-gray-800 rounded"></span></div>
-          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded border border-amber-600 bg-amber-600 shrink-0"></span><span class="h-1.5 w-2/3 bg-gray-800 rounded"></span></div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <img src="icons/contabile.png" alt="Contabile app icon" class="w-11 h-11 rounded-xl mb-4">
-          <h3 class="font-bold text-base mb-2" data-t="sol4_title">Contabile</h3>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol4_pain">Accounting teams distributing tasks by memory — no visibility into who's overloaded, or what's stuck.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol4_build">Organizes, measures and distributes tasks fairly across the team, so nothing sits untouched and every deadline has an owner.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 bg-amber-950/40 border border-amber-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol4_result">Faster turnaround, clearer workload</div>
-          <a href="case-contabile.html" class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition">See case study ↓</a>
-        </div>
-      </div>
-
-      <!-- AI Concierge for Real Estate -->
-      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm">
-        <div class="h-24 bg-gray-950/60 flex items-center justify-center px-4">
-          <div class="bg-gray-800 text-[10px] text-gray-300 px-2.5 py-1.5 rounded-lg max-w-[200px] leading-snug">🏠 3-room apartment, €450k — book a visit?</div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <div class="w-11 h-11 rounded-xl bg-cyan-950/60 border border-cyan-800/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          </div>
-          <h3 class="font-bold text-base mb-2" data-t="sol5_title">AI Concierge for Real Estate</h3>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol5_pain">Leads going cold waiting for a human to answer — nights, weekends, after hours.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol5_build">A 24/7 AI chat that knows every listing and price, checks the agent's calendar, books visits, and takes offers — any hour, any day.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 bg-cyan-950/40 border border-cyan-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol5_result">Never miss a lead again</div>
-          <a href="case-real-estate.html" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">See case study ↓</a>
-        </div>
-      </div>
-
-      <!-- Workout Companion -->
-      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm md:col-start-1 lg:col-start-2">
-        <div class="h-24 bg-gray-950/60 flex items-center justify-center gap-3 px-4">
-          <svg class="w-6 h-6 text-orange-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5l6.74-6.76zM16 8L8 16"/></svg>
-          <div class="bg-gray-800 text-[10px] text-gray-300 px-2.5 py-1.5 rounded-lg">3 × 12 reps</div>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <img src="icons/workout.png" alt="Workout Companion app icon" class="w-11 h-11 rounded-xl mb-4">
-          <h3 class="font-bold text-base mb-2" data-t="sol6_title">Workout Companion</h3>
-          <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol6_pain">Training plans stuck on paper — no photo of the machine, no explanation, no idea which muscle is actually working.</p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol6_build">Every workout on the phone — equipment photo, exercise explanation, demo video and muscle diagram per movement. Tracks weight, measurements and goals, gamifies consistency with streak badges, and lets the trainer see exactly what each student is doing.</p>
-          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-400 bg-orange-950/40 border border-orange-800/30 rounded-full px-3 py-1.5 w-fit mb-3" data-t="sol6_result">From a printed sheet to a coach in your pocket</div>
-          <a href="case-workout.html" class="text-xs font-semibold text-orange-400 hover:text-orange-300 transition">See case study ↓</a>
-        </div>
-      </div>
+      </a>
 
     </div>
 
-    <div class="text-center mt-14">
-      <p class="text-gray-400 mb-5" data-t="sol_cta_text">Every one of these started as a flow, an idea, or a frustration someone described to me. If yours isn't solved yet, that's the next one.</p>
-      <a href="#demo" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base" data-t="sol_cta_button">Tell me about it →</a>
+    <!-- More systems (4) -->
+    <div class="flex items-center gap-3 mb-6 mt-16">
+      <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest" data-t="more_label">More systems we've built</p>
+      <span class="flex-1 h-px bg-slate-200"></span>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <a href="case-truckpilot.html" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex flex-col gap-3">
+        <div class="w-9 h-9 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893C23.94 5.335 18.605 0 12.05 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-sm">TruckPilot</h3>
+        <p class="text-slate-500 text-xs leading-relaxed" data-t="sol4_pain">WhatsApp compliance co-pilot for European carriers — documents, ADR, eco-zones.</p>
+        <span class="text-xs font-semibold text-slate-900 mt-auto" data-t="more_cta">See case study →</span>
+      </a>
+
+      <a href="case-contabile.html" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex flex-col gap-3">
+        <img src="icons/contabile.png" alt="Contabile app icon" class="w-9 h-9 rounded-lg">
+        <h3 class="font-bold text-sm" data-t="sol5_title">Contabile</h3>
+        <p class="text-slate-500 text-xs leading-relaxed" data-t="sol5_pain">Fair task distribution for accounting teams — no more tracking work by memory.</p>
+        <span class="text-xs font-semibold text-slate-900 mt-auto" data-t="more_cta">See case study →</span>
+      </a>
+
+      <a href="case-health-anywhere.html" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex flex-col gap-3">
+        <div class="w-9 h-9 rounded-lg bg-rose-50 border border-rose-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657L13.414 22.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-sm" data-t="sol6_title">Health Anywhere</h3>
+        <p class="text-slate-500 text-xs leading-relaxed" data-t="sol6_pain">Find, message and book a doctor — in-office, video or home visit — in one flow.</p>
+        <span class="text-xs font-semibold text-slate-900 mt-auto" data-t="more_cta">See case study →</span>
+      </a>
+
+      <a href="case-workout.html" class="group bg-white border border-slate-200 rounded-2xl p-5 hover:border-slate-900 hover:shadow-lg transition flex flex-col gap-3">
+        <img src="icons/workout.png" alt="Workout Companion app icon" class="w-9 h-9 rounded-lg">
+        <h3 class="font-bold text-sm" data-t="sol7_title">Workout Companion</h3>
+        <p class="text-slate-500 text-xs leading-relaxed" data-t="sol7_pain">From a printed training sheet to a coach in your pocket — photo, video, tracking.</p>
+        <span class="text-xs font-semibold text-slate-900 mt-auto" data-t="more_cta">See case study →</span>
+      </a>
+
     </div>
   </div>
 </section>
 
+<!-- ═══ OPEN FUNNEL ═══ -->
+<section class="py-20 px-4 sm:px-6 bg-slate-900">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-4" data-t="funnel_h2">Don't see your exact problem here?</h2>
+    <p class="text-slate-400 mb-8 leading-relaxed" data-t="funnel_sub">These seven systems are proof of a method, not a limited menu. If your operation loses time, money or control somewhere these don't cover, that's exactly the kind of problem we like starting from scratch.</p>
+    <a href="#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base" data-t="funnel_cta">Tell us your problem →</a>
+  </div>
+</section>
+
 <!-- ═══ DEMO FORM ═══ -->
-<section id="demo" class="py-20 px-4 sm:px-6">
+<section id="demo" class="py-24 px-4 sm:px-6 bg-slate-50 border-t border-slate-100">
   <div class="max-w-xl mx-auto">
     <div class="text-center mb-10">
-      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="demo_label">Get started</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="demo_h2">Request a Demo — or tell me what you're solving</h2>
-      <p class="text-gray-400 leading-relaxed" data-t="demo_sub">We'll reach out within 24 hours — for a fleet walkthrough, or to talk about whatever problem brought you here.</p>
+      <p class="text-green-600 text-sm font-semibold uppercase tracking-widest mb-3" data-t="demo_label">Get started</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4" data-t="demo_h2">Tell us your problem</h2>
+      <p class="text-slate-500 leading-relaxed" data-t="demo_sub">We'll reach out within 24 hours — to talk about whatever is slowing your operation down.</p>
     </div>
     <form id="demo-form" method="POST" action="https://formsubmit.co/saulohs@icloud.com"
-      class="bg-gray-900 border border-gray-800 rounded-2xl p-8 space-y-5">
+      class="bg-white border border-slate-200 rounded-2xl p-8 space-y-5 shadow-sm">
       <input type="hidden" name="_next" value="https://truckpilot.netlify.app/">
-      <input type="hidden" name="_subject" value="New Demo Request — TruckPilot">
+      <input type="hidden" name="_subject" value="New inquiry — S.H.S">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
       <p class="hidden"><label>Do not fill: <input name="_honey"></label></p>
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1.5" data-t="form_first_name">First name</label>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5" data-t="form_first_name">First name</label>
           <input type="text" name="first_name" required data-tp="form_ph_first" placeholder="Jan"
-            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:border-green-500 transition">
+            class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none transition">
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1.5" data-t="form_last_name">Last name</label>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5" data-t="form_last_name">Last name</label>
           <input type="text" name="last_name" required data-tp="form_ph_last" placeholder="de Vries"
-            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:border-green-500 transition">
+            class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none transition">
         </div>
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1.5" data-t="form_company">Company / Fleet name</label>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5" data-t="form_company">Company name</label>
         <input type="text" name="company" required data-tp="form_ph_company" placeholder="Trans Europa BV"
-          class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:border-green-500 transition">
+          class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none transition">
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1.5" data-t="form_email">Work email</label>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5" data-t="form_email">Work email</label>
         <input type="email" name="email" required data-tp="form_ph_email" placeholder="jan@transeuropa.nl"
-          class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:border-green-500 transition">
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1.5" data-t="form_fleet">Fleet size</label>
-          <select name="fleet_size" required
-            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-green-500 transition">
-            <option value="" disabled selected data-t="form_fleet_select">Select range</option>
-            <option>1 – 10 vehicles</option>
-            <option>11 – 50 vehicles</option>
-            <option>51 – 200 vehicles</option>
-            <option>200+ vehicles</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1.5" data-t="form_country">Country</label>
-          <select name="country" required
-            class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-green-500 transition">
-            <option value="" disabled selected data-t="form_country_select">Select country</option>
-            <option>Netherlands</option><option>Germany</option><option>Italy</option>
-            <option>Belgium</option><option>France</option><option>Poland</option>
-            <option>Austria</option><option>Switzerland</option><option>Portugal</option>
-            <option>Other</option>
-          </select>
-        </div>
+          class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none transition">
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1.5">
-          <span data-t="form_whatsapp">WhatsApp number</span> <span class="text-gray-500 font-normal" data-t="form_whatsapp_opt">(optional — for a live trial)</span>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5" data-t="form_problem">What's slowing you down?</label>
+        <select name="problem_type"
+          class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:border-green-500 focus:outline-none transition">
+          <option value="" data-t="form_problem_select">Select the closest fit (optional)</option>
+          <option data-t="problem1">Too much manual work</option>
+          <option data-t="problem2">Too many spreadsheets</option>
+          <option data-t="problem3">Too much WhatsApp</option>
+          <option data-t="problem4">No visibility</option>
+          <option data-t="problem5">Repetitive work</option>
+          <option data-t="problem6">High operational costs</option>
+          <option data-t="problem7">Poor workforce planning</option>
+          <option data-t="problem8_form">Something else</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">
+          <span data-t="form_phone">Phone / WhatsApp</span> <span class="text-slate-400 font-normal" data-t="form_phone_opt">(optional)</span>
         </label>
-        <input type="tel" name="whatsapp" placeholder="+31 6 12345678"
-          class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:border-green-500 transition">
+        <input type="tel" name="phone" placeholder="+31 6 12345678"
+          class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none transition">
       </div>
       <button id="submit-btn" type="submit"
-        class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-3.5 rounded-xl transition text-base wa-glow" data-t="form_submit">
-        Request Demo →
+        class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-3.5 rounded-xl transition text-base" data-t="form_submit">
+        Send →
       </button>
-      <p class="text-xs text-gray-500 text-center" data-t="form_note">No commitment. We'll reply within 24 hours.</p>
+      <p class="text-xs text-slate-400 text-center" data-t="form_note">No commitment. We'll reply within 24 hours.</p>
     </form>
-    <div id="form-success" style="display:none" class="bg-gray-900 border border-green-700/50 rounded-2xl p-10 text-center">
-      <div class="w-16 h-16 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center mx-auto mb-5">
-        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <div id="form-success" style="display:none" class="bg-white border border-green-200 rounded-2xl p-10 text-center shadow-sm">
+      <div class="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-5">
+        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       </div>
-      <h3 class="text-2xl font-extrabold mb-3" data-t="success_title">Request sent!</h3>
-      <p class="text-gray-400" data-t="success_body">We'll get in touch within <strong class="text-white">24 hours</strong> to schedule a live walkthrough for your fleet.</p>
+      <h3 class="text-2xl font-extrabold mb-3" data-t="success_title">Message sent!</h3>
+      <p class="text-slate-500" data-t="success_body">We'll get in touch within <strong class="text-slate-900">24 hours</strong> to talk through your problem.</p>
     </div>
-    <div id="form-error" style="display:none" class="mt-4 bg-red-950/50 border border-red-800/50 rounded-xl p-4 text-center text-sm text-red-300" data-t="form_error">
+    <div id="form-error" style="display:none" class="mt-4 bg-red-50 border border-red-200 rounded-xl p-4 text-center text-sm text-red-600" data-t="form_error">
       Something went wrong. Please try again or email us directly.
     </div>
   </div>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer class="border-t border-gray-800 py-10 px-4 sm:px-6">
+<footer class="border-t border-slate-200 py-10 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto space-y-6">
 
     <!-- Row 1: brand + GDPR + powered -->
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <span class="font-bold text-sm">TruckPilot</span>
-        <span class="text-gray-600 text-sm">&copy; 2026</span>
+        <div class="w-6 h-6 rounded bg-slate-900 flex items-center justify-center text-white font-extrabold text-[10px]">SH</div>
+        <span class="font-bold text-sm">S.H.S</span>
+        <span class="text-slate-400 text-sm">&copy; 2026</span>
       </div>
-      <p class="text-xs text-gray-600 text-center">
-        Data in Google Cloud europe-west4 &middot; Designed for GDPR &middot;
-        <a href="#" class="underline hover:text-gray-400 transition" data-t="footer_privacy">Privacy Policy</a>
+      <p class="text-xs text-slate-400 text-center">
+        Creators of <strong class="text-slate-600">TruckPilot</strong>, Fleet Control &amp; 5 more systems &middot;
+        <a href="#" class="underline hover:text-slate-600 transition" data-t="footer_privacy">Privacy Policy</a>
       </p>
-      <p class="text-xs text-gray-600" data-t="footer_powered">Powered by Gemini AI &amp; WhatsApp Business API</p>
+      <p class="text-xs text-slate-400" data-t="footer_powered">Data in Google Cloud europe-west4 &middot; Designed for GDPR</p>
     </div>
 
     <!-- Divider -->
-    <div class="border-t border-gray-800/60"></div>
+    <div class="border-t border-slate-100"></div>
 
     <!-- Row 2: builder identity + contact links -->
     <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
 
       <!-- S·H·S badge + name -->
       <div class="flex items-center gap-3">
-        <div class="bg-white rounded-lg px-3 py-1 inline-flex items-center hover:bg-gray-50 transition">
+        <div class="bg-white rounded-lg px-3 py-1 inline-flex items-center border border-slate-100">
           <img src="shs-logo.png" alt="S.H.S — Data &amp; AI Solutions" class="h-8 w-auto">
         </div>
         <div>
-          <p class="text-sm font-semibold text-gray-300">Saulo Henrique Silva</p>
-          <p class="text-xs text-gray-600" data-t="footer_title">Data Engineer &amp; AI Solutions</p>
+          <p class="text-sm font-semibold text-slate-700">Saulo Henrique Silva</p>
+          <p class="text-xs text-slate-400" data-t="footer_title">Founder, S.H.S — Data, AI &amp; Software</p>
         </div>
       </div>
 
       <!-- Contact links -->
       <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
         <a href="mailto:it_shs@outlook.com"
-           class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-300 transition">
+           class="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-800 transition">
           <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -476,14 +473,14 @@
           it_shs@outlook.com
         </a>
         <a href="https://wa.me/393513420458" target="_blank" rel="noopener"
-           class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-green-400 transition">
+           class="flex items-center gap-1.5 text-xs text-slate-500 hover:text-green-600 transition">
           <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
           +39 351 342 0458
         </a>
         <a href="https://linkedin.com/in/saulo-henrique-silva/" target="_blank" rel="noopener"
-           class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-blue-400 transition">
+           class="flex items-center gap-1.5 text-xs text-slate-500 hover:text-blue-600 transition">
           <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
           </svg>
@@ -532,7 +529,7 @@ function applyLanguage(lang) {
     var active = b.dataset.lang === lang;
     b.classList.toggle('bg-green-500', active);
     b.classList.toggle('text-black', active);
-    b.classList.toggle('text-gray-400', !active);
+    b.classList.toggle('text-slate-400', !active);
   });
   updateRotator();
 }
@@ -560,36 +557,46 @@ try {
   T = {
     en: {
       /* nav */
-      nav_who:"Who it's for", nav_features:"Features", nav_compliance:"Compliance", nav_solutions:"Solutions", nav_faq:"FAQ", nav_demo:"Get a Demo",
-      nav_about:"About", nav_case:"TruckPilot Case", nav_by:"by S.H.S",
+      nav_who:"Who it's for", nav_features:"Features", nav_compliance:"Compliance", nav_solutions:"Case studies", nav_faq:"FAQ", nav_demo:"Tell us your problem",
+      nav_about:"About", nav_case:"TruckPilot Case", nav_by:"creators of TruckPilot & 6 more systems", nav_problems:"Problems we solve",
       /* hero */
-      hero_badge:"S.H.S — Data, AI & Software Solutions",
-      hero_h1:'I build the software your business is <span class="gradient-text">still missing.</span>',
-      hero_subtitle:"Data engineer and AI/software builder. Seven solutions already live — logistics, HR, health, finance, real estate, fitness. If your team still runs on spreadsheets, paper, or endless WhatsApp threads, that's exactly what I fix.",
-      hero_cta1:"See what I've built →", hero_cta2:"Tell me your problem",
+      hero_badge:"Founder-led software studio",
+      hero_h1:"Show us the<br>bottleneck.<br><span class=\"text-slate-400\">We'll build the system.</span>",
+      hero_subtitle:"We design software, AI and data solutions that reduce manual work, improve visibility and cut operational costs.",
+      hero_cta1:"See what we've solved", hero_cta2:"Tell us your problem →",
       hero_rotator_label:"Right now, solving:",
       hero_grid_label:"7 solutions. One builder.",
+      hero_card1_label:"Fleet Control", hero_card1_unit:" days", hero_card1_sub:"operation to payment cycle",
+      hero_card2_label:"AI Real Estate", hero_card2_sub:"lead response, every hour",
+      hero_card3_label:"Workforce", hero_card3_stat:"Overtime", hero_card3_sub:"compliant schedules, less waste",
+      hero_card4_sub:"completed",
       grid_shifts:"Shift Scheduling", grid_realestate:"Real Estate AI", grid_workout:"Workout Companion",
       rot1:"Fleet compliance stuck in paperwork → TruckPilot",
-      rot2:"Invoices taking 60 days to close → Rapportini",
-      rot3:"Shifts burning unnecessary overtime → Shift Scheduling Engine",
+      rot2:"Invoices taking 60 days to close → Fleet Control",
+      rot3:"Shifts burning unnecessary overtime → Workforce",
       rot4:"Patients can't find or book a doctor → Health Anywhere",
       rot5:"Accounting tasks tracked by memory → Contabile",
-      rot6:"Real estate leads going cold at night → AI Concierge",
+      rot6:"Real estate leads going cold at night → AI Real Estate",
       rot7:"Training plans stuck on paper → Workout Companion",
       badge_no_app:"No app install", badge_gdpr:"Designed for GDPR", badge_tms:"TMS / ERP ready",
+      /* problem selector */
+      problems_h2:"What is slowing your business down?", problems_sub:"Pick the one that sounds familiar — it's usually the start of the conversation.",
+      problem1:"Too much manual work", problem2:"Too many spreadsheets", problem3:"Too much WhatsApp", problem4:"No visibility",
+      problem5:"Repetitive work", problem6:"High operational costs", problem7:"Poor workforce planning", problem8:"Something else →",
+      /* results band */
+      result1:"days, transport payment cycle", result2:"AI customer service", result3_word:"Real-time", result3:"operational documents", result4_word:"Optimized", result4:"workforce scheduling",
       /* about */
-      about_label:"Who's behind this", about_h2:"One builder. Seven problems solved so far.",
-      about_role:"Data Engineer & AI/Software Solutions",
+      about_label:"Who's behind this", about_h2:"A studio, not a freelancer. Founder-led, hands-on.",
+      about_role:"Founder, S.H.S — Data, AI & Software",
       about_p1:"I design and ship systems end-to-end — data pipelines, AI agents, automations, dashboards, full applications. Not templates: solutions built around how a specific team actually works.",
-      about_p2:"Every solution below started the same way — someone described a process that was slow, manual, or breaking under its own weight. I built the system that fixed it. If that sounds like your team, we're already halfway there.",
+      about_p2:"Every system on this page started the same way — someone described a process that was slow, manual, or breaking under its own weight. I built what fixed it. If that sounds like your team, we're already halfway there.",
       about_chip1:"Data Engineering", about_chip2:"AI / LLM Automation", about_chip3:"Full-stack Software", about_chip4:"Systems Architecture", about_chip5:"Dashboards & Reporting",
       /* how i work (track) */
-      track_label:"How it works", track_h2:"From a real problem to a shipped solution.", track_sub:"Same track, every time — whatever shape the problem takes.",
+      track_label:"How it works", track_h2:"From a real problem to a shipped system.", track_sub:"Same track, every time — whatever shape the problem takes.",
       entry1:"A messy, undocumented flow", entry2:"A rigid, outdated process", entry3:"Too many disconnected tools", entry4:"A repetitive manual task", entry5:"An idea with no system yet",
-      track1_title:"Understand", track1_desc:"We talk through what's actually happening — not what the org chart says. Where time gets lost, what breaks, who's affected.",
-      track2_title:"Design", track2_desc:"I sketch the shape of the fix — unify what's scattered, automate what's repetitive, build what doesn't exist yet. You see the plan before a line of code.",
-      track3_title:"Solve", track3_desc:"Shipped, tested, in your team's hands. Whatever shape the problem had, it now has a system — the seven below are proof.",
+      track1_title:"Understand the problem", track1_desc:"We talk through what's actually happening — not what the org chart says. Where time gets lost, what breaks, who's affected.",
+      track2_title:"Build the system", track2_desc:"I design the fix — unify what's scattered, automate what's repetitive, build what doesn't exist yet. You see the plan before a line of code.",
+      track3_title:"Ship the result", track3_desc:"Shipped, tested, in your team's hands. Whatever shape the problem had, it now has a system — the ones below are proof.",
       /* case study intro */
       case_label:"Case study 01",
       case_h2:'TruckPilot — <span class="gradient-text">Fleet Compliance</span> on WhatsApp',
@@ -637,32 +644,25 @@ try {
       how2_title:"AI processes in under 30 seconds", how2_desc:"Gemini AI reads documents, validates fields, checks compliance rules, and replies in the driver's language — EN, NL, IT, DE or PT.",
       how3_title:"Data synced. Audit trail created.", how3_desc:"Every document stored, every expiry tracked, every delivery confirmed. TMS/ERP updated. No manual entry.",
       /* solutions */
-      sol_label:"What I've built", sol_h2:"Seven problems. Seven shipped solutions.", sol_sub:"Different industries, same method: understand the real workflow, then build the system that fits it. Yours could be the eighth.",
-      sol0_badge:"Flagship case",
-      sol0_pain:"Fleet compliance trapped in paperwork — expired certificates, missing CMRs, fines discovered too late.",
-      sol0_build:"A full WhatsApp co-pilot: document scanning, ADR tracking, eco-zone checks, cargo verification, synced straight to the TMS.",
-      sol0_result:"7 workflows, one WhatsApp number",
-      sol0_cta:"See the full case study ↓",
-      sol1_title:"Rapportini", sol1_pain:"Drivers logging trips on paper. Invoices taking up to 60 days to close. No visibility into what was loaded, or where.",
+      sol_label:"Case studies", sol_h2:"Three systems, side by side. Four more below.", sol_sub:"Different industries, same method: understand the real workflow, then build the system that fits it. Yours could be the next one.",
+      sol1_badge:"60d → <30d", sol1_title:"Fleet Control", sol1_pain:"Drivers logging trips on paper. Invoices taking up to 60 days to close. No visibility into what was loaded, or where.",
       sol1_build:"Trip-by-trip tracking, fuel and workshop cost control, a one-click load view per trailer, and a dispatch board that assigns the fastest-fitting trip to the right vehicle.",
-      sol1_result:"Invoicing: 60 days → same month",
-      sol2_title:"Shift Scheduling Engine", sol2_pain:"Manual shift planning burning unnecessary overtime — one wrong roster away from a labor-law violation.",
+      sol1_cta:"See the case study →",
+      sol2_badge:"Overtime ↓", sol2_title:"Workforce", sol2_pain:"Manual shift planning burning unnecessary overtime — one wrong roster away from a labor-law violation.",
       sol2_build:"Reads clocked hours, generates compliant schedules automatically, and suggests the shift mix with the least waste and the fewest overtime hours.",
-      sol2_result:"Pays for itself in hours saved",
-      sol3_title:"Health Anywhere", sol3_pain:"Patients couldn't find nearby doctors, or book the way that suited them.",
-      sol3_build:"Doctors list availability — in-office, video, or home visit. Patients see distance on a map, message the doctor directly, and book in one flow.",
-      sol3_result:"One app, three ways to see a doctor",
-      sol4_title:"Contabile", sol4_pain:"Accounting teams distributing tasks by memory — no visibility into who's overloaded, or what's stuck.",
-      sol4_build:"Organizes, measures and distributes tasks fairly across the team, so nothing sits untouched and every deadline has an owner.",
-      sol4_result:"Faster turnaround, clearer workload",
-      sol5_title:"AI Concierge for Real Estate", sol5_pain:"Leads going cold waiting for a human to answer — nights, weekends, after hours.",
-      sol5_build:"A 24/7 AI chat that knows every listing and price, checks the agent's calendar, books visits, and takes offers — any hour, any day.",
-      sol5_result:"Never miss a lead again",
-      sol6_title:"Workout Companion", sol6_pain:"Training plans stuck on paper — no photo of the machine, no explanation, no idea which muscle is actually working.",
-      sol6_build:"Every workout on the phone — equipment photo, exercise explanation, demo video and muscle diagram per movement. Tracks weight, measurements and goals, gamifies consistency with streak badges, and lets the trainer see exactly what each student is doing.",
-      sol6_result:"From a printed sheet to a coach in your pocket",
+      sol2_cta:"See the case study →",
+      sol3_chat:"🏠 3-room apartment, €450k — book a visit?", sol3_title:"AI Real Estate", sol3_pain:"Leads going cold waiting for a human to answer — nights, weekends, after hours.",
+      sol3_build:"A 24/7 AI chat that knows every listing and price, checks the agent's calendar, books visits, and takes offers — any hour, any day.",
+      sol3_cta:"See the case study →",
+      sol4_pain:"WhatsApp compliance co-pilot for European carriers — documents, ADR, eco-zones.",
+      sol5_title:"Contabile", sol5_pain:"Fair task distribution for accounting teams — no more tracking work by memory.",
+      sol6_title:"Health Anywhere", sol6_pain:"Find, message and book a doctor — in-office, video or home visit — in one flow.",
+      sol7_title:"Workout Companion", sol7_pain:"From a printed training sheet to a coach in your pocket — photo, video, tracking.",
+      more_label:"More systems we've built", more_cta:"See case study →",
       sol_cta_text:"Every one of these started as a flow, an idea, or a frustration someone described to me. If yours isn't solved yet, that's the next one.",
       sol_cta_button:"Tell me about it →",
+      /* open funnel */
+      funnel_h2:"Don't see your exact problem here?", funnel_sub:"These seven systems are proof of a method, not a limited menu. If your operation loses time, money or control somewhere these don't cover, that's exactly the kind of problem we like starting from scratch.", funnel_cta:"Tell us your problem →",
       /* faq */
       faq_label:"Common questions", faq_h2:"FAQ",
       faq1_q:"Do drivers need to install a new app?", faq1_a:"No. TruckPilot runs entirely through the WhatsApp they already have on their phone. You share a WhatsApp Business number and they start messaging immediately — no downloads, no accounts, no passwords.",
@@ -672,50 +672,60 @@ try {
       faq5_q:"What if the AI can't read a document?", faq5_a:"TruckPilot rejects low-confidence extractions and asks the driver to retake the photo — specifying exactly what was unclear (blur, angle, missing boxes). If a second attempt also fails, the session is flagged and a fleet manager is notified.",
       faq6_q:"How much does it cost?", faq6_a:"Pricing is based on fleet size and usage volume. Contact us for a tailored quote — we'll build a proposal around your fleet's specific compliance profile and integration needs.",
       /* demo form */
-      demo_label:"Get started", demo_h2:"Request a Demo — or tell me what you're solving", demo_sub:"We'll reach out within 24 hours — for a fleet walkthrough, or to talk about whatever problem brought you here.",
-      form_first_name:"First name", form_last_name:"Last name", form_company:"Company / Fleet name", form_email:"Work email",
-      form_fleet:"Fleet size", form_fleet_select:"Select range", form_country:"Country", form_country_select:"Select country",
-      form_whatsapp:"WhatsApp number", form_whatsapp_opt:"(optional — for a live trial)",
-      form_submit:"Request Demo →", form_note:"No commitment. We'll reply within 24 hours.",
+      demo_label:"Get started", demo_h2:"Tell us your problem", demo_sub:"We'll reach out within 24 hours — to talk about whatever is slowing your operation down.",
+      form_first_name:"First name", form_last_name:"Last name", form_company:"Company name", form_email:"Work email",
+      form_problem:"What's slowing you down?", form_problem_select:"Select the closest fit (optional)", form_country:"Country", form_country_select:"Select country",
+      form_phone:"Phone / WhatsApp", form_phone_opt:"(optional)", problem8_form:"Something else",
+      form_submit:"Send →", form_note:"No commitment. We'll reply within 24 hours.",
       form_ph_first:"Jan", form_ph_last:"de Vries", form_ph_company:"Trans Europa BV", form_ph_email:"jan@transeuropa.nl",
-      success_title:"Request sent!", success_body:'We\'ll get in touch within <strong class="text-white">24 hours</strong> to schedule a live walkthrough for your fleet.',
+      success_title:"Message sent!", success_body:'We\'ll get in touch within <strong class="text-slate-900">24 hours</strong> to talk through your problem.',
       form_error:"Something went wrong. Please try again or email us directly.",
       /* footer */
-      footer_privacy:"Privacy Policy", footer_powered:"Powered by Gemini AI & WhatsApp Business API",
-      footer_title:"Data Engineer & AI Solutions"
+      footer_privacy:"Privacy Policy", footer_powered:"Data in Google Cloud europe-west4 · Designed for GDPR",
+      footer_title:"Founder, S.H.S — Data, AI & Software"
     },
     it: {
       /* nav */
-      nav_who:"Per chi è", nav_features:"Funzionalità", nav_compliance:"Conformità", nav_solutions:"Soluzioni", nav_faq:"FAQ", nav_demo:"Richiedi Demo",
-      nav_about:"Chi sono", nav_case:"Case TruckPilot", nav_by:"by S.H.S",
+      nav_who:"Per chi è", nav_features:"Funzionalità", nav_compliance:"Conformità", nav_solutions:"Case study", nav_faq:"FAQ", nav_demo:"Raccontaci il problema",
+      nav_about:"Chi sono", nav_case:"Case TruckPilot", nav_by:"creatori di TruckPilot e altri 6 sistemi", nav_problems:"Problemi che risolviamo",
       /* hero */
-      hero_badge:"S.H.S — Soluzioni Dati, IA e Software",
-      hero_h1:'Costruisco il software che alla tua azienda <span class="gradient-text">manca ancora.</span>',
-      hero_subtitle:"Data engineer e sviluppatore AI/software. Sette soluzioni già attive — logistica, HR, salute, finanza, immobiliare, fitness. Se il tuo team lavora ancora con fogli di calcolo, carta o infiniti thread WhatsApp, è esattamente quello che risolvo.",
-      hero_cta1:"Guarda cosa ho costruito →", hero_cta2:"Raccontami il tuo problema",
+      hero_badge:"Software studio guidato dal founder",
+      hero_h1:"Mostraci il<br>collo di bottiglia.<br><span class=\"text-slate-400\">Costruiamo il sistema.</span>",
+      hero_subtitle:"Progettiamo soluzioni software, IA e dati che riducono il lavoro manuale, migliorano la visibilità e tagliano i costi operativi.",
+      hero_cta1:"Guarda cosa abbiamo risolto", hero_cta2:"Raccontaci il tuo problema →",
       hero_rotator_label:"In questo momento, risolvo:",
       hero_grid_label:"7 soluzioni. Un solo builder.",
+      hero_card1_label:"Fleet Control", hero_card1_unit:" giorni", hero_card1_sub:"da operazione a pagamento",
+      hero_card2_label:"AI Immobiliare", hero_card2_sub:"risposta ai contatti, ogni ora",
+      hero_card3_label:"Workforce", hero_card3_stat:"Straordinari", hero_card3_sub:"turni conformi, meno sprechi",
+      hero_card4_sub:"completato",
       grid_shifts:"Turni & Pianificazione", grid_realestate:"IA Immobiliare", grid_workout:"Workout Companion",
       rot1:"Conformità flotte bloccata nella burocrazia → TruckPilot",
-      rot2:"Fatture che impiegano 60 giorni a chiudersi → Rapportini",
-      rot3:"Turni che generano straordinari inutili → Motore di pianificazione turni",
+      rot2:"Fatture che impiegano 60 giorni a chiudersi → Fleet Control",
+      rot3:"Turni che generano straordinari inutili → Workforce",
       rot4:"Pazienti che non trovano o prenotano un medico → Health Anywhere",
       rot5:"Compiti contabili tracciati a memoria → Contabile",
-      rot6:"Contatti immobiliari persi di notte → Concierge IA",
+      rot6:"Contatti immobiliari persi di notte → AI Immobiliare",
       rot7:"Schede di allenamento bloccate su carta → Workout Companion",
       badge_no_app:"Nessuna app da installare", badge_gdpr:"Progettato per il GDPR", badge_tms:"Compatibile con TMS / ERP",
+      /* problem selector */
+      problems_h2:"Cosa sta rallentando la tua attività?", problems_sub:"Scegli quello che ti suona familiare — di solito è l'inizio della conversazione.",
+      problem1:"Troppo lavoro manuale", problem2:"Troppi fogli di calcolo", problem3:"Troppo WhatsApp", problem4:"Nessuna visibilità",
+      problem5:"Lavoro ripetitivo", problem6:"Costi operativi elevati", problem7:"Pianificazione del personale scarsa", problem8:"Qualcos'altro →",
+      /* results band */
+      result1:"giorni, ciclo di pagamento trasporti", result2:"assistenza clienti IA", result3_word:"Tempo reale", result3:"documenti operativi", result4_word:"Ottimizzata", result4:"pianificazione del personale",
       /* about */
-      about_label:"Chi c'è dietro", about_h2:"Un builder. Sette problemi già risolti.",
-      about_role:"Data Engineer & Soluzioni AI/Software",
+      about_label:"Chi c'è dietro", about_h2:"Uno studio, non un freelance. Guidato dal founder, sul campo.",
+      about_role:"Founder, S.H.S — Dati, IA & Software",
       about_p1:"Progetto e realizzo sistemi end-to-end — pipeline dati, agenti IA, automazioni, dashboard, applicazioni complete. Non template: soluzioni costruite su come lavora davvero un team specifico.",
-      about_p2:"Ogni soluzione qui sotto è nata allo stesso modo — qualcuno mi ha descritto un processo lento, manuale, o che stava collassando sotto il proprio peso. Ho costruito il sistema che lo ha risolto. Se il tuo team ti sembra familiare, siamo già a metà strada.",
+      about_p2:"Ogni sistema in questa pagina è nato allo stesso modo — qualcuno mi ha descritto un processo lento, manuale, o che stava collassando sotto il proprio peso. Ho costruito ciò che lo ha risolto. Se il tuo team ti sembra familiare, siamo già a metà strada.",
       about_chip1:"Data Engineering", about_chip2:"Automazione IA / LLM", about_chip3:"Software Full-stack", about_chip4:"Architettura di sistemi", about_chip5:"Dashboard & Reportistica",
       /* how i work (track) */
-      track_label:"Come funziona", track_h2:"Da un problema reale a una soluzione realizzata.", track_sub:"Stesso percorso, ogni volta — qualunque forma abbia il problema.",
+      track_label:"Come funziona", track_h2:"Da un problema reale a un sistema realizzato.", track_sub:"Stesso percorso, ogni volta — qualunque forma abbia il problema.",
       entry1:"Un flusso disordinato e non documentato", entry2:"Un processo rigido e obsoleto", entry3:"Troppi strumenti scollegati tra loro", entry4:"Un compito manuale ripetitivo", entry5:"Un'idea senza ancora un sistema",
-      track1_title:"Capire", track1_desc:"Parliamo di cosa succede davvero — non di cosa dice l'organigramma. Dove si perde tempo, cosa si rompe, chi ne è coinvolto.",
-      track2_title:"Progettare", track2_desc:"Disegno la forma della soluzione — unifico ciò che è disperso, automatizzo ciò che è ripetitivo, costruisco ciò che ancora non esiste. Vedi il piano prima di ogni riga di codice.",
-      track3_title:"Risolvere", track3_desc:"Realizzato, testato, nelle mani del tuo team. Qualunque forma avesse il problema, ora ha un sistema — le sette soluzioni qui sotto ne sono la prova.",
+      track1_title:"Capire il problema", track1_desc:"Parliamo di cosa succede davvero — non di cosa dice l'organigramma. Dove si perde tempo, cosa si rompe, chi ne è coinvolto.",
+      track2_title:"Costruire il sistema", track2_desc:"Disegno la soluzione — unifico ciò che è disperso, automatizzo ciò che è ripetitivo, costruisco ciò che ancora non esiste. Vedi il piano prima di ogni riga di codice.",
+      track3_title:"Consegnare il risultato", track3_desc:"Realizzato, testato, nelle mani del tuo team. Qualunque forma avesse il problema, ora ha un sistema — quelli qui sotto ne sono la prova.",
       /* case study intro */
       case_label:"Case study 01",
       case_h2:'TruckPilot — <span class="gradient-text">Conformità Flotte</span> su WhatsApp',
@@ -763,32 +773,25 @@ try {
       how2_title:"L'IA elabora in meno di 30 secondi", how2_desc:"L'IA Gemini legge i documenti, valida i campi, controlla le conformità e risponde nella lingua del conducente — EN, NL, IT, DE o PT.",
       how3_title:"Dati sincronizzati. Traccia creata.", how3_desc:"Ogni documento archiviato, ogni scadenza monitorata, ogni consegna confermata. TMS/ERP aggiornato. Nessuna immissione manuale.",
       /* solutions */
-      sol_label:"Cosa ho costruito", sol_h2:"Sette problemi. Sette soluzioni realizzate.", sol_sub:"Settori diversi, stesso metodo: capire il flusso di lavoro reale, poi costruire il sistema che ci si adatta. La tua potrebbe essere l'ottava.",
-      sol0_badge:"Case di punta",
-      sol0_pain:"Conformità delle flotte intrappolata nella burocrazia — certificati scaduti, CMR mancanti, multe scoperte troppo tardi.",
-      sol0_build:"Un copilota WhatsApp completo: scansione documenti, tracciamento ADR, controllo eco-zone, verifica del carico, sincronizzato direttamente col TMS.",
-      sol0_result:"7 flussi, un solo numero WhatsApp",
-      sol0_cta:"Vedi il case study completo ↓",
-      sol1_title:"Rapportini", sol1_pain:"Conducenti che registravano i viaggi su carta. Fatture che impiegavano fino a 60 giorni per essere chiuse. Nessuna visibilità su cosa fosse caricato, o dove.",
+      sol_label:"Case study", sol_h2:"Tre sistemi, fianco a fianco. Altri quattro qui sotto.", sol_sub:"Settori diversi, stesso metodo: capire il flusso di lavoro reale, poi costruire il sistema che ci si adatta. La tua potrebbe essere la prossima.",
+      sol1_badge:"60g → <30g", sol1_title:"Fleet Control", sol1_pain:"Conducenti che registravano i viaggi su carta. Fatture che impiegavano fino a 60 giorni per essere chiuse. Nessuna visibilità su cosa fosse caricato, o dove.",
       sol1_build:"Tracciamento viaggio per viaggio, controllo dei costi di carburante e officina, vista del carico con un click per ogni rimorchio, e una bacheca che assegna il viaggio più adatto al veicolo giusto.",
-      sol1_result:"Fatturazione: da 60 giorni a stesso mese",
-      sol2_title:"Motore di pianificazione turni", sol2_pain:"Pianificazione manuale dei turni che genera straordinari inutili — a un turno sbagliato di distanza da una violazione della normativa sul lavoro.",
+      sol1_cta:"Vedi il case study →",
+      sol2_badge:"Straordinari ↓", sol2_title:"Workforce", sol2_pain:"Pianificazione manuale dei turni che genera straordinari inutili — a un turno sbagliato di distanza da una violazione della normativa sul lavoro.",
       sol2_build:"Legge le ore timbrate, genera automaticamente turni conformi e suggerisce la combinazione di turni con meno sprechi e meno straordinari.",
-      sol2_result:"Si ripaga con le ore risparmiate",
-      sol3_title:"Health Anywhere", sol3_pain:"I pazienti non trovavano medici nelle vicinanze, né potevano prenotare nel modo che preferivano.",
-      sol3_build:"I medici indicano la disponibilità — in studio, video o visita a domicilio. I pazienti vedono la distanza sulla mappa, scrivono direttamente al medico e prenotano in un unico flusso.",
-      sol3_result:"Un'app, tre modi per vedere un medico",
-      sol4_title:"Contabile", sol4_pain:"Team contabili che distribuivano compiti a memoria — nessuna visibilità su chi fosse sovraccarico o cosa fosse bloccato.",
-      sol4_build:"Organizza, misura e distribuisce i compiti in modo equo nel team, così niente resta fermo e ogni scadenza ha un responsabile.",
-      sol4_result:"Tempi più rapidi, carico di lavoro più chiaro",
-      sol5_title:"Concierge IA per il settore immobiliare", sol5_pain:"Contatti persi in attesa che qualcuno rispondesse — di notte, nei weekend, fuori orario.",
-      sol5_build:"Una chat IA 24/7 che conosce ogni immobile e prezzo, controlla l'agenda dell'agente, prenota visite e riceve offerte — a qualsiasi ora, ogni giorno.",
-      sol5_result:"Nessun contatto perso",
-      sol6_title:"Workout Companion", sol6_pain:"Schede di allenamento bloccate su carta — nessuna foto dell'attrezzo, nessuna spiegazione, nessuna idea di quale muscolo stia davvero lavorando.",
-      sol6_build:"Ogni allenamento sul telefono — foto dell'attrezzo, spiegazione dell'esercizio, video dimostrativo e disegno del muscolo per ogni movimento. Traccia peso, misure e obiettivi, gamifica la costanza con badge per le serie di allenamenti, e permette al personal trainer di vedere esattamente cosa sta facendo ogni allievo.",
-      sol6_result:"Da un foglio stampato a un coach in tasca",
+      sol2_cta:"Vedi il case study →",
+      sol3_chat:"🏠 Trilocale, €450k — prenoti una visita?", sol3_title:"AI Immobiliare", sol3_pain:"Contatti persi in attesa che qualcuno rispondesse — di notte, nei weekend, fuori orario.",
+      sol3_build:"Una chat IA 24/7 che conosce ogni immobile e prezzo, controlla l'agenda dell'agente, prenota visite e riceve offerte — a qualsiasi ora, ogni giorno.",
+      sol3_cta:"Vedi il case study →",
+      sol4_pain:"Copilota WhatsApp per la conformità dei vettori europei — documenti, ADR, eco-zone.",
+      sol5_title:"Contabile", sol5_pain:"Distribuzione equa dei compiti per i team contabili — basta tracciare il lavoro a memoria.",
+      sol6_title:"Health Anywhere", sol6_pain:"Trova, scrivi e prenota un medico — in studio, video o a domicilio — in un unico flusso.",
+      sol7_title:"Workout Companion", sol7_pain:"Da un foglio di allenamento stampato a un coach in tasca — foto, video, tracciamento.",
+      more_label:"Altri sistemi che abbiamo costruito", more_cta:"Vedi il case study →",
       sol_cta_text:"Ognuna di queste è nata da un flusso, un'idea o una frustrazione che qualcuno mi ha raccontato. Se la tua non è ancora risolta, sarà la prossima.",
       sol_cta_button:"Raccontamela →",
+      /* open funnel */
+      funnel_h2:"Non trovi il tuo problema esatto qui?", funnel_sub:"Questi sette sistemi sono la prova di un metodo, non un menu limitato. Se la tua attività perde tempo, denaro o controllo in un'area che questi non coprono, è esattamente il tipo di problema da cui amiamo ripartire da zero.", funnel_cta:"Raccontaci il tuo problema →",
       /* faq */
       faq_label:"Domande frequenti", faq_h2:"FAQ",
       faq1_q:"I conducenti devono installare una nuova app?", faq1_a:"No. TruckPilot funziona interamente tramite il WhatsApp già presente sul loro telefono. Condividi un numero WhatsApp Business e iniziano a scrivere immediatamente — nessun download, nessun account, nessuna password.",
@@ -798,50 +801,60 @@ try {
       faq5_q:"E se l'IA non riesce a leggere un documento?", faq5_a:"TruckPilot rifiuta le estrazioni a bassa confidenza e chiede al conducente di ripetere la foto — specificando esattamente cosa era poco chiaro (sfocatura, angolazione, riquadri mancanti). Se anche il secondo tentativo fallisce, la sessione viene segnalata e il responsabile flotta viene notificato.",
       faq6_q:"Quanto costa?", faq6_a:"Il prezzo è basato sulla dimensione della flotta e sul volume di utilizzo. Contattaci per un preventivo personalizzato — costruiremo una proposta attorno al profilo di conformità specifico della tua flotta.",
       /* demo form */
-      demo_label:"Inizia ora", demo_h2:"Richiedi una Demo — o raccontami cosa stai risolvendo", demo_sub:"Ti contatteremo entro 24 ore — per una demo della flotta, o per parlare di qualunque problema ti abbia portato qui.",
-      form_first_name:"Nome", form_last_name:"Cognome", form_company:"Azienda / Nome flotta", form_email:"Email aziendale",
-      form_fleet:"Dimensione flotta", form_fleet_select:"Seleziona", form_country:"Paese", form_country_select:"Seleziona paese",
-      form_whatsapp:"Numero WhatsApp", form_whatsapp_opt:"(opzionale — per una prova dal vivo)",
-      form_submit:"Richiedi Demo →", form_note:"Nessun impegno. Risponderemo entro 24 ore.",
+      demo_label:"Inizia ora", demo_h2:"Raccontaci il tuo problema", demo_sub:"Ti contatteremo entro 24 ore — per parlare di qualunque cosa stia rallentando la tua attività.",
+      form_first_name:"Nome", form_last_name:"Cognome", form_company:"Nome azienda", form_email:"Email aziendale",
+      form_problem:"Cosa ti sta rallentando?", form_problem_select:"Scegli l'opzione più vicina (facoltativo)", form_country:"Paese", form_country_select:"Seleziona paese",
+      form_phone:"Telefono / WhatsApp", form_phone_opt:"(facoltativo)", problem8_form:"Qualcos'altro",
+      form_submit:"Invia →", form_note:"Nessun impegno. Risponderemo entro 24 ore.",
       form_ph_first:"Mario", form_ph_last:"Rossi", form_ph_company:"Trasporti Rossi SRL", form_ph_email:"mario@trasporti.it",
-      success_title:"Richiesta inviata!", success_body:'Ti contatteremo entro <strong class="text-white">24 ore</strong> per organizzare una demo dal vivo per la tua flotta.',
+      success_title:"Messaggio inviato!", success_body:'Ti contatteremo entro <strong class="text-slate-900">24 ore</strong> per parlare del tuo problema.',
       form_error:"Qualcosa è andato storto. Riprova o scrivici direttamente.",
       /* footer */
-      footer_privacy:"Informativa sulla privacy", footer_powered:"Sviluppato con Gemini AI e WhatsApp Business API",
-      footer_title:"Data Engineer & AI Solutions"
+      footer_privacy:"Informativa sulla privacy", footer_powered:"Dati su Google Cloud europe-west4 · Progettato per il GDPR",
+      footer_title:"Founder, S.H.S — Dati, IA & Software"
     },
     de: {
       /* nav */
-      nav_who:"Für wen", nav_features:"Funktionen", nav_compliance:"Konformität", nav_solutions:"Lösungen", nav_faq:"FAQ", nav_demo:"Demo anfordern",
-      nav_about:"Über mich", nav_case:"TruckPilot Case", nav_by:"by S.H.S",
+      nav_who:"Für wen", nav_features:"Funktionen", nav_compliance:"Konformität", nav_solutions:"Fallstudien", nav_faq:"FAQ", nav_demo:"Problem schildern",
+      nav_about:"Über mich", nav_case:"TruckPilot Case", nav_by:"Macher von TruckPilot & 6 weiteren Systemen", nav_problems:"Probleme, die wir lösen",
       /* hero */
-      hero_badge:"S.H.S — Daten-, KI- & Software-Lösungen",
-      hero_h1:'Ich baue die Software, die Ihrem Unternehmen <span class="gradient-text">noch fehlt.</span>',
-      hero_subtitle:"Data Engineer und KI-/Software-Entwickler. Sieben Lösungen bereits im Einsatz — Logistik, Personalwesen, Gesundheit, Finanzen, Immobilien, Fitness. Wenn Ihr Team noch mit Tabellen, Papier oder endlosen WhatsApp-Threads arbeitet, ist genau das mein Spezialgebiet.",
-      hero_cta1:"Sehen, was ich gebaut habe →", hero_cta2:"Erzählen Sie mir Ihr Problem",
+      hero_badge:"Vom Gründer geführtes Software-Studio",
+      hero_h1:"Zeigen Sie uns<br>den Engpass.<br><span class=\"text-slate-400\">Wir bauen das System.</span>",
+      hero_subtitle:"Wir entwickeln Software-, KI- und Datenlösungen, die manuelle Arbeit reduzieren, Transparenz schaffen und Betriebskosten senken.",
+      hero_cta1:"Sehen, was wir gelöst haben", hero_cta2:"Schildern Sie Ihr Problem →",
       hero_rotator_label:"Gerade löse ich:",
       hero_grid_label:"7 Lösungen. Ein Entwickler.",
+      hero_card1_label:"Fleet Control", hero_card1_unit:" Tage", hero_card1_sub:"von Betrieb bis Zahlung",
+      hero_card2_label:"KI Immobilien", hero_card2_sub:"Lead-Antwort, jede Stunde",
+      hero_card3_label:"Workforce", hero_card3_stat:"Überstunden", hero_card3_sub:"konforme Dienstpläne, weniger Verschnitt",
+      hero_card4_sub:"abgeschlossen",
       grid_shifts:"Schichtplanung", grid_realestate:"KI für Immobilien", grid_workout:"Workout Companion",
       rot1:"Flotten-Compliance im Papierkram gefangen → TruckPilot",
-      rot2:"Rechnungen brauchen 60 Tage bis zum Abschluss → Rapportini",
-      rot3:"Schichten verursachen unnötige Überstunden → Schichtplanungs-Engine",
+      rot2:"Rechnungen brauchen 60 Tage bis zum Abschluss → Fleet Control",
+      rot3:"Schichten verursachen unnötige Überstunden → Workforce",
       rot4:"Patienten finden oder buchen keinen Arzt → Health Anywhere",
       rot5:"Buchhaltungsaufgaben nur aus dem Gedächtnis verfolgt → Contabile",
-      rot6:"Immobilien-Leads erkalten nachts → KI-Concierge",
+      rot6:"Immobilien-Leads erkalten nachts → KI Immobilien",
       rot7:"Trainingspläne auf Papier hängen fest → Workout Companion",
       badge_no_app:"Keine App-Installation", badge_gdpr:"DSGVO-konform konzipiert", badge_tms:"TMS-/ERP-bereit",
+      /* problem selector */
+      problems_h2:"Was bremst Ihr Unternehmen aus?", problems_sub:"Wählen Sie, was Ihnen bekannt vorkommt — das ist meist der Anfang des Gesprächs.",
+      problem1:"Zu viel manuelle Arbeit", problem2:"Zu viele Tabellen", problem3:"Zu viel WhatsApp", problem4:"Keine Transparenz",
+      problem5:"Sich wiederholende Arbeit", problem6:"Hohe Betriebskosten", problem7:"Schlechte Personalplanung", problem8:"Etwas anderes →",
+      /* results band */
+      result1:"Tage, Zahlungszyklus Transport", result2:"KI-Kundenservice", result3_word:"Echtzeit", result3:"Betriebsdokumente", result4_word:"Optimiert", result4:"Personalplanung",
       /* about */
-      about_label:"Wer dahintersteht", about_h2:"Ein Entwickler. Sieben bisher gelöste Probleme.",
-      about_role:"Data Engineer & KI-/Software-Lösungen",
+      about_label:"Wer dahintersteht", about_h2:"Ein Studio, kein Freelancer. Vom Gründer geführt, operativ.",
+      about_role:"Gründer, S.H.S — Daten, KI & Software",
       about_p1:"Ich entwerfe und liefere Systeme end-to-end — Datenpipelines, KI-Agenten, Automatisierungen, Dashboards, vollständige Anwendungen. Keine Vorlagen: Lösungen, die genau um die Arbeitsweise eines bestimmten Teams gebaut sind.",
-      about_p2:"Jede Lösung unten begann auf dieselbe Weise — jemand beschrieb einen Prozess, der langsam, manuell oder unter seinem eigenen Gewicht am Zusammenbrechen war. Ich habe das System gebaut, das ihn gelöst hat. Klingt das nach Ihrem Team? Dann sind wir schon auf halbem Weg.",
+      about_p2:"Jedes System auf dieser Seite begann auf dieselbe Weise — jemand beschrieb einen Prozess, der langsam, manuell oder unter seinem eigenen Gewicht am Zusammenbrechen war. Ich habe gebaut, was ihn gelöst hat. Klingt das nach Ihrem Team? Dann sind wir schon auf halbem Weg.",
       about_chip1:"Data Engineering", about_chip2:"KI-/LLM-Automatisierung", about_chip3:"Full-Stack-Software", about_chip4:"Systemarchitektur", about_chip5:"Dashboards & Reporting",
       /* how i work (track) */
-      track_label:"So funktioniert es", track_h2:"Von einem echten Problem zu einer ausgelieferten Lösung.", track_sub:"Immer derselbe Weg — egal, welche Form das Problem hat.",
+      track_label:"So funktioniert es", track_h2:"Von einem echten Problem zu einem ausgelieferten System.", track_sub:"Immer derselbe Weg — egal, welche Form das Problem hat.",
       entry1:"Ein unübersichtlicher, undokumentierter Ablauf", entry2:"Ein starrer, veralteter Prozess", entry3:"Zu viele getrennte Tools", entry4:"Eine sich wiederholende manuelle Aufgabe", entry5:"Eine Idee ohne System",
-      track1_title:"Verstehen", track1_desc:"Wir sprechen darüber, was tatsächlich passiert — nicht darüber, was das Organigramm sagt. Wo Zeit verloren geht, was nicht funktioniert, wer betroffen ist.",
-      track2_title:"Entwerfen", track2_desc:"Ich skizziere die Lösung — vereinheitliche, was verstreut ist, automatisiere, was sich wiederholt, baue, was noch nicht existiert. Sie sehen den Plan, bevor eine Zeile Code entsteht.",
-      track3_title:"Lösen", track3_desc:"Ausgeliefert, getestet, in den Händen Ihres Teams. Welche Form das Problem auch hatte — jetzt gibt es ein System dafür. Die sieben unten sind der Beweis.",
+      track1_title:"Problem verstehen", track1_desc:"Wir sprechen darüber, was tatsächlich passiert — nicht darüber, was das Organigramm sagt. Wo Zeit verloren geht, was nicht funktioniert, wer betroffen ist.",
+      track2_title:"System bauen", track2_desc:"Ich entwerfe die Lösung — vereinheitliche, was verstreut ist, automatisiere, was sich wiederholt, baue, was noch nicht existiert. Sie sehen den Plan, bevor eine Zeile Code entsteht.",
+      track3_title:"Ergebnis liefern", track3_desc:"Ausgeliefert, getestet, in den Händen Ihres Teams. Welche Form das Problem auch hatte — jetzt gibt es ein System dafür. Die unten sind der Beweis.",
       /* case study intro */
       case_label:"Fallstudie 01",
       case_h2:'TruckPilot — <span class="gradient-text">Flotten-Compliance</span> auf WhatsApp',
@@ -889,32 +902,25 @@ try {
       how2_title:"KI verarbeitet in unter 30 Sekunden", how2_desc:"Gemini AI liest Dokumente, validiert Felder, prüft Vorschriften und antwortet in der Sprache des Fahrers — EN, NL, IT, DE oder PT.",
       how3_title:"Daten synchronisiert. Prüfpfad erstellt.", how3_desc:"Jedes Dokument gespeichert, jede Ablauffrist verfolgt, jede Lieferung bestätigt. TMS/ERP aktualisiert. Keine manuelle Eingabe.",
       /* solutions */
-      sol_label:"Was ich gebaut habe", sol_h2:"Sieben Probleme. Sieben ausgelieferte Lösungen.", sol_sub:"Unterschiedliche Branchen, dieselbe Methode: den echten Arbeitsablauf verstehen, dann das passende System bauen. Ihre könnte die achte sein.",
-      sol0_badge:"Vorzeigeprojekt",
-      sol0_pain:"Flotten-Compliance gefangen im Papierkram — abgelaufene Zertifikate, fehlende CMRs, zu spät entdeckte Bußgelder.",
-      sol0_build:"Ein vollständiger WhatsApp-Co-Pilot: Dokumentenscan, ADR-Tracking, Umweltzonen-Prüfung, Ladungsverifizierung, direkt mit dem TMS synchronisiert.",
-      sol0_result:"7 Workflows, eine WhatsApp-Nummer",
-      sol0_cta:"Zur vollständigen Fallstudie ↓",
-      sol1_title:"Rapportini", sol1_pain:"Fahrer erfassten Fahrten auf Papier. Rechnungen brauchten bis zu 60 Tage, um abgeschlossen zu werden. Keine Übersicht, was geladen war oder wo.",
+      sol_label:"Fallstudien", sol_h2:"Drei Systeme, nebeneinander. Vier weitere unten.", sol_sub:"Unterschiedliche Branchen, dieselbe Methode: den echten Arbeitsablauf verstehen, dann das passende System bauen. Ihres könnte das nächste sein.",
+      sol1_badge:"60T → <30T", sol1_title:"Fleet Control", sol1_pain:"Fahrer erfassten Fahrten auf Papier. Rechnungen brauchten bis zu 60 Tage, um abgeschlossen zu werden. Keine Übersicht, was geladen war oder wo.",
       sol1_build:"Fahrt-für-Fahrt-Verfolgung, Kontrolle von Kraftstoff- und Werkstattkosten, eine Ladeansicht pro Anhänger mit einem Klick und ein Dispositionsboard, das die am besten passende Fahrt dem richtigen Fahrzeug zuweist.",
-      sol1_result:"Rechnungsstellung: 60 Tage → derselbe Monat",
-      sol2_title:"Schichtplanungs-Engine", sol2_pain:"Manuelle Schichtplanung, die unnötige Überstunden verursacht — einen falschen Dienstplan von einem Arbeitsrechtsverstoß entfernt.",
+      sol1_cta:"Zur Fallstudie →",
+      sol2_badge:"Überstunden ↓", sol2_title:"Workforce", sol2_pain:"Manuelle Schichtplanung, die unnötige Überstunden verursacht — einen falschen Dienstplan von einem Arbeitsrechtsverstoß entfernt.",
       sol2_build:"Liest erfasste Arbeitszeiten, erstellt automatisch konforme Dienstpläne und schlägt die Schichtkombination mit dem geringsten Verschnitt und den wenigsten Überstunden vor.",
-      sol2_result:"Zahlt sich durch die eingesparten Stunden aus",
-      sol3_title:"Health Anywhere", sol3_pain:"Patienten fanden keine Ärzte in der Nähe oder konnten nicht so buchen, wie es ihnen passte.",
-      sol3_build:"Ärzte geben ihre Verfügbarkeit an — Praxis, Video oder Hausbesuch. Patienten sehen die Entfernung auf der Karte, schreiben dem Arzt direkt und buchen in einem einzigen Ablauf.",
-      sol3_result:"Eine App, drei Wege zum Arzt",
-      sol4_title:"Contabile", sol4_pain:"Buchhaltungsteams verteilten Aufgaben aus dem Gedächtnis — keine Übersicht, wer überlastet war oder was ins Stocken geriet.",
-      sol4_build:"Organisiert, misst und verteilt Aufgaben fair im Team, sodass nichts liegen bleibt und jede Frist einen Verantwortlichen hat.",
-      sol4_result:"Schnellerer Durchlauf, klarere Auslastung",
-      sol5_title:"KI-Concierge für Immobilien", sol5_pain:"Interessenten sprangen ab, weil niemand antwortete — nachts, am Wochenende, außerhalb der Öffnungszeiten.",
-      sol5_build:"Ein KI-Chat, der rund um die Uhr jedes Angebot und jeden Preis kennt, den Kalender des Maklers prüft, Besichtigungen bucht und Angebote entgegennimmt — zu jeder Stunde, an jedem Tag.",
-      sol5_result:"Kein Interessent geht mehr verloren",
-      sol6_title:"Workout Companion", sol6_pain:"Trainingspläne auf Papier — kein Foto des Geräts, keine Erklärung, keine Ahnung, welcher Muskel tatsächlich arbeitet.",
-      sol6_build:"Jedes Training auf dem Handy — Foto des Geräts, Übungserklärung, Demo-Video und Muskeldiagramm zu jeder Bewegung. Verfolgt Gewicht, Maße und Ziele, gamifiziert Beständigkeit mit Streak-Abzeichen und zeigt dem Trainer genau, was jeder Trainierende macht.",
-      sol6_result:"Vom ausgedruckten Blatt zum Coach in der Tasche",
+      sol2_cta:"Zur Fallstudie →",
+      sol3_chat:"🏠 3-Zimmer-Wohnung, 450.000 € — Besichtigung buchen?", sol3_title:"KI Immobilien", sol3_pain:"Interessenten sprangen ab, weil niemand antwortete — nachts, am Wochenende, außerhalb der Öffnungszeiten.",
+      sol3_build:"Ein KI-Chat, der rund um die Uhr jedes Angebot und jeden Preis kennt, den Kalender des Maklers prüft, Besichtigungen bucht und Angebote entgegennimmt — zu jeder Stunde, an jedem Tag.",
+      sol3_cta:"Zur Fallstudie →",
+      sol4_pain:"WhatsApp-Compliance-Co-Pilot für europäische Frachtführer — Dokumente, ADR, Umweltzonen.",
+      sol5_title:"Contabile", sol5_pain:"Faire Aufgabenverteilung für Buchhaltungsteams — Schluss mit der Verfolgung aus dem Gedächtnis.",
+      sol6_title:"Health Anywhere", sol6_pain:"Arzt finden, schreiben und buchen — Praxis, Video oder Hausbesuch — in einem Ablauf.",
+      sol7_title:"Workout Companion", sol7_pain:"Vom ausgedruckten Trainingsplan zum Coach in der Tasche — Foto, Video, Tracking.",
+      more_label:"Weitere Systeme, die wir gebaut haben", more_cta:"Zur Fallstudie →",
       sol_cta_text:"Jede dieser Lösungen begann als Ablauf, eine Idee oder eine Frustration, die mir jemand geschildert hat. Wenn Ihre noch nicht gelöst ist, wird sie die nächste.",
       sol_cta_button:"Erzählen Sie es mir →",
+      /* open funnel */
+      funnel_h2:"Ihr genaues Problem ist nicht dabei?", funnel_sub:"Diese sieben Systeme sind der Beweis für eine Methode, kein begrenztes Menü. Wenn Ihr Betrieb irgendwo Zeit, Geld oder Kontrolle verliert, das hier nicht abgedeckt ist, ist das genau die Art von Problem, bei der wir gerne bei null anfangen.", funnel_cta:"Schildern Sie Ihr Problem →",
       /* faq */
       faq_label:"Häufige Fragen", faq_h2:"FAQ",
       faq1_q:"Müssen Fahrer eine neue App installieren?", faq1_a:"Nein. TruckPilot läuft vollständig über das WhatsApp, das bereits auf ihrem Handy ist. Sie teilen eine WhatsApp-Business-Nummer, und sie können sofort schreiben — kein Download, kein Konto, kein Passwort.",
@@ -924,17 +930,17 @@ try {
       faq5_q:"Was, wenn die KI ein Dokument nicht lesen kann?", faq5_a:"TruckPilot lehnt Extraktionen mit geringer Zuverlässigkeit ab und bittet den Fahrer, das Foto erneut aufzunehmen — mit genauer Angabe, was unklar war (Unschärfe, Winkel, fehlende Felder). Schlägt auch der zweite Versuch fehl, wird die Sitzung markiert und ein Flottenmanager benachrichtigt.",
       faq6_q:"Was kostet das?", faq6_a:"Die Preisgestaltung richtet sich nach Flottengröße und Nutzungsvolumen. Kontaktieren Sie uns für ein individuelles Angebot — wir erstellen einen Vorschlag passend zum Compliance-Profil und den Integrationsanforderungen Ihrer Flotte.",
       /* demo form */
-      demo_label:"Jetzt starten", demo_h2:"Demo anfordern — oder erzählen Sie mir, was Sie lösen möchten", demo_sub:"Wir melden uns innerhalb von 24 Stunden — für eine Flotten-Demo oder um über jedes Problem zu sprechen, das Sie hierher geführt hat.",
-      form_first_name:"Vorname", form_last_name:"Nachname", form_company:"Firma / Flottenname", form_email:"Geschäftliche E-Mail",
-      form_fleet:"Flottengröße", form_fleet_select:"Bereich auswählen", form_country:"Land", form_country_select:"Land auswählen",
-      form_whatsapp:"WhatsApp-Nummer", form_whatsapp_opt:"(optional — für eine Live-Testphase)",
-      form_submit:"Demo anfordern →", form_note:"Unverbindlich. Wir antworten innerhalb von 24 Stunden.",
+      demo_label:"Jetzt starten", demo_h2:"Schildern Sie Ihr Problem", demo_sub:"Wir melden uns innerhalb von 24 Stunden — um über alles zu sprechen, was Ihren Betrieb ausbremst.",
+      form_first_name:"Vorname", form_last_name:"Nachname", form_company:"Firmenname", form_email:"Geschäftliche E-Mail",
+      form_problem:"Was bremst Sie aus?", form_problem_select:"Am besten passende Option (optional)", form_country:"Land", form_country_select:"Land auswählen",
+      form_phone:"Telefon / WhatsApp", form_phone_opt:"(optional)", problem8_form:"Etwas anderes",
+      form_submit:"Senden →", form_note:"Unverbindlich. Wir antworten innerhalb von 24 Stunden.",
       form_ph_first:"Max", form_ph_last:"Mustermann", form_ph_company:"Mustermann Spedition GmbH", form_ph_email:"max@mustermann-spedition.de",
-      success_title:"Anfrage gesendet!", success_body:'Wir melden uns innerhalb von <strong class="text-white">24 Stunden</strong>, um eine Live-Demo für Ihre Flotte zu vereinbaren.',
+      success_title:"Nachricht gesendet!", success_body:'Wir melden uns innerhalb von <strong class="text-slate-900">24 Stunden</strong>, um über Ihr Problem zu sprechen.',
       form_error:"Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.",
       /* footer */
-      footer_privacy:"Datenschutzerklärung", footer_powered:"Unterstützt von Gemini AI & WhatsApp Business API",
-      footer_title:"Data Engineer & KI-Lösungen"
+      footer_privacy:"Datenschutzerklärung", footer_powered:"Daten in Google Cloud europe-west4 · DSGVO-konform konzipiert",
+      footer_title:"Gründer, S.H.S — Daten, KI & Software"
     }
   };
 

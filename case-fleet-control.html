@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: Fleet Control — trip tracking and invoicing for truck drivers, from 60-day invoicing cycles to same-month closing.">
+  <title>Fleet Control — Case Study | S.H.S</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <style>
+    .grid-fade { background-image: radial-gradient(circle,#e2e8f0 1px,transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%); mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%); }
+    .card-float { box-shadow: 0 20px 40px -12px rgba(15,23,42,0.15), 0 4px 12px -4px rgba(15,23,42,0.08); }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+<div id="cookie" class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-slate-200 p-4">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <p class="text-sm text-slate-500">Cookies used. Designed for GDPR.</p>
+    <button onclick="document.getElementById('cookie').remove()" class="shrink-0 bg-green-500 hover:bg-green-400 text-black text-sm font-bold px-5 py-2 rounded-lg transition">Accept</button>
+  </div>
+</div>
+
+<nav class="fixed top-0 inset-x-0 z-40 bg-white/85 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-extrabold text-xs shrink-0">SH</div>
+      <span class="text-lg font-bold tracking-tight">S.H.S</span>
+    </a>
+    <a href="index.html#solutions" class="hidden md:flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition">← All case studies</a>
+    <a href="index.html#demo" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition">Tell us your problem</a>
+  </div>
+</nav>
+
+<section class="pt-32 pb-16 px-4 sm:px-6 relative overflow-hidden">
+  <div class="absolute inset-0 grid-fade pointer-events-none"></div>
+  <div class="max-w-4xl mx-auto relative">
+    <p class="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">Featured case — Fleet Operations</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-5">Fleet Control — <span class="text-blue-600">Trip Tracking</span> &amp; Invoicing</h1>
+    <p class="text-lg text-slate-500 leading-relaxed mb-10 max-w-2xl">Turning paper trip logs into a system that closes invoices in weeks, not months.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-200 pt-6">
+      <div><p class="text-xs text-slate-400 uppercase tracking-wide mb-1">Client</p><p class="text-sm font-semibold">Road transport companies</p></div>
+      <div><p class="text-xs text-slate-400 uppercase tracking-wide mb-1">Sector</p><p class="text-sm font-semibold">Logistics</p></div>
+      <div><p class="text-xs text-slate-400 uppercase tracking-wide mb-1">Stack</p><p class="text-sm font-semibold">Mobile app + dispatch dashboard</p></div>
+      <div><p class="text-xs text-slate-400 uppercase tracking-wide mb-1">Status</p><p class="text-sm font-semibold text-green-600">Live</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="border-y border-slate-100 bg-slate-50 py-10 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-3xl font-extrabold text-blue-600">60 days → same month</p>
+    <p class="text-sm text-slate-500 mt-1">Invoicing cycle, before and after</p>
+  </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">01 / The Problem</p>
+    <p class="text-slate-600 leading-relaxed">Drivers were logging trips on paper — one sheet per month, filled in by hand, often illegible, sometimes lost before it reached the office. By the time someone typed it up, reconciled fuel receipts, and matched it against what was actually loaded, invoices routinely took up to 60 days to close. Nobody had a clear view of which trailer was loaded with what, or where a given vehicle was mid-route.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6 bg-slate-50">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">02 / Before</p>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-slate-600 leading-relaxed"><span class="text-red-400 mt-1">✕</span>One paper sheet per driver per month — handwritten, often illegible</li>
+      <li class="flex items-start gap-3 text-slate-600 leading-relaxed"><span class="text-red-400 mt-1">✕</span>Fuel and workshop receipts reconciled by hand at month's end</li>
+      <li class="flex items-start gap-3 text-slate-600 leading-relaxed"><span class="text-red-400 mt-1">✕</span>No live view of what was loaded on a trailer, or where it was mid-route</li>
+      <li class="flex items-start gap-3 text-slate-600 leading-relaxed"><span class="text-red-400 mt-1">✕</span>Dispatch assigned trips from memory, not from actual vehicle fit</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">03 / The System</p>
+    <p class="text-slate-600 leading-relaxed">Instead of digitizing the paper form as-is, I mapped the actual sequence a driver goes through — start the trip, load, drive, unload, log fuel, close the month — and built a mobile flow around that sequence, not around what a spreadsheet needed. Dispatch got a separate view: a board to allocate the fleet to whichever trip fits best, not just whichever comes next.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6 bg-slate-50">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-8">04 / How It Works</p>
+
+    <!-- Real screens, recreated (fictional data) -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-10">
+
+      <!-- Trip log recreation -->
+      <div class="bg-white rounded-2xl overflow-hidden card-float border border-slate-100">
+        <div class="bg-red-700 px-4 py-2.5 flex items-center justify-between">
+          <span class="text-white text-xs font-bold">Rapporto di Lavoro — Agosto 2026</span>
+          <span class="text-white/70 text-[10px]">Autista: M. Rossi</span>
+        </div>
+        <div class="p-3 overflow-x-auto">
+          <table class="w-full border-collapse text-[9px] text-gray-700 whitespace-nowrap">
+            <thead>
+              <tr class="text-gray-500 border-b border-gray-200">
+                <th class="text-left font-semibold py-1 pr-2">DATA</th>
+                <th class="text-left font-semibold py-1 pr-2">1° VIAGGIO</th>
+                <th class="text-right font-semibold py-1 pr-2">PESO</th>
+                <th class="text-left font-semibold py-1 pr-2">2° VIAGGIO</th>
+                <th class="text-right font-semibold py-1">PESO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">1</td><td class="pr-2">Cliente A · Rotta X→Y</td><td class="text-right pr-2">28.800</td><td class="pr-2">Cliente B · Rotta Y→Z</td><td class="text-right">28.960</td></tr>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">2</td><td class="pr-2">Cliente C · Rotta Z→W</td><td class="text-right pr-2">28.440</td><td class="pr-2">Cliente D · Rotta W→X</td><td class="text-right">28.500</td></tr>
+              <tr class="bg-red-50"><td class="py-1.5 pr-2 text-red-600 font-semibold">6</td><td colspan="4" class="text-red-600 italic">Malattia — protocollo N. 450462232</td></tr>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">7</td><td class="pr-2">Cliente E · Rotta Y→X</td><td class="text-right pr-2">28.750</td><td class="pr-2">Cliente F · Rotta X→Y</td><td class="text-right">28.840</td></tr>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">8</td><td class="pr-2">Cliente A · Rotta X→W</td><td class="text-right pr-2">28.580</td><td class="pr-2">Cliente G · Rotta W→Y</td><td class="text-right">28.740</td></tr>
+              <tr><td class="py-1.5 pr-2">9</td><td class="pr-2">Cliente H · Rotta V→Z</td><td class="text-right pr-2">13.440</td><td class="pr-2">Cliente C · Rotta Z→X</td><td class="text-right">29.180</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Recreated screen — illustrative data</div>
+      </div>
+
+      <!-- Trailer load recreation -->
+      <div class="bg-white rounded-2xl overflow-hidden card-float border border-slate-100">
+        <div class="bg-blue-700 px-4 py-2.5">
+          <span class="text-white text-xs font-bold">AB123CV</span>
+          <span class="text-green-300 text-[10px] ml-2">● Tratta in corso</span>
+        </div>
+        <div class="p-4">
+          <p class="text-[10px] text-gray-500 mb-2">Occupazione carretta — Vista di sopra</p>
+          <div class="relative h-8 bg-gray-100 rounded border border-gray-300 mb-1 overflow-hidden">
+            <div class="absolute inset-y-0 left-0 bg-red-400/80" style="width:73%"></div>
+          </div>
+          <div class="flex justify-between text-[9px] text-gray-400 mb-4"><span>0</span><span>13,60 m</span></div>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-gray-50 rounded-lg p-2.5">
+              <p class="text-[9px] text-gray-500">PESO</p>
+              <p class="text-sm font-bold text-gray-800">11000<span class="text-[9px] font-normal text-gray-400"> / 26000 kg</span></p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-2.5">
+              <p class="text-[9px] text-gray-500">PALLET</p>
+              <p class="text-sm font-bold text-gray-800">19<span class="text-[9px] font-normal text-gray-400"> / 33</span></p>
+            </div>
+          </div>
+          <div class="space-y-1.5 text-[10px] text-gray-600">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-400 shrink-0"></span>Cliente A Srl · 1 pallet · 1000kg</div>
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-400 shrink-0"></span>Cliente B SpA · 18 pallet · 10000kg</div>
+          </div>
+        </div>
+        <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Recreated screen — illustrative data</div>
+      </div>
+
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg></div>
+        <p class="text-sm text-slate-600 leading-relaxed">Trip-by-trip tracking, one tap to open or close a month.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V6m0 8v2m9-6a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <p class="text-sm text-slate-600 leading-relaxed">Fuel and workshop cost logging tied to each trip.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
+        <p class="text-sm text-slate-600 leading-relaxed">One-click load view per trailer — see what's loaded without radioing dispatch.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+        <p class="text-sm text-slate-600 leading-relaxed">Dispatch board that assigns the fastest-fitting trip to the right vehicle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="py-20 px-4 sm:px-6 text-center">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">05 / The Result</p>
+    <p class="text-slate-600 leading-relaxed max-w-2xl mx-auto mb-6">Invoicing that used to take up to 60 days now closes inside the same month — because the data is captured trip by trip, instead of reconstructed at month's end from a stack of paper.</p>
+    <div class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-2">Invoicing: 60 days → same month</div>
+  </div>
+</section>
+
+<section class="py-14 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Technology</p>
+    <p class="text-sm text-slate-500">Mobile app (offline-first) · dispatch web dashboard · cloud sync · document/report generation</p>
+  </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6 text-center bg-slate-50 border-t border-slate-100">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Have a problem shaped like this one?</h2>
+    <p class="text-slate-500 leading-relaxed mb-8">Fleet ops, logistics, or something else entirely — if it's slow, manual, or scattered across tools, we've probably got a way to fix it.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="index.html#demo" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-7 py-3.5 rounded-xl transition text-base">Tell us your problem →</a>
+      <a href="index.html#solutions" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-900 font-semibold px-7 py-3.5 rounded-xl transition text-base border border-slate-200">← All case studies</a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-slate-200 py-10 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded bg-slate-900 flex items-center justify-center text-white font-extrabold text-[9px] shrink-0">SH</div>
+      <span class="font-bold text-sm">S.H.S</span>
+      <span class="text-slate-400 text-sm">&copy; 2026</span>
+    </div>
+    <p class="text-xs text-slate-400">Saulo Henrique Silva · <a href="index.html" class="underline hover:text-slate-600 transition">Back to home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
