@@ -52,16 +52,14 @@
       <a href="#for-who" class="hover:text-white transition" data-t="nav_who">Who it's for</a>
       <a href="#features" class="hover:text-white transition" data-t="nav_features">Features</a>
       <a href="#compliance" class="hover:text-white transition" data-t="nav_compliance">Compliance</a>
+      <a href="#solutions" class="hover:text-white transition" data-t="nav_solutions">Solutions</a>
       <a href="#faq" class="hover:text-white transition" data-t="nav_faq">FAQ</a>
     </div>
     <div class="flex items-center gap-2">
-      <div class="flex items-center gap-1 mr-1">
-        <button onclick="applyLanguage('en')" data-lang="en" class="lang-btn w-9 h-7 rounded flex items-center justify-center hover:opacity-80 transition overflow-hidden border-2 border-transparent" title="English">
-          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" width="32" height="21"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="14"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="9"/></svg>
-        </button>
-        <button onclick="applyLanguage('it')" data-lang="it" class="lang-btn w-9 h-7 rounded flex items-center justify-center hover:opacity-80 transition overflow-hidden border-2 border-transparent" title="Italiano">
-          <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" width="32" height="21"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#CE2B37"/></svg>
-        </button>
+      <div class="flex items-center gap-0.5 mr-1 bg-gray-900 border border-gray-800 rounded-lg p-0.5">
+        <button onclick="applyLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-gray-400 hover:text-white transition border-2 border-transparent" title="English">EN</button>
+        <button onclick="applyLanguage('it')" data-lang="it" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-gray-400 hover:text-white transition border-2 border-transparent" title="Italiano">IT</button>
+        <button onclick="applyLanguage('de')" data-lang="de" class="lang-btn px-2 py-1 rounded text-[11px] font-bold tracking-wide text-gray-400 hover:text-white transition border-2 border-transparent" title="Deutsch">DE</button>
       </div>
       <a href="#demo" class="bg-green-500 hover:bg-green-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition wa-glow" data-t="nav_demo">Get a Demo</a>
     </div>
@@ -724,6 +722,93 @@
   </div>
 </section>
 
+<!-- ═══ SOLUTIONS ═══ -->
+<section id="solutions" class="py-20 px-4 sm:px-6 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.07] pointer-events-none" style="background-image:radial-gradient(circle,#25D366 1px,transparent 1px);background-size:28px 28px;"></div>
+  <div class="max-w-6xl mx-auto relative">
+    <div class="text-center mb-14">
+      <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="sol_label">Beyond TruckPilot</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="sol_h2">Built from real problems.</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto" data-t="sol_sub">TruckPilot solved one, above. Here are six more — and yours could be next.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Rapportini -->
+      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl p-6 flex flex-col backdrop-blur-sm">
+        <div class="w-11 h-11 rounded-xl bg-blue-950/60 border border-blue-800/40 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg>
+        </div>
+        <h3 class="font-bold text-base mb-2" data-t="sol1_title">Rapportini</h3>
+        <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol1_pain">Drivers logging trips on paper. Invoices taking up to 60 days to close. No visibility into what was loaded, or where.</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol1_build">Trip-by-trip tracking, fuel and workshop cost control, a one-click load view per trailer, and a dispatch board that assigns the fastest-fitting trip to the right vehicle.</p>
+        <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 bg-blue-950/40 border border-blue-800/30 rounded-full px-3 py-1.5 w-fit" data-t="sol1_result">Invoicing: 60 days → same month</div>
+      </div>
+
+      <!-- Shift Scheduling -->
+      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl p-6 flex flex-col backdrop-blur-sm">
+        <div class="w-11 h-11 rounded-xl bg-purple-950/60 border border-purple-800/40 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-bold text-base mb-2" data-t="sol2_title">Shift Scheduling Engine</h3>
+        <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol2_pain">Manual shift planning burning unnecessary overtime — one wrong roster away from a labor-law violation.</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol2_build">Reads clocked hours, generates compliant schedules automatically, and suggests the shift mix with the least waste and the fewest overtime hours.</p>
+        <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 bg-purple-950/40 border border-purple-800/30 rounded-full px-3 py-1.5 w-fit" data-t="sol2_result">Pays for itself in hours saved</div>
+      </div>
+
+      <!-- Health Anywhere -->
+      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl p-6 flex flex-col backdrop-blur-sm">
+        <div class="w-11 h-11 rounded-xl bg-rose-950/60 border border-rose-800/40 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657L13.414 22.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-base mb-2" data-t="sol3_title">Health Anywhere</h3>
+        <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol3_pain">Patients couldn't find nearby doctors, or book the way that suited them.</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol3_build">Doctors list availability — in-office, video, or home visit. Patients see distance on a map, message the doctor directly, and book in one flow.</p>
+        <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-400 bg-rose-950/40 border border-rose-800/30 rounded-full px-3 py-1.5 w-fit" data-t="sol3_result">One app, three ways to see a doctor</div>
+      </div>
+
+      <!-- Contabile -->
+      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl p-6 flex flex-col backdrop-blur-sm">
+        <div class="w-11 h-11 rounded-xl bg-amber-950/60 border border-amber-800/40 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-bold text-base mb-2" data-t="sol4_title">Contabile</h3>
+        <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol4_pain">Accounting teams distributing tasks by memory — no visibility into who's overloaded, or what's stuck.</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol4_build">Organizes, measures and distributes tasks fairly across the team, so nothing sits untouched and every deadline has an owner.</p>
+        <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 bg-amber-950/40 border border-amber-800/30 rounded-full px-3 py-1.5 w-fit" data-t="sol4_result">Faster turnaround, clearer workload</div>
+      </div>
+
+      <!-- AI Concierge for Real Estate -->
+      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl p-6 flex flex-col backdrop-blur-sm">
+        <div class="w-11 h-11 rounded-xl bg-cyan-950/60 border border-cyan-800/40 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <h3 class="font-bold text-base mb-2" data-t="sol5_title">AI Concierge for Real Estate</h3>
+        <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol5_pain">Leads going cold waiting for a human to answer — nights, weekends, after hours.</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol5_build">A 24/7 AI chat that knows every listing and price, checks the agent's calendar, books visits, and takes offers — any hour, any day.</p>
+        <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 bg-cyan-950/40 border border-cyan-800/30 rounded-full px-3 py-1.5 w-fit" data-t="sol5_result">Never miss a lead again</div>
+      </div>
+
+      <!-- Workout Companion -->
+      <div class="card-hover bg-gray-900/80 border border-gray-800 rounded-2xl p-6 flex flex-col backdrop-blur-sm">
+        <div class="w-11 h-11 rounded-xl bg-orange-950/60 border border-orange-800/40 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5l6.74-6.76zM16 8L8 16"/></svg>
+        </div>
+        <h3 class="font-bold text-base mb-2" data-t="sol6_title">Workout Companion</h3>
+        <p class="text-gray-500 text-xs leading-relaxed mb-3" data-t="sol6_pain">Training plans stuck on paper — no photo of the machine, no explanation, no idea which muscle is actually working.</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1" data-t="sol6_build">Every workout on the phone — equipment photo, exercise explanation, demo video and muscle diagram per movement. Tracks weight, measurements and goals, gamifies consistency with streak badges, and lets the trainer see exactly what each student is doing.</p>
+        <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-400 bg-orange-950/40 border border-orange-800/30 rounded-full px-3 py-1.5 w-fit" data-t="sol6_result">From a printed sheet to a coach in your pocket</div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-14">
+      <p class="text-gray-400 mb-5" data-t="sol_cta_text">Every one of these started as a flow, an idea, or a frustration someone described to me. If yours isn't solved yet, that's the next one.</p>
+      <a href="#demo" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-7 py-3.5 rounded-xl transition text-base" data-t="sol_cta_button">Tell me about it →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ FAQ ═══ -->
 <section id="faq" class="py-20 px-4 sm:px-6 bg-gray-900/30">
   <div class="max-w-3xl mx-auto">
@@ -802,8 +887,8 @@
   <div class="max-w-xl mx-auto">
     <div class="text-center mb-10">
       <p class="text-green-400 text-sm font-semibold uppercase tracking-widest mb-3" data-t="demo_label">Get started</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="demo_h2">Request a Demo</h2>
-      <p class="text-gray-400 leading-relaxed" data-t="demo_sub">We'll reach out within 24 hours for a live walkthrough tailored to your fleet.</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-t="demo_h2">Request a Demo — or tell me what you're solving</h2>
+      <p class="text-gray-400 leading-relaxed" data-t="demo_sub">We'll reach out within 24 hours — for a fleet walkthrough, or to talk about whatever problem brought you here.</p>
     </div>
     <form id="demo-form" method="POST" action="https://formsubmit.co/saulohs@icloud.com"
       class="bg-gray-900 border border-gray-800 rounded-2xl p-8 space-y-5">
@@ -985,10 +1070,9 @@ function applyLanguage(lang) {
   });
   document.querySelectorAll('.lang-btn').forEach(function(b) {
     var active = b.dataset.lang === lang;
-    b.classList.toggle('ring-2', active);
-    b.classList.toggle('ring-green-500', active);
-    b.classList.toggle('ring-offset-1', active);
-    b.classList.toggle('ring-offset-gray-950', active);
+    b.classList.toggle('bg-green-500', active);
+    b.classList.toggle('text-black', active);
+    b.classList.toggle('text-gray-400', !active);
   });
 }
 
@@ -996,7 +1080,7 @@ try {
   T = {
     en: {
       /* nav */
-      nav_who:"Who it's for", nav_features:"Features", nav_compliance:"Compliance", nav_faq:"FAQ", nav_demo:"Get a Demo",
+      nav_who:"Who it's for", nav_features:"Features", nav_compliance:"Compliance", nav_solutions:"Solutions", nav_faq:"FAQ", nav_demo:"Get a Demo",
       /* hero */
       hero_badge:"2026 EU Compliance — Ready Now",
       hero_h1:'Turn WhatsApp into your<br><span class="gradient-text">fleet compliance</span><br>assistant.',
@@ -1045,6 +1129,28 @@ try {
       how1_title:"Send a photo or message", how1_desc:"CMR photo, ADR certificate, checklist request, eco-zone query — via regular WhatsApp from any device.",
       how2_title:"AI processes in under 30 seconds", how2_desc:"Gemini AI reads documents, validates fields, checks compliance rules, and replies in the driver's language — EN, NL, IT, DE or PT.",
       how3_title:"Data synced. Audit trail created.", how3_desc:"Every document stored, every expiry tracked, every delivery confirmed. TMS/ERP updated. No manual entry.",
+      /* solutions */
+      sol_label:"Beyond TruckPilot", sol_h2:"Built from real problems.", sol_sub:"TruckPilot solved one, above. Here are six more — and yours could be next.",
+      sol1_title:"Rapportini", sol1_pain:"Drivers logging trips on paper. Invoices taking up to 60 days to close. No visibility into what was loaded, or where.",
+      sol1_build:"Trip-by-trip tracking, fuel and workshop cost control, a one-click load view per trailer, and a dispatch board that assigns the fastest-fitting trip to the right vehicle.",
+      sol1_result:"Invoicing: 60 days → same month",
+      sol2_title:"Shift Scheduling Engine", sol2_pain:"Manual shift planning burning unnecessary overtime — one wrong roster away from a labor-law violation.",
+      sol2_build:"Reads clocked hours, generates compliant schedules automatically, and suggests the shift mix with the least waste and the fewest overtime hours.",
+      sol2_result:"Pays for itself in hours saved",
+      sol3_title:"Health Anywhere", sol3_pain:"Patients couldn't find nearby doctors, or book the way that suited them.",
+      sol3_build:"Doctors list availability — in-office, video, or home visit. Patients see distance on a map, message the doctor directly, and book in one flow.",
+      sol3_result:"One app, three ways to see a doctor",
+      sol4_title:"Contabile", sol4_pain:"Accounting teams distributing tasks by memory — no visibility into who's overloaded, or what's stuck.",
+      sol4_build:"Organizes, measures and distributes tasks fairly across the team, so nothing sits untouched and every deadline has an owner.",
+      sol4_result:"Faster turnaround, clearer workload",
+      sol5_title:"AI Concierge for Real Estate", sol5_pain:"Leads going cold waiting for a human to answer — nights, weekends, after hours.",
+      sol5_build:"A 24/7 AI chat that knows every listing and price, checks the agent's calendar, books visits, and takes offers — any hour, any day.",
+      sol5_result:"Never miss a lead again",
+      sol6_title:"Workout Companion", sol6_pain:"Training plans stuck on paper — no photo of the machine, no explanation, no idea which muscle is actually working.",
+      sol6_build:"Every workout on the phone — equipment photo, exercise explanation, demo video and muscle diagram per movement. Tracks weight, measurements and goals, gamifies consistency with streak badges, and lets the trainer see exactly what each student is doing.",
+      sol6_result:"From a printed sheet to a coach in your pocket",
+      sol_cta_text:"Every one of these started as a flow, an idea, or a frustration someone described to me. If yours isn't solved yet, that's the next one.",
+      sol_cta_button:"Tell me about it →",
       /* faq */
       faq_label:"Common questions", faq_h2:"FAQ",
       faq1_q:"Do drivers need to install a new app?", faq1_a:"No. TruckPilot runs entirely through the WhatsApp they already have on their phone. You share a WhatsApp Business number and they start messaging immediately — no downloads, no accounts, no passwords.",
@@ -1054,7 +1160,7 @@ try {
       faq5_q:"What if the AI can't read a document?", faq5_a:"TruckPilot rejects low-confidence extractions and asks the driver to retake the photo — specifying exactly what was unclear (blur, angle, missing boxes). If a second attempt also fails, the session is flagged and a fleet manager is notified.",
       faq6_q:"How much does it cost?", faq6_a:"Pricing is based on fleet size and usage volume. Contact us for a tailored quote — we'll build a proposal around your fleet's specific compliance profile and integration needs.",
       /* demo form */
-      demo_label:"Get started", demo_h2:"Request a Demo", demo_sub:"We'll reach out within 24 hours for a live walkthrough tailored to your fleet.",
+      demo_label:"Get started", demo_h2:"Request a Demo — or tell me what you're solving", demo_sub:"We'll reach out within 24 hours — for a fleet walkthrough, or to talk about whatever problem brought you here.",
       form_first_name:"First name", form_last_name:"Last name", form_company:"Company / Fleet name", form_email:"Work email",
       form_fleet:"Fleet size", form_fleet_select:"Select range", form_country:"Country", form_country_select:"Select country",
       form_whatsapp:"WhatsApp number", form_whatsapp_opt:"(optional — for a live trial)",
@@ -1068,7 +1174,7 @@ try {
     },
     it: {
       /* nav */
-      nav_who:"Per chi è", nav_features:"Funzionalità", nav_compliance:"Conformità", nav_faq:"FAQ", nav_demo:"Richiedi Demo",
+      nav_who:"Per chi è", nav_features:"Funzionalità", nav_compliance:"Conformità", nav_solutions:"Soluzioni", nav_faq:"FAQ", nav_demo:"Richiedi Demo",
       /* hero */
       hero_badge:"Conformità EU 2026 — Pronto Ora",
       hero_h1:'Trasforma WhatsApp nel tuo<br><span class="gradient-text">assistente di conformità</span><br>per flotte.',
@@ -1117,6 +1223,28 @@ try {
       how1_title:"Invia una foto o un messaggio", how1_desc:"Foto CMR, certificato ADR, richiesta checklist, domanda eco-zone — via WhatsApp normale da qualsiasi dispositivo.",
       how2_title:"L'IA elabora in meno di 30 secondi", how2_desc:"L'IA Gemini legge i documenti, valida i campi, controlla le conformità e risponde nella lingua del conducente — EN, NL, IT, DE o PT.",
       how3_title:"Dati sincronizzati. Traccia creata.", how3_desc:"Ogni documento archiviato, ogni scadenza monitorata, ogni consegna confermata. TMS/ERP aggiornato. Nessuna immissione manuale.",
+      /* solutions */
+      sol_label:"Oltre TruckPilot", sol_h2:"Nato da problemi reali.", sol_sub:"TruckPilot ne ha risolto uno, qui sopra. Ecco altri sei — e il tuo potrebbe essere il prossimo.",
+      sol1_title:"Rapportini", sol1_pain:"Conducenti che registravano i viaggi su carta. Fatture che impiegavano fino a 60 giorni per essere chiuse. Nessuna visibilità su cosa fosse caricato, o dove.",
+      sol1_build:"Tracciamento viaggio per viaggio, controllo dei costi di carburante e officina, vista del carico con un click per ogni rimorchio, e una bacheca che assegna il viaggio più adatto al veicolo giusto.",
+      sol1_result:"Fatturazione: da 60 giorni a stesso mese",
+      sol2_title:"Motore di pianificazione turni", sol2_pain:"Pianificazione manuale dei turni che genera straordinari inutili — a un turno sbagliato di distanza da una violazione della normativa sul lavoro.",
+      sol2_build:"Legge le ore timbrate, genera automaticamente turni conformi e suggerisce la combinazione di turni con meno sprechi e meno straordinari.",
+      sol2_result:"Si ripaga con le ore risparmiate",
+      sol3_title:"Health Anywhere", sol3_pain:"I pazienti non trovavano medici nelle vicinanze, né potevano prenotare nel modo che preferivano.",
+      sol3_build:"I medici indicano la disponibilità — in studio, video o visita a domicilio. I pazienti vedono la distanza sulla mappa, scrivono direttamente al medico e prenotano in un unico flusso.",
+      sol3_result:"Un'app, tre modi per vedere un medico",
+      sol4_title:"Contabile", sol4_pain:"Team contabili che distribuivano compiti a memoria — nessuna visibilità su chi fosse sovraccarico o cosa fosse bloccato.",
+      sol4_build:"Organizza, misura e distribuisce i compiti in modo equo nel team, così niente resta fermo e ogni scadenza ha un responsabile.",
+      sol4_result:"Tempi più rapidi, carico di lavoro più chiaro",
+      sol5_title:"Concierge IA per il settore immobiliare", sol5_pain:"Contatti persi in attesa che qualcuno rispondesse — di notte, nei weekend, fuori orario.",
+      sol5_build:"Una chat IA 24/7 che conosce ogni immobile e prezzo, controlla l'agenda dell'agente, prenota visite e riceve offerte — a qualsiasi ora, ogni giorno.",
+      sol5_result:"Nessun contatto perso",
+      sol6_title:"Workout Companion", sol6_pain:"Schede di allenamento bloccate su carta — nessuna foto dell'attrezzo, nessuna spiegazione, nessuna idea di quale muscolo stia davvero lavorando.",
+      sol6_build:"Ogni allenamento sul telefono — foto dell'attrezzo, spiegazione dell'esercizio, video dimostrativo e disegno del muscolo per ogni movimento. Traccia peso, misure e obiettivi, gamifica la costanza con badge per le serie di allenamenti, e permette al personal trainer di vedere esattamente cosa sta facendo ogni allievo.",
+      sol6_result:"Da un foglio stampato a un coach in tasca",
+      sol_cta_text:"Ognuna di queste è nata da un flusso, un'idea o una frustrazione che qualcuno mi ha raccontato. Se la tua non è ancora risolta, sarà la prossima.",
+      sol_cta_button:"Raccontamela →",
       /* faq */
       faq_label:"Domande frequenti", faq_h2:"FAQ",
       faq1_q:"I conducenti devono installare una nuova app?", faq1_a:"No. TruckPilot funziona interamente tramite il WhatsApp già presente sul loro telefono. Condividi un numero WhatsApp Business e iniziano a scrivere immediatamente — nessun download, nessun account, nessuna password.",
@@ -1126,7 +1254,7 @@ try {
       faq5_q:"E se l'IA non riesce a leggere un documento?", faq5_a:"TruckPilot rifiuta le estrazioni a bassa confidenza e chiede al conducente di ripetere la foto — specificando esattamente cosa era poco chiaro (sfocatura, angolazione, riquadri mancanti). Se anche il secondo tentativo fallisce, la sessione viene segnalata e il responsabile flotta viene notificato.",
       faq6_q:"Quanto costa?", faq6_a:"Il prezzo è basato sulla dimensione della flotta e sul volume di utilizzo. Contattaci per un preventivo personalizzato — costruiremo una proposta attorno al profilo di conformità specifico della tua flotta.",
       /* demo form */
-      demo_label:"Inizia ora", demo_h2:"Richiedi una Demo", demo_sub:"Ti contatteremo entro 24 ore per una demo dal vivo su misura per la tua flotta.",
+      demo_label:"Inizia ora", demo_h2:"Richiedi una Demo — o raccontami cosa stai risolvendo", demo_sub:"Ti contatteremo entro 24 ore — per una demo della flotta, o per parlare di qualunque problema ti abbia portato qui.",
       form_first_name:"Nome", form_last_name:"Cognome", form_company:"Azienda / Nome flotta", form_email:"Email aziendale",
       form_fleet:"Dimensione flotta", form_fleet_select:"Seleziona", form_country:"Paese", form_country_select:"Seleziona paese",
       form_whatsapp:"Numero WhatsApp", form_whatsapp_opt:"(opzionale — per una prova dal vivo)",
@@ -1137,6 +1265,100 @@ try {
       /* footer */
       footer_privacy:"Informativa sulla privacy", footer_powered:"Sviluppato con Gemini AI e WhatsApp Business API",
       footer_title:"Data Engineer & AI Solutions"
+    },
+    de: {
+      /* nav */
+      nav_who:"Für wen", nav_features:"Funktionen", nav_compliance:"Konformität", nav_solutions:"Lösungen", nav_faq:"FAQ", nav_demo:"Demo anfordern",
+      /* hero */
+      hero_badge:"EU-Konformität 2026 — Jetzt startklar",
+      hero_h1:'Verwandeln Sie WhatsApp in Ihren<br><span class="gradient-text">Flotten-Compliance</span><br>Assistenten.',
+      hero_subtitle:"Fahrer senden Fotos und Nachrichten über WhatsApp. TruckPilot liest Dokumente, prüft Vorschriften, benachrichtigt Ihr Team und synchronisiert die Daten mit Ihrem TMS oder ERP. Minimales Onboarding. Weniger manuelle Arbeit. Schnellere Compliance-Prozesse.",
+      hero_cta1:"Demo anfordern →", hero_cta2:"Funktionen entdecken",
+      badge_no_app:"Keine App-Installation", badge_gdpr:"DSGVO-konform konzipiert", badge_tms:"TMS-/ERP-bereit",
+      /* stats */
+      modules_label:"7 WhatsApp-Workflows",
+      stat1:"Vom Foto zu strukturierten Daten", stat2:"WhatsApp-Workflows", stat3:"Unterstützte Fahrersprachen", stat4:"EU-Umweltzonen in der Datenbank",
+      /* who */
+      who_label:"Für die Straße gemacht", who_h2:"Wer nutzt TruckPilot?", who_sub:"Drei Rollen. Eine WhatsApp-Nummer. Alle profitieren.",
+      who1_title:"Flottenmanager", who1_desc:"Müde davon, Fahrern hinterherzulaufen und abgelaufene Zertifikate erst zu entdecken, wenn ein Fahrzeug an der Grenze festgehalten wird.",
+      who1_li1:"Compliance-Dashboard in Echtzeit", who1_li2:"Automatische Erinnerungen zur Zertifikatserneuerung", who1_li3:"Lückenloser Prüfpfad für jeden CMR",
+      who2_title:"Inhaber eines Transportunternehmens", who2_desc:"Jeder Compliance-Verstoß kostet Geld — Bußgelder, festgehaltene Fahrzeuge, verlorene Aufträge. Manuelle Prozesse skalieren nicht mit wachsender Flotte.",
+      who2_li1:"ICS2-Verzögerungen und Zollstrafen reduzieren", who2_li2:"Integration mit Ihrem TMS / ERP", who2_li3:"Skalieren von 5 auf 500 Fahrzeuge",
+      who3_title:"Berufskraftfahrer", who3_desc:"12 Stunden täglich unterwegs. Keine Zeit, neue Apps zu lernen oder an jeder Grenze Papierordner zu durchsuchen.",
+      who3_li1:"WhatsApp ist bereits auf dem Handy", who3_li2:"Sofortige Antworten: Umweltzonen, Bußgeldhöhen", who3_li3:"Alle Dokumente nur eine Nachricht entfernt",
+      /* features */
+      feat_label:"Sieben Workflows", feat_h2:"Ein WhatsApp. Volle Konformität.", feat_sub:"Jeder Berührungspunkt im Compliance-Workflow Ihrer Flotte — abgedeckt durch ein Gespräch, das Ihre Fahrer bereits kennen.",
+      cmr_h3:"Foto rein. Validierte Daten raus. TMS synchronisiert.",
+      cmr_desc:'Der Fahrer fotografiert den unterschriebenen, datierten CMR nach der Lieferung. Die KI liest <strong class="text-white">bis zu 45 Felder in 24 UNECE-Feldern</strong> in unter 30 Sekunden. Fehlt ein Feld oder ist das Bild unleserlich, wird der Vorgang abgelehnt und ein neues Foto angefordert. Nach Bestätigung werden die Daten ohne manuelle Eingabe an Ihr TMS oder ERP übertragen.',
+      cmr_box_label:"Automatisch extrahiert:",
+      chk_h3:"Vollständige Kontrolle. Null Papierkram.",
+      chk_desc:'TruckPilot führt den Fahrer per Gespräch durch jeden Kontrollpunkt — keine Formulare, kein Klemmbrett. Die Standardvorlage umfasst <strong class="text-white">35 Punkte</strong>, ADR-Ladungen erhalten <strong class="text-white">42 Punkte</strong> mit Validierung der Gefahrenklasse gegen das registrierte Zertifikat des Fahrers. Am Ende wird automatisch ein <strong class="text-white">Bericht mit Zeitstempel als PDF</strong> erstellt.',
+      chk_box_label:"Der erstellte Bericht enthält:",
+      eco_h3:"Prüfen vor dem Tor — nicht nach dem Bußgeld.",
+      eco_desc:"Der Fahrer fragt in einfacher Sprache — oder sendet seinen GPS-Standort. TruckPilot prüft sofort: Darf er in die Zone einfahren, wann öffnet das Zeitfenster, wo kann er währenddessen parken, und wie hoch ist das Bußgeld, wenn er es riskiert.",
+      pin_h3:"Nachweisen, wer abholt. Streitigkeiten ausschließen.",
+      pin_desc:'Bevor die Ladung freigegeben wird, registriert der Versender eine 6-stellige PIN in TruckPilot. Am Lieferort gibt der Fahrer die PIN ein — in Echtzeit zwischen beiden Parteien abgeglichen. So entsteht ein <strong class="text-white">unveränderlicher Prüfpfad</strong>, der belegt, dass der richtige Frachtführer die richtige Ladung abgeholt hat.',
+      pin_box_label:"Der doppelte Prüfablauf:",
+      adr_cert_h3:"Keine Erneuerung mehr verpassen. Keine Ladung mehr verlieren.",
+      adr_cert_desc:'Der Fahrer fotografiert Vorder- und Rückseite des ADR-Zertifikats. TruckPilot extrahiert Name des Inhabers, zugelassene Gefahrenklassen und Ablaufdatum — und überwacht sie danach automatisch. Erinnerungen eskalieren an <strong class="text-white">Tag -30, -20, -10, -5</strong>, danach täglich. Der Fahrer stößt die Erneuerung direkt aus WhatsApp an. Der Flottenmanager erhält jede kritische Warnung.',
+      adr_ver_h3:"Polizeikontrolle. Prüfbericht in 20 Sekunden fertig.",
+      adr_ver_desc:'Bei einer Kontrolle durch Polizei oder Verkehrsbehörde hängt der Fahrer das ADR-Prüfdokument an. TruckPilot prüft jede Konformität — Gültigkeit des Zertifikats, zugelassene Klassen, Fahrzeugausstattung, Übereinstimmung von Ladung und Zertifikat — und erstellt sofort einen <strong class="text-white">strukturierten Prüfbericht</strong>.',
+      adr_ver_box_label:"Die Prüfung umfasst:",
+      wallet_h3:"Jedes Dokument. Nur eine Nachricht entfernt.",
+      wallet_desc:'Der Fahrer schreibt <strong class="text-white">"docs"</strong> und sieht sofort den Status jedes Compliance-Dokuments in seinem Profil. Abgelaufene oder bald ablaufende Dokumente werden rot markiert. Jedes Dokument kann direkt aus dem Chat heruntergeladen — oder vor Ort mit einem Kontrolleur geteilt werden.',
+      /* regulatory */
+      reg_label:"Regulatorische Fristen 2026", reg_h2:"Vier Vorgaben. Kein Spielraum für Fehler.", reg_sub:"Gleichzeitige EU-Compliance-Änderungen treffen Frachtführer 2026. Eine verpasst: Fahrzeuge festgehalten, Bußgelder verhängt, Routen gesperrt.",
+      reg1_title:"Erneuerung des ADR-Zertifikats", reg1_date:"Juni 2026", reg1_desc:"Abgelaufenes Zertifikat = Fahrzeug festgehalten. Keine Übergangsfrist in NL, DE, IT, BE.",
+      reg2_title:"ICS2-Grenzanmeldung", reg2_date:"Bereits aktiv — NL/DE/CZ", reg2_desc:"Voranmeldung vor Ankunft erforderlich. Bei Nichteinhaltung: Risiko von Zollverzögerungen und länderabhängigen Strafen.",
+      reg3_title:"Intelligenter Fahrtenschreiber G2V2", reg3_date:"1. Juli 2026", reg3_desc:"Pflicht für Transporter. Arbeitszeit muss digital erfasst und zugänglich sein.",
+      reg4_title:"Digitaler eCMR-Standard", reg4_date:"Pflicht ab 2027", reg4_desc:"EU-Behörden müssen zertifizierte digitale Frachtdokumente ab Juli 2027 akzeptieren — beginnen Sie jetzt mit dem Aufbau Ihres digitalen Archivs.",
+      /* how it works */
+      how_label:"Keine Einarbeitungszeit", how_h2:"Drei Schritte. Das war's.", how_sub:"Minimales Onboarding. Keine neuen Logins. Fahrer nutzen dasselbe WhatsApp, das bereits auf ihrem Handy ist.",
+      how1_title:"Foto oder Nachricht senden", how1_desc:"CMR-Foto, ADR-Zertifikat, Checklisten-Anfrage, Umweltzonen-Abfrage — über das normale WhatsApp von jedem Gerät aus.",
+      how2_title:"KI verarbeitet in unter 30 Sekunden", how2_desc:"Gemini AI liest Dokumente, validiert Felder, prüft Vorschriften und antwortet in der Sprache des Fahrers — EN, NL, IT, DE oder PT.",
+      how3_title:"Daten synchronisiert. Prüfpfad erstellt.", how3_desc:"Jedes Dokument gespeichert, jede Ablauffrist verfolgt, jede Lieferung bestätigt. TMS/ERP aktualisiert. Keine manuelle Eingabe.",
+      /* solutions */
+      sol_label:"Mehr als TruckPilot", sol_h2:"Aus echten Problemen entstanden.", sol_sub:"TruckPilot hat oben eines gelöst. Hier sind sechs weitere — Ihres könnte das nächste sein.",
+      sol1_title:"Rapportini", sol1_pain:"Fahrer erfassten Fahrten auf Papier. Rechnungen brauchten bis zu 60 Tage, um abgeschlossen zu werden. Keine Übersicht, was geladen war oder wo.",
+      sol1_build:"Fahrt-für-Fahrt-Verfolgung, Kontrolle von Kraftstoff- und Werkstattkosten, eine Ladeansicht pro Anhänger mit einem Klick und ein Dispositionsboard, das die am besten passende Fahrt dem richtigen Fahrzeug zuweist.",
+      sol1_result:"Rechnungsstellung: 60 Tage → derselbe Monat",
+      sol2_title:"Schichtplanungs-Engine", sol2_pain:"Manuelle Schichtplanung, die unnötige Überstunden verursacht — einen falschen Dienstplan von einem Arbeitsrechtsverstoß entfernt.",
+      sol2_build:"Liest erfasste Arbeitszeiten, erstellt automatisch konforme Dienstpläne und schlägt die Schichtkombination mit dem geringsten Verschnitt und den wenigsten Überstunden vor.",
+      sol2_result:"Zahlt sich durch die eingesparten Stunden aus",
+      sol3_title:"Health Anywhere", sol3_pain:"Patienten fanden keine Ärzte in der Nähe oder konnten nicht so buchen, wie es ihnen passte.",
+      sol3_build:"Ärzte geben ihre Verfügbarkeit an — Praxis, Video oder Hausbesuch. Patienten sehen die Entfernung auf der Karte, schreiben dem Arzt direkt und buchen in einem einzigen Ablauf.",
+      sol3_result:"Eine App, drei Wege zum Arzt",
+      sol4_title:"Contabile", sol4_pain:"Buchhaltungsteams verteilten Aufgaben aus dem Gedächtnis — keine Übersicht, wer überlastet war oder was ins Stocken geriet.",
+      sol4_build:"Organisiert, misst und verteilt Aufgaben fair im Team, sodass nichts liegen bleibt und jede Frist einen Verantwortlichen hat.",
+      sol4_result:"Schnellerer Durchlauf, klarere Auslastung",
+      sol5_title:"KI-Concierge für Immobilien", sol5_pain:"Interessenten sprangen ab, weil niemand antwortete — nachts, am Wochenende, außerhalb der Öffnungszeiten.",
+      sol5_build:"Ein KI-Chat, der rund um die Uhr jedes Angebot und jeden Preis kennt, den Kalender des Maklers prüft, Besichtigungen bucht und Angebote entgegennimmt — zu jeder Stunde, an jedem Tag.",
+      sol5_result:"Kein Interessent geht mehr verloren",
+      sol6_title:"Workout Companion", sol6_pain:"Trainingspläne auf Papier — kein Foto des Geräts, keine Erklärung, keine Ahnung, welcher Muskel tatsächlich arbeitet.",
+      sol6_build:"Jedes Training auf dem Handy — Foto des Geräts, Übungserklärung, Demo-Video und Muskeldiagramm zu jeder Bewegung. Verfolgt Gewicht, Maße und Ziele, gamifiziert Beständigkeit mit Streak-Abzeichen und zeigt dem Trainer genau, was jeder Trainierende macht.",
+      sol6_result:"Vom ausgedruckten Blatt zum Coach in der Tasche",
+      sol_cta_text:"Jede dieser Lösungen begann als Ablauf, eine Idee oder eine Frustration, die mir jemand geschildert hat. Wenn Ihre noch nicht gelöst ist, wird sie die nächste.",
+      sol_cta_button:"Erzählen Sie es mir →",
+      /* faq */
+      faq_label:"Häufige Fragen", faq_h2:"FAQ",
+      faq1_q:"Müssen Fahrer eine neue App installieren?", faq1_a:"Nein. TruckPilot läuft vollständig über das WhatsApp, das bereits auf ihrem Handy ist. Sie teilen eine WhatsApp-Business-Nummer, und sie können sofort schreiben — kein Download, kein Konto, kein Passwort.",
+      faq2_q:"Wie lange dauert die TMS-/ERP-Integration?", faq2_a:"Unter 1 Minute für Standard-REST-API-Integrationen. Wir stellen einen Webhook-Endpunkt bereit, der bei jedem bestätigten CMR oder jeder Checkliste strukturiertes JSON sendet. Für individuelle TMS-Konnektoren (SAP, Transics usw.) rechnen wir mit 1–2 Tagen Einrichtung.",
+      faq3_q:"Welche Sprachen werden unterstützt?", faq3_a:"Englisch, Niederländisch, Italienisch, Deutsch und Portugiesisch. TruckPilot erkennt die Sprache des Fahrers automatisch anhand der ersten Nachricht und antwortet entsprechend. Die CMR-Extraktion funktioniert unabhängig von der Dokumentsprache.",
+      faq4_q:"Sind unsere Daten DSGVO-konform?", faq4_a:'Ja. Alle Daten werden in Google Cloud <strong class="text-white">europe-west4</strong> (Niederlande) gespeichert und verarbeitet. Dokumentenbilder werden 90 Tage, Compliance-Daten 365 Tage aufbewahrt. Wir stellen auf Anfrage eine Auftragsverarbeitungsvereinbarung (AVV) bereit.',
+      faq5_q:"Was, wenn die KI ein Dokument nicht lesen kann?", faq5_a:"TruckPilot lehnt Extraktionen mit geringer Zuverlässigkeit ab und bittet den Fahrer, das Foto erneut aufzunehmen — mit genauer Angabe, was unklar war (Unschärfe, Winkel, fehlende Felder). Schlägt auch der zweite Versuch fehl, wird die Sitzung markiert und ein Flottenmanager benachrichtigt.",
+      faq6_q:"Was kostet das?", faq6_a:"Die Preisgestaltung richtet sich nach Flottengröße und Nutzungsvolumen. Kontaktieren Sie uns für ein individuelles Angebot — wir erstellen einen Vorschlag passend zum Compliance-Profil und den Integrationsanforderungen Ihrer Flotte.",
+      /* demo form */
+      demo_label:"Jetzt starten", demo_h2:"Demo anfordern — oder erzählen Sie mir, was Sie lösen möchten", demo_sub:"Wir melden uns innerhalb von 24 Stunden — für eine Flotten-Demo oder um über jedes Problem zu sprechen, das Sie hierher geführt hat.",
+      form_first_name:"Vorname", form_last_name:"Nachname", form_company:"Firma / Flottenname", form_email:"Geschäftliche E-Mail",
+      form_fleet:"Flottengröße", form_fleet_select:"Bereich auswählen", form_country:"Land", form_country_select:"Land auswählen",
+      form_whatsapp:"WhatsApp-Nummer", form_whatsapp_opt:"(optional — für eine Live-Testphase)",
+      form_submit:"Demo anfordern →", form_note:"Unverbindlich. Wir antworten innerhalb von 24 Stunden.",
+      form_ph_first:"Max", form_ph_last:"Mustermann", form_ph_company:"Mustermann Spedition GmbH", form_ph_email:"max@mustermann-spedition.de",
+      success_title:"Anfrage gesendet!", success_body:'Wir melden uns innerhalb von <strong class="text-white">24 Stunden</strong>, um eine Live-Demo für Ihre Flotte zu vereinbaren.',
+      form_error:"Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.",
+      /* footer */
+      footer_privacy:"Datenschutzerklärung", footer_powered:"Unterstützt von Gemini AI & WhatsApp Business API",
+      footer_title:"Data Engineer & KI-Lösungen"
     }
   };
 
