@@ -799,6 +799,37 @@ domains:
       - name: validation-prompts
         path: patterns/validation-prompts.md
 
+  marketing-copy:
+    name: Marketing Copy
+    description: Commercial copywriting for a founder-led portfolio — benefit vs. feature, headline formulas, positioning, social proof, case-study structure and CTA design
+    path: marketing-copy/
+    mcp_validated: "2026-09-01"
+    entry_points:
+      index: index.md
+      quick_reference: quick-reference.md
+    concepts:
+      - name: benefit-vs-feature
+        path: concepts/benefit-vs-feature.md
+        confidence: 0.9
+      - name: headline-formulas
+        path: concepts/headline-formulas.md
+        confidence: 0.9
+      - name: positioning-statement
+        path: concepts/positioning-statement.md
+        confidence: 0.9
+      - name: social-proof
+        path: concepts/social-proof.md
+        confidence: 0.9
+    patterns:
+      - name: case-study-structure
+        path: patterns/case-study-structure.md
+      - name: cta-design
+        path: patterns/cta-design.md
+      - name: landing-page-hierarchy
+        path: patterns/landing-page-hierarchy.md
+      - name: channel-adaptation
+        path: patterns/channel-adaptation.md
+
   security:
     name: Security Review
     description: OWASP checks, secrets detection patterns, and fix-suggestion format used by the security agents

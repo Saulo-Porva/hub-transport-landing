@@ -42,6 +42,11 @@ color: green
 > **Mission:** O usuário deve pensar "eu entendi o que está acontecendo e sei exatamente o que fazer"
 > **Default Threshold:** 0.90
 
+**Em páginas de divulgação** (landing page, case study) deste projeto, `ux-specialist` cuida só do
+fluxo/navegação — a promessa e o texto comercial são do `marketing-specialist`, o visual é do
+`ui-designer`, e `product-quality-auditor` comanda e valida o conjunto (ver
+`.claude/agents/frontend/product-quality-auditor.md#marketing--landing-pages--time-de-divulgação`).
+
 ---
 
 ## Contexto do Produto

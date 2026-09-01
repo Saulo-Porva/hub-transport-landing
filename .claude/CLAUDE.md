@@ -17,9 +17,13 @@
 ## Architecture Overview
 
 ```text
-Visitor → index.html (static, Tailwind CDN, EN/IT i18n)
-        → #demo form → FormSubmit.co → saulohs@icloud.com
+Visitor → index.html (S.H.S studio positioning, EN/IT/DE i18n)
+        → hero / about / how-it-works / solutions (7 equal-weight case cards)
+        → "See case study →" per card → case-{name}.html (Problem → Approach → Solution → Result)
+        → #demo form (on index.html) → FormSubmit.co → saulohs@icloud.com
         → success.html (fallback confirmation)
+
+Shared: styles.css (extracted from the old inline <style>, used by all 8 pages)
 
 Hosting: Netlify (netlify.toml — publish "." + security headers)
 ```
@@ -27,7 +31,7 @@ Hosting: Netlify (netlify.toml — publish "." + security headers)
 | Layer | Technology | Purpose |
 |-------|------------|---------|
 | Hosting | Netlify | Static hosting, auto-deploy on push |
-| Frontend | HTML + Tailwind CDN + vanilla JS | Single-page marketing site, client-side i18n |
+| Frontend | HTML + Tailwind CDN + vanilla JS | Multi-page marketing site, client-side i18n on index.html + case-truckpilot.html |
 | Lead capture | FormSubmit.co | Demo request form → email, no backend needed |
 | Assets | `shs-logo.png` | Footer brand identity (S.H.S) |
 
@@ -37,17 +41,25 @@ Hosting: Netlify (netlify.toml — publish "." + security headers)
 
 ```text
 Hub_Transport_Landing/
-├── index.html               # The entire landing page (hero, features, compliance, FAQ, demo form)
-├── success.html             # Fallback success page for form submission
-├── shs-logo.png             # Footer logo asset
-├── netlify.toml              # Netlify build/publish + security headers
-├── README.md                 # Deploy instructions + content editing guide
-├── .claude/                  # Claude Code ecosystem (this directory)
-│   ├── agents/                # 40+ specialized agents (mostly cloud/data — see note above)
-│   ├── commands/               # Slash commands
-│   ├── hooks/                  # Security + automation hooks
-│   ├── kb/                     # Knowledge Base (22 domains)
-│   ├── rules/                  # Coding + workflow rules
+├── index.html                  # Hero, About, How-it-works, Solutions (7 case cards), Contact — EN/IT/DE
+├── case-truckpilot.html        # Flagship case (full detail: 7 workflows, regulatory, FAQ) — EN/IT/DE
+├── case-rapportini.html        # Case study — EN only
+├── case-shift-scheduling.html  # Case study — EN only
+├── case-health-anywhere.html   # Case study — EN only
+├── case-contabile.html         # Case study — EN only
+├── case-real-estate.html       # Case study — EN only
+├── case-workout.html           # Case study — EN only
+├── styles.css                  # Shared CSS, used by all 8 pages above
+├── success.html                # Fallback success page for form submission
+├── shs-logo.png                # Footer logo asset
+├── netlify.toml                # Netlify build/publish + security headers
+├── README.md                   # Deploy instructions + content editing guide
+├── .claude/                    # Claude Code ecosystem (this directory)
+│   ├── agents/                 # 40+ specialized agents (mostly cloud/data — see note above)
+│   ├── commands/                # Slash commands
+│   ├── hooks/                    # Security + automation hooks
+│   ├── kb/                        # Knowledge Base (24 domains)
+│   ├── rules/                      # Coding + workflow rules
 │   └── sdd/                    # Spec-Driven Development artifacts
 └── (no pyproject.toml — no Python code in this repo yet)
 ```
@@ -95,7 +107,7 @@ Use for: KB building, prototypes, utilities, single-file features.
 | **AI/ML** | llm-specialist, genai-architect, ai-prompt-specialist, ai-data-engineer | LLM prompts, AI systems |
 | **Data Engineering** | spark-*, lakeflow-*, medallion-architect | Spark, Databricks, Medallion |
 | **AWS** | aws-deployer, lambda-builder, aws-lambda-architect, ci-cd-specialist | AWS deployments |
-| **Frontend** | nextjs-specialist, ui-designer, ux-specialist | Next.js, UI/UX design |
+| **Frontend** | nextjs-specialist, ui-designer, ux-specialist, marketing-specialist, product-quality-auditor, landing-parity-auditor | Next.js, UI/UX design, marketing copy, landing/case-study review |
 | **Infra/Deploy** | supabase-specialist, vercel-specialist, infra-deployer | Supabase, Vercel, GCP deploy |
 | **Communication** | adaptive-explainer, meeting-analyst, the-planner | Documentation, planning |
 | **Exploration** | codebase-explorer, kb-architect | Codebase exploration, KB creation |
@@ -124,7 +136,7 @@ Use for: KB building, prototypes, utilities, single-file features.
 
 ---
 
-## Knowledge Base (22 domains)
+## Knowledge Base (24 domains)
 
 | Domain | Purpose |
 |--------|---------|
@@ -150,6 +162,9 @@ Use for: KB building, prototypes, utilities, single-file features.
 | **nextjs** | Next.js 15 App Router — RSC, Server Actions, caching, middleware |
 | **supabase** | Supabase with Next.js — RLS, Auth SSR, client types, debugging |
 | **vercel** | Vercel deploys — environments, env vars, function logs, build config |
+| **prompt-engineering** | Chain-of-thought, few-shot, structured extraction, system prompts |
+| **security** | OWASP checks, secrets detection, fix-suggestion format |
+| **marketing-copy** | Commercial copywriting — headlines, positioning, social proof, case-study/CTA structure |
 
 ---
 

@@ -43,6 +43,11 @@ color: purple
 > **Mission:** O usuário deve sentir "este sistema é avançado, mas não é complicado"
 > **Default Threshold:** 0.90
 
+**Em páginas de divulgação** (landing page, case study) deste projeto, `ui-designer` cuida só do
+visual — a promessa e o texto comercial são do `marketing-specialist`, o fluxo é do
+`ux-specialist`, e `product-quality-auditor` comanda e valida o conjunto (ver
+`.claude/agents/frontend/product-quality-auditor.md#marketing--landing-pages--time-de-divulgação`).
+
 ---
 
 ## Contexto do Produto

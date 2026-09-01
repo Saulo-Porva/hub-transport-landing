@@ -73,8 +73,74 @@
 <hr class="section-divider">
 
 <section class="py-20 px-4 sm:px-6 bg-gray-900/20">
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-6xl mx-auto">
     <p class="case-kicker text-blue-400 text-sm font-semibold uppercase tracking-widest mb-8">03 / The Solution</p>
+
+    <!-- Real screens, recreated (fictional data) -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-10">
+
+      <!-- Trip log recreation -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+        <div class="bg-red-700 px-4 py-2.5 flex items-center justify-between">
+          <span class="text-white text-xs font-bold">Rapporto di Lavoro — Agosto 2026</span>
+          <span class="text-white/70 text-[10px]">Autista: M. Rossi</span>
+        </div>
+        <div class="p-3 overflow-x-auto">
+          <table class="w-full border-collapse text-[9px] text-gray-700 whitespace-nowrap">
+            <thead>
+              <tr class="text-gray-500 border-b border-gray-200">
+                <th class="text-left font-semibold py-1 pr-2">DATA</th>
+                <th class="text-left font-semibold py-1 pr-2">1° VIAGGIO</th>
+                <th class="text-right font-semibold py-1 pr-2">PESO</th>
+                <th class="text-left font-semibold py-1 pr-2">2° VIAGGIO</th>
+                <th class="text-right font-semibold py-1">PESO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">1</td><td class="pr-2">Cliente A · Rotta X→Y</td><td class="text-right pr-2">28.800</td><td class="pr-2">Cliente B · Rotta Y→Z</td><td class="text-right">28.960</td></tr>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">2</td><td class="pr-2">Cliente C · Rotta Z→W</td><td class="text-right pr-2">28.440</td><td class="pr-2">Cliente D · Rotta W→X</td><td class="text-right">28.500</td></tr>
+              <tr class="bg-red-50"><td class="py-1.5 pr-2 text-red-600 font-semibold">6</td><td colspan="4" class="text-red-600 italic">Malattia — protocollo N. 450462232</td></tr>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">7</td><td class="pr-2">Cliente E · Rotta Y→X</td><td class="text-right pr-2">28.750</td><td class="pr-2">Cliente F · Rotta X→Y</td><td class="text-right">28.840</td></tr>
+              <tr class="border-b border-gray-100"><td class="py-1.5 pr-2">8</td><td class="pr-2">Cliente A · Rotta X→W</td><td class="text-right pr-2">28.580</td><td class="pr-2">Cliente G · Rotta W→Y</td><td class="text-right">28.740</td></tr>
+              <tr><td class="py-1.5 pr-2">9</td><td class="pr-2">Cliente H · Rotta V→Z</td><td class="text-right pr-2">13.440</td><td class="pr-2">Cliente C · Rotta Z→X</td><td class="text-right">29.180</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Recreated screen — illustrative data</div>
+      </div>
+
+      <!-- Trailer load recreation -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+        <div class="bg-blue-700 px-4 py-2.5">
+          <span class="text-white text-xs font-bold">AB123CV</span>
+          <span class="text-green-300 text-[10px] ml-2">● Tratta in corso</span>
+        </div>
+        <div class="p-4">
+          <p class="text-[10px] text-gray-500 mb-2">Occupazione carretta — Vista di sopra</p>
+          <div class="relative h-8 bg-gray-100 rounded border border-gray-300 mb-1 overflow-hidden">
+            <div class="absolute inset-y-0 left-0 bg-red-400/80" style="width:73%"></div>
+          </div>
+          <div class="flex justify-between text-[9px] text-gray-400 mb-4"><span>0</span><span>13,60 m</span></div>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-gray-50 rounded-lg p-2.5">
+              <p class="text-[9px] text-gray-500">PESO</p>
+              <p class="text-sm font-bold text-gray-800">11000<span class="text-[9px] font-normal text-gray-400"> / 26000 kg</span></p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-2.5">
+              <p class="text-[9px] text-gray-500">PALLET</p>
+              <p class="text-sm font-bold text-gray-800">19<span class="text-[9px] font-normal text-gray-400"> / 33</span></p>
+            </div>
+          </div>
+          <div class="space-y-1.5 text-[10px] text-gray-600">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-400 shrink-0"></span>Cliente A Srl · 1 pallet · 1000kg</div>
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-400 shrink-0"></span>Cliente B SpA · 18 pallet · 10000kg</div>
+          </div>
+        </div>
+        <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Recreated screen — illustrative data</div>
+      </div>
+
+    </div>
+
     <div class="grid sm:grid-cols-2 gap-5">
       <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-start gap-4">
         <div class="w-10 h-10 rounded-xl bg-blue-950/60 border border-blue-800/40 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg></div>
