@@ -93,56 +93,113 @@
     <p class="text-purple-600 text-sm font-semibold uppercase tracking-widest mb-8">04 / How It Works</p>
 
     <!-- Illustrative screen (no live deployment reachable) -->
-    <div class="max-w-lg mb-10">
-      <div class="bg-white rounded-2xl overflow-hidden card-float border border-slate-100">
-        <div class="bg-purple-700 px-4 py-2.5 flex items-center justify-between">
-          <span class="text-white text-xs font-bold">Escala — Semana 37</span>
-          <span class="text-white/80 text-[10px]">0 conflitos</span>
+    <div class="bg-white rounded-2xl overflow-hidden card-float border border-slate-100 mb-6">
+      <div class="px-5 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <p class="text-sm font-bold text-gray-800">Overview</p>
+          <p class="text-[10px] text-gray-500">Today's operation at a glance</p>
         </div>
-        <div class="p-3 overflow-x-auto">
-          <table class="w-full border-collapse text-[9px] text-gray-700">
-            <thead>
-              <tr class="text-gray-500 border-b border-gray-200">
-                <th class="text-left font-semibold py-1 pr-2">Funcionário</th>
-                <th class="font-semibold py-1 px-1">Seg</th><th class="font-semibold py-1 px-1">Ter</th><th class="font-semibold py-1 px-1">Qua</th><th class="font-semibold py-1 px-1">Qui</th><th class="font-semibold py-1 px-1">Sex</th><th class="font-semibold py-1 px-1">Sáb</th><th class="font-semibold py-1 px-1">Dom</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-gray-100">
-                <td class="py-1.5 pr-2 font-medium">Funcionário A</td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-              </tr>
-              <tr class="border-b border-gray-100">
-                <td class="py-1.5 pr-2 font-medium">Funcionário B</td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-              </tr>
-              <tr>
-                <td class="py-1.5 pr-2 font-medium">Funcionário C</td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-purple-200"></span></td>
-                <td class="text-center px-1"><span class="inline-block w-6 h-4 rounded bg-gray-100"></span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Illustrative screen — fictional data</div>
+        <span class="text-[10px] font-semibold text-gray-500 bg-gray-100 rounded-full px-2.5 py-1">Retail Operation</span>
       </div>
+      <div class="grid sm:grid-cols-3 gap-3 p-5">
+        <div class="border border-gray-200 rounded-xl p-3.5">
+          <p class="text-[10px] text-gray-500 mb-1">Coverage today</p>
+          <p class="text-xl font-extrabold text-green-600">100%</p>
+          <p class="text-[9px] text-gray-400">✓ Within target</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-3.5">
+          <p class="text-[10px] text-gray-500 mb-1">Gaps today</p>
+          <p class="text-xl font-extrabold text-gray-800">1</p>
+          <p class="text-[9px] text-red-500">⚠ 1 shift under-covered</p>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-3.5">
+          <p class="text-[10px] text-gray-500 mb-1">Absences (7 days)</p>
+          <p class="text-xl font-extrabold text-gray-800">0</p>
+          <p class="text-[9px] text-gray-400">None affecting coverage</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 px-5 pb-5">
+        <div class="border border-gray-200 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-bold text-gray-800">This week's schedule</p>
+            <span class="text-[9px] font-semibold text-amber-700 bg-amber-100 rounded-full px-2 py-0.5">In review</span>
+          </div>
+          <p class="text-[10px] text-gray-500 mb-3">882 suggestions awaiting review</p>
+          <div class="grid grid-cols-3 gap-2 mb-3">
+            <div><p class="text-[9px] text-gray-400">Coverage</p><p class="text-sm font-bold text-gray-800">100%</p></div>
+            <div><p class="text-[9px] text-gray-400">Overtime</p><p class="text-sm font-bold text-gray-800">0.0h</p></div>
+            <div><p class="text-[9px] text-gray-400">Labor-law flags</p><p class="text-sm font-bold text-gray-800">26</p></div>
+          </div>
+          <div class="flex gap-2">
+            <span class="flex-1 text-center text-[10px] font-semibold text-white bg-purple-600 rounded-lg py-2">Open schedule →</span>
+            <span class="flex-1 text-center text-[10px] font-semibold text-gray-700 bg-gray-100 rounded-lg py-2">Review suggestions</span>
+          </div>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4">
+          <p class="text-xs font-bold text-gray-800 mb-3">Needs attention</p>
+          <div class="space-y-2.5">
+            <div class="flex items-start gap-2"><span class="text-red-500 text-xs mt-0.5">⚠</span><div><p class="text-[10px] font-semibold text-gray-800">Pricing team</p><p class="text-[9px] text-gray-500">0% coverage Thu 07:00–18:00</p></div></div>
+            <div class="flex items-start gap-2"><span class="text-red-500 text-xs mt-0.5">⚠</span><div><p class="text-[10px] font-semibold text-gray-800">Deliveries</p><p class="text-[9px] text-gray-500">0% coverage Sat 13:00–19:00</p></div></div>
+            <div class="flex items-start gap-2"><span class="text-red-500 text-xs mt-0.5">⚠</span><div><p class="text-[10px] font-semibold text-gray-800">Produce</p><p class="text-[9px] text-gray-500">0% coverage Sun 07:00–12:00</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Recreated screen — illustrative data</div>
+    </div>
+
+    <!-- Weekly roster grid recreation -->
+    <div class="bg-white rounded-2xl overflow-hidden card-float border border-slate-100 mb-10">
+      <div class="px-5 py-4 border-b border-gray-100">
+        <p class="text-sm font-bold text-gray-800">Weekly schedule — draft</p>
+        <p class="text-[10px] text-gray-500">Click a cell to change the shift, or generate a draft automatically</p>
+      </div>
+      <div class="p-3 overflow-x-auto">
+        <table class="w-full border-collapse text-[9px] text-gray-700 whitespace-nowrap">
+          <thead>
+            <tr class="text-gray-500 border-b border-gray-200">
+              <th class="text-left font-semibold py-1.5 pr-3">Employee</th>
+              <th class="font-semibold py-1.5 px-2">Sun</th><th class="font-semibold py-1.5 px-2">Mon</th><th class="font-semibold py-1.5 px-2">Tue</th><th class="font-semibold py-1.5 px-2">Wed</th><th class="font-semibold py-1.5 px-2">Thu</th><th class="font-semibold py-1.5 px-2">Fri</th><th class="font-semibold py-1.5 px-2">Sat</th>
+              <th class="text-right font-semibold py-1.5 pl-3">Hour bank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 pr-3"><span class="font-semibold text-gray-800">#156 · J. Almeida</span><br><span class="text-gray-400">Butcher · 36h contract</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">08:00–…</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">07:30–17:00</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">07:30–17:00</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">07:30–17:00</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="text-right pl-3 text-green-600 font-semibold">+4h57</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 pr-3"><span class="font-semibold text-gray-800">#142 · M. Tavares</span><br><span class="text-gray-400">Cashier · 36h contract</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">08:00–…</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">11:20–20:20</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">11:20–20:20</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">07:00–16:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">11:20–20:20</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">07:00–16:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">09:50–…</span></td>
+              <td class="text-right pl-3 text-red-500 font-semibold">-10h44</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-3"><span class="font-semibold text-gray-800">#218 · R. Nogueira</span><br><span class="text-gray-400">Produce · 40h contract</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">07:00–…</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–15:30</span></td>
+              <td class="px-1"><span class="inline-block bg-purple-50 text-purple-700 rounded px-1.5 py-1">06:00–…</span></td>
+              <td class="text-right pl-3 text-gray-500 font-semibold">+0h20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[9px] text-gray-500">Recreated screen — illustrative data</div>
     </div>
 
     <div class="grid sm:grid-cols-2 gap-5">
